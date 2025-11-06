@@ -47,17 +47,26 @@ const GradeSection = () => {
             <button
               key={index}
               onClick={() => handleSmoothScroll(grade.path)}
-              className="group relative h-44 sm:h-52 md:h-56 bg-gradient-to-r from-gray-50 to-gray-100 border border-blue-200 hover:border-[#03336D] rounded-3xl p-8 sm:p-10 md:p-12 transition-all duration-300 shadow-sm hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-center w-full"
+              className="group relative h-44 sm:h-52 md:h-56 rounded-3xl p-8 sm:p-10 md:p-12 transition-transform duration-300 shadow-sm hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-center w-full"
               style={{
-                backgroundImage: "linear-gradient(to right, #f9fafb, #f3f4f6)",
+                // double-layered background:
+                //  - first layer is the inner fill (padding-box)
+                //  - second layer is the border (border-box) and we use transparent border to let it show
+                background:
+                  "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255, 255, 255, 1) 100%)",
+                border: "1px solid transparent",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundImage =
-                  "linear-gradient(to right, #03336D, #0073FF)";
+                // on hover, set fill to deep blue gradient and make border white
+                (e.currentTarget as HTMLElement).style.background =
+                  "linear-gradient(35deg, #03336D 0%, #0073FF 100%)";
+                (e.currentTarget as HTMLElement).style.border = "1px solid #FFFFFF";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundImage =
-                  "linear-gradient(to right, #f9fafb, #f3f4f6)";
+                // restore the layered default: light fill + gradient border
+                (e.currentTarget as HTMLElement).style.background =
+                  "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255, 255, 255, 1) 100%)";
+                (e.currentTarget as HTMLElement).style.border = "1px solid transparent";
               }}
             >
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-700 group-hover:text-white transition-colors duration-300">
@@ -65,6 +74,7 @@ const GradeSection = () => {
               </h2>
             </button>
           ))}
+
         </div>
       </div>
     </div>

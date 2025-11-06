@@ -218,107 +218,156 @@ const countries = [
 ];
 
 
-export default function page() {
-     
- const [success, setSuccess] = useState(false);
+interface AdmissionForm {
+  firstname: string;
+  lastname: string;
+  gender: string;
+  admissionNeed: string;
+  parentFirstname: string;
+  parentLastname: string;
+  email: string;
+  confirmEmail: string;
+  phone: string;
+  country: string;
+  city: string;
+  currentSchool: string;
+  currentYear: string;
+  graduationYear: string;
+  comments: string;
+  privacyAcknowledged: string;
+  [key: string]: unknown;
+}
+
+export default function Page() {
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-const form = useRef<HTMLFormElement | null>()
 
+  const [formData, setFormData] = useState<AdmissionForm>({
+    firstname: "",
+    lastname: "",
+    gender: "",
+    admissionNeed: "",
+    parentFirstname: "",
+    parentLastname: "",
+    email: "",
+    confirmEmail: "",
+    phone: "",
+    country: "",
+    city: "",
+    currentSchool: "",
+    currentYear: "",
+    graduationYear: "",
+    comments: "",
+    privacyAcknowledged: "",
+  });
 
-  const sendEmail = (e:React.FormEvent<HTMLFormElement>) => {
+  const update = (field: keyof AdmissionForm, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const validate = () => {
+    if (!formData.firstname.trim()) return "First name required";
+    if (!formData.lastname.trim()) return "Last name required";
+    if (!formData.gender) return "Gender required";
+    if (!formData.admissionNeed) return "Admission need required";
+    if (!formData.parentFirstname.trim()) return "Parent first name required";
+    if (!formData.parentLastname.trim()) return "Parent last name required";
+    if (!formData.email.trim()) return "Email required";
+    if (formData.email !== formData.confirmEmail) return "Emails must match";
+    if (!formData.phone.trim()) return "Phone required";
+    if (!formData.country) return "Country required";
+    if (!formData.city.trim()) return "City required";
+    if (formData.privacyAcknowledged !== "Yes")
+      return "You must accept the privacy policy";
+
+    return null;
+  };
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(false);
     setSuccess(false);
-    if (!form.current) return; // safety check
+
+    const err = validate();
+    if (err) {
+      setError(true);
+      alert(err);
+      return;
+    }
 
     emailjs
-      .sendForm(
-       "service_0i6cqah", 
-      "template_xv0y10k", 
-        form.current,
-        "x2Rj-TukOxeJQEB38"
-        
-        
+      .send(
+        "service_yes9ab6",
+        "template_bp3mixt",
+        formData,
+        "WCINshXhOs_J9duQ4"
       )
-      .then(
-        () => {
-          setSuccess(true);
-          console.log(
-             "service_0i6cqah", 
-      "template_xv0y10k",
-            form.current,
-           "x2Rj-TukOxeJQEB38"
-          );
-          form.current?.reset();
-        },
-        () => {
-          setError(true);
-        }
-      );
+      .then(() => {
+        setSuccess(true);
+
+        setFormData({
+          firstname: "",
+          lastname: "",
+          gender: "",
+          admissionNeed: "",
+          parentFirstname: "",
+          parentLastname: "",
+          email: "",
+          confirmEmail: "",
+          phone: "",
+          country: "",
+          city: "",
+          currentSchool: "",
+          currentYear: "",
+          graduationYear: "",
+          comments: "",
+          privacyAcknowledged: "",
+        });
+      })
+      .catch(() => {
+        setError(true);
+      });
   };
 
-
- 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <Header />
-      {/* Hero Section */}
+
       <div className="bg-gray-50 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mt-16">
-            <h1 className="font-poppins font-black text-4xl lg:text-6xl text-[#03336d] mb-8 tracking-tight leading-tight uppercase">
-              Speak to Us
-            </h1>
-            <div className="max-w-4xl mx-auto text-left">
-              <p className="font-poppins text-lg lg:text-xl text-gray-700 leading-relaxed mb-6">
-                Our job is to make high quality impact in getting undergraduate
-                and graduate applicants to their dream universities. Starting{" "}
-                <span className="relative inline-block">
-                  earlier
-                  <img
-                    src="/underline.png"
-                    alt="underline"
-                    className="absolute -bottom-1 left-0 w-full h-1"
-                  />
-                </span>{" "}
-                always makes a difference.
-              </p>
-            </div>
-          </div>
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-poppins font-black text-4xl lg:text-6xl text-center text-[#03336d] mb-8 uppercase">
+            Speak to Us
+          </h1>
         </div>
       </div>
 
-      {/* Form Section */}
       <div className="bg-gray-50 pb-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <form onSubmit={sendEmail} ref={form} className="text-gray-700">
-            {/* Name of Student */}
-            <div className="mb-8 text-gray-700">
+        <div className="max-w-4xl mx-auto px-4">
+          <form onSubmit={sendEmail} className="text-gray-700">
+
+            {/* Student Name */}
+            <div className="mb-8">
               <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Name of Student: <span className="text-red-500">*</span>
+                Name of Student: *
               </Label>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Input
-                    name="firstname"
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
+                    value={formData.firstname}
+                    onChange={(e) => update("firstname", e.target.value)}
+                    className="w-full h-12 border-2 rounded-md px-4"
                   />
-
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    First
-                  </span>
+                  <span className="text-sm">First</span>
                 </div>
+
                 <div>
                   <Input
-                    name="lastname"
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
+                    value={formData.lastname}
+                    onChange={(e) => update("lastname", e.target.value)}
+                    className="w-full h-12 border-2 rounded-md px-4"
                   />
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    Last
-                  </span>
+                  <span className="text-sm">Last</span>
                 </div>
               </div>
             </div>
@@ -326,139 +375,117 @@ const form = useRef<HTMLFormElement | null>()
             {/* Gender */}
             <div className="mb-8">
               <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Gender: <span className="text-red-500">*</span>
+                Gender: *
               </Label>
-              <RadioGroup defaultValue="" className="space-y-3">
+
+              <RadioGroup
+                value={formData.gender}
+                onValueChange={(v) => update("gender", v)}
+                className="space-y-3"
+              >
                 <div className="flex items-center space-x-3">
-                  <RadioGroupItem
-                    value="male"
-                  
-                    id="male"
-                    className="w-5 h-5 border-[#03336d] text-[#03336d]"
-                  />
-                  <Label
-                    htmlFor="male"
-                    className="font-poppins text-base text-gray-700"
-                  >
-                    Male
-                  </Label>
+                  <RadioGroupItem value="Male" id="male" />
+                  <Label htmlFor="male">Male</Label>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <RadioGroupItem
-                    value="female"
-                    id="female"
-                    className="w-5 h-5 border-[#03336d] text-[#03336d]"
-                  />
-                  <Label
-                    htmlFor="female"
-                    className="font-poppins text-base text-gray-700"
-                  >
-                    Female
-                  </Label>
+                  <RadioGroupItem value="Female" id="female" />
+                  <Label htmlFor="female">Female</Label>
                 </div>
               </RadioGroup>
             </div>
 
-            {/* Admissions Need */}
+            {/* Admission Need */}
             <div className="mb-8">
               <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Admissions Need: <span className="text-red-500">*</span>
+                Admissions Need: *
               </Label>
-              <Select>
-                <SelectTrigger className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins">
+
+              <Select
+                value={formData.admissionNeed}
+                onValueChange={(v) => update("admissionNeed", v)}
+              >
+                <SelectTrigger className="w-full h-12 border-2 px-4">
                   <SelectValue placeholder="Choose Admissions" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="college">
-                    Undergraduate Counseling
-                  </SelectItem>
-                  <SelectItem value="graduate">Graduate Counseling</SelectItem>
-                  <SelectItem value="transfer">Transfer </SelectItem>
+                  <SelectItem value="Undergraduate Counseling">Undergraduate Counseling</SelectItem>
+                  <SelectItem value="Graduate Counseling">Graduate Counseling</SelectItem>
+                  <SelectItem value="Transfer">Transfer</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            {/* Name of Parent */}
+            {/* Parent Name */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Name of Parent: <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Name of Parent: *
               </Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Input
-                  name=""
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                  />
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    First
-                  </span>
-                </div>
-                <div>
-                  <Input
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                  />
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    Last
-                  </span>
-                </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <Input
+                  value={formData.parentFirstname}
+                  onChange={(e) => update("parentFirstname", e.target.value)}
+                  className="h-12 border-2 px-4"
+                />
+                <Input
+                  value={formData.parentLastname}
+                  onChange={(e) => update("parentLastname", e.target.value)}
+                  className="h-12 border-2 px-4"
+                />
               </div>
             </div>
 
             {/* Email */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Email: <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Email: *
               </Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Input
-                    type="email"
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                  />
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    Email
-                  </span>
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder=""
-                    className="w-full h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                  />
-                  <span className="font-poppins text-sm text-gray-600 mt-2 block">
-                    Confirm Email
-                  </span>
-                </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <Input
+                  value={formData.email}
+                  onChange={(e) => update("email", e.target.value)}
+                  type="email"
+                  className="h-12 border-2 px-4"
+                />
+                <Input
+                  value={formData.confirmEmail}
+                  onChange={(e) => update("confirmEmail", e.target.value)}
+                  type="email"
+                  className="h-12 border-2 px-4"
+                />
               </div>
             </div>
 
-            {/* Phone Number */}
+            {/* Phone */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Phone Number: <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Phone: *
               </Label>
               <Input
-                type="tel"
-                className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
+                value={formData.phone}
+                onChange={(e) => update("phone", e.target.value)}
+                className="w-full max-w-md h-12 border-2 px-4"
               />
             </div>
 
             {/* Country */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Country: <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Country: *
               </Label>
-              <Select>
-                <SelectTrigger className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins">
-                  <SelectValue placeholder="United States" />
+
+              <Select
+                value={formData.country}
+                onValueChange={(v) => update("country", v)}
+              >
+                <SelectTrigger className="w-full max-w-md h-12 border-2 px-4">
+                  <SelectValue placeholder="Select Country" />
                 </SelectTrigger>
                 <SelectContent>
-                  {countries.map((country) => (
-                    <SelectItem key={country.code} value={country.code}>
-                      {country.name}
+                  {countries.map((c) => (
+                    <SelectItem key={c.code} value={c.name}>
+                      {c.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -467,125 +494,106 @@ const form = useRef<HTMLFormElement | null>()
 
             {/* City */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                City: <span className="text-red-500">*</span>
-              </Label>
-              <Input className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins" />
-            </div>
-
-            {/* Curent clg/uni */}
-            <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Current School/University:{" "}
-                <span className="text-red-500">*</span>
-              </Label>
-              <Input className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins" />
-            </div>
-
-            {/* Current Year in School */}
-            <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Current Year in School /University:{" "}
-                <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                City: *
               </Label>
               <Input
-                className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                placeholder="Enter your current year"
+                value={formData.city}
+                onChange={(e) => update("city", e.target.value)}
+                className="max-w-md h-12 border-2 px-4"
               />
             </div>
 
-            {/* Year of High School Graduation */}
+            {/* School */}
             <div className="mb-8">
-              <Label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
-                Year of Graduation: <span className="text-red-500">*</span>
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Current School/University:
               </Label>
               <Input
-                className="w-full max-w-md h-12 border-2 border-gray-300 rounded-md px-4 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 font-poppins"
-                placeholder="Enter your graduation year"
+                value={formData.currentSchool}
+                onChange={(e) => update("currentSchool", e.target.value)}
+                className="max-w-md h-12 border-2 px-4"
+              />
+            </div>
+
+            {/* Year */}
+            <div className="mb-8">
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Current Year:
+              </Label>
+              <Input
+                value={formData.currentYear}
+                onChange={(e) => update("currentYear", e.target.value)}
+                className="max-w-md h-12 border-2 px-4"
+              />
+            </div>
+
+            {/* Graduation Year */}
+            <div className="mb-8">
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
+                Graduation Year:
+              </Label>
+              <Input
+                value={formData.graduationYear}
+                onChange={(e) => update("graduationYear", e.target.value)}
+                className="max-w-md h-12 border-2 px-4"
               />
             </div>
 
             {/* Comments */}
             <div className="mb-8">
-              <label className="font-poppins text-lg font-semibold text-[#03336d] mb-4 block">
+              <Label className="font-poppins text-lg font-semibold text-[#03336d]">
                 Comments:
-              </label>
+              </Label>
               <textarea
-                className="w-full h-32 border-2 border-gray-300 rounded-md px-4 py-3 text-base focus:border-[#03336d] focus:outline-none focus:ring-0 resize-none font-poppins"
-                // value={comment}
-                // onChange={handleChange}
-                placeholder="Write your comment here..."
+                value={formData.comments}
+                onChange={(e) => update("comments", e.target.value)}
+                className="w-full h-32 border-2 rounded-md px-4 py-3"
               />
-              <p className="text-sm text-gray-500 mt-2">
-                {/* {comment.length} of {maxChars} max of characters */}
-              </p>
             </div>
 
-            {/* Privacy Notice */}
+            {/* Privacy */}
             <div className="mb-8">
-              <div>
-                <p className="font-poppins text-sm text-gray-700 mb-4">
-                  <strong>Note:</strong> IF YOU DON'T HEAR FROM US INSTANTLY
-                  WITH AN AUTOMATIC EMAIL CORRESPONDING TO YOUR SITUATION,
-                  PLEASE CHECK YOUR SPAM FOLDER. IT'S LIKELY THERE.
-                </p>
-                <p className="font-poppins text-sm text-gray-700 mb-4">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Itaque, placeat quibusdam dicta autem ea eius, quasi
-                  praesentium eos porro iste blanditiis fugiat! Eligendi, unde
-                  inventore! Repudiandae perferendis alias deserunt eveniet
-                  expedita illum vitae, sunt nam.
-                </p>
-                <p className="font-poppins text-sm text-gray-700 mb-6 font-semibold">
-                  Please confirm you have read and acknowledged Navo's Privacy
-                  Policy.
-                </p>
-                <div className="flex items-start space-x-3">
-                  <Checkbox
-                    id="privacy"
-                    className="mt-1 w-5 h-5 border-[#03336d] text-[#03336d]"
-                  />
-                  <Label
-                    htmlFor="privacy"
-                    className="font-poppins text-sm text-gray-700 leading-relaxed flex-1"
-                  >
-                    I understand that I will receive an automatic email when I
-                    submit this form that will require my response to move
-                    forward. <span className="text-red-500">*</span>
-                  </Label>
-                </div>
+              <div className="flex items-start space-x-3">
+                <Checkbox
+                  checked={formData.privacyAcknowledged === "Yes"}
+                  onCheckedChange={(v) =>
+                    update("privacyAcknowledged", v ? "Yes" : "No")
+                  }
+                  id="privacy"
+                />
+                <Label htmlFor="privacy">
+                  I understand that I will receive an automatic email…
+                </Label>
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-yellowCust rounded-full hover:bg-yellowCust/90 text-blue-900 font-poppins font-normal text-md px-10 py-6 transition-all duration-300 transform hover:scale-105"
+                className="bg-yellowCust rounded-full px-10 py-6"
               >
                 SUBMIT
               </button>
+
+              {success && (
+                <p className="text-green-600 mt-4 font-medium">
+                  ✅ Form sent successfully!
+                </p>
+              )}
+              {error && (
+                <p className="text-red-600 mt-4 font-medium">
+                  ❌ Failed to send. Try again.
+                </p>
+              )}
             </div>
-             {success && (
-              <span className="text-green-500 font-semibold ">
-                Your message has been sent successfully!
-              </span>
-            )}
-            {error && (
-              <span className="text-red-500 font-semibold">
-                Something wents wrong!
-              </span>
-            )}
           </form>
         </div>
       </div>
 
-      {/* Navogate Your Universe section */}
       <NavogateUniverse />
-
-      {/* Footer */}
-
-    <Footer />
+      <Footer />
     </div>
   );
 }
