@@ -14,6 +14,7 @@ import WhatWeDo from "@/components/whatWeDo";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import emailjs from "@emailjs/browser";
 import AboveFooter from "@/components/AboveFooter";
+import Footer from "@/components/footer";
 
 const data = [
   { name: "Students", percentage: 550, signs: "+" },
@@ -35,6 +36,8 @@ export default function Component() {
   const [isMuted, setIsMuted] = useState(true);
   const ctaRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const [ctaHeight, setCtaHeight] = useState(0);
+
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [email, setEmail] = useState("");
@@ -112,20 +115,26 @@ export default function Component() {
     window.open(url, "_blank");
   };
 
+  // Measure CTA height
+  useEffect(() => {
+    if (ctaRef.current) {
+      setCtaHeight(ctaRef.current.offsetHeight);
+    }
+  }, []);
+
+  // Handle scroll to toggle CTA above footer
   useEffect(() => {
     const handleScroll = () => {
       if (footerRef.current && ctaRef.current) {
         const footerRect = footerRef.current.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
 
-        // Simple check: if footer is visible in viewport, switch to relative
+        // If footer is visible, move CTA above it
         const shouldBeAboveFooter = footerRect.top < viewportHeight;
-
         setIsAboveFooter(shouldBeAboveFooter);
       }
     };
 
-    // Simple throttling without debouncing to prevent stutter
     let ticking = false;
     const throttledScroll = () => {
       if (!ticking) {
@@ -140,8 +149,7 @@ export default function Component() {
     window.addEventListener("scroll", throttledScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
 
-    // Initial check
-    handleScroll();
+    handleScroll(); // initial check
 
     return () => {
       window.removeEventListener("scroll", throttledScroll);
@@ -176,9 +184,8 @@ export default function Component() {
                 videoRef.current.muted = !isMuted;
               }
             }}
-            className={`relative inline-flex h-[40px] w-[85px] items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-              isMuted ? "bg-[#03336d]" : "bg-transparent"
-            }`}
+            className={`relative inline-flex h-[40px] w-[85px] items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isMuted ? "bg-[#03336d]" : "bg-transparent"
+              }`}
           >
             {/* Unmute icon on the left */}
             <Volume2 className="absolute left-1 w-[20px] text-white ml-1" />
@@ -187,9 +194,8 @@ export default function Component() {
             <VolumeOff className="absolute right-1 w-[20px] text-white mr-1" />
             {/* Moving circle */}
             <span
-              className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform duration-200 ${
-                isMuted ? "translate-x-12" : "translate-x-1"
-              }`}
+              className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform duration-200 ${isMuted ? "translate-x-12" : "translate-x-1"
+                }`}
             ></span>
           </button>
         </div>
@@ -320,63 +326,63 @@ export default function Component() {
           </div>
 
           {/* Social Media */}
-     <div className="text-center bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-  {/* Top Icon */}
-  <div className="flex justify-center mb-5">
-    <Hash className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[#03336d] transition-transform duration-300 hover:scale-110" />
-  </div>
+          <div className="text-center bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+            {/* Top Icon */}
+            <div className="flex justify-center mb-5">
+              <Hash className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[#03336d] transition-transform duration-300 hover:scale-110" />
+            </div>
 
-  
-  <div className="flex flex-col items-center gap-6">
-   
-    <div className="flex flex-wrap justify-center gap-5 md:gap-8">
-      <a
-        href="https://www.facebook.com/profile.php?id=61574014345229"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-500 hover:text-blue-600 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
-      >
-        <FaFacebook />
-      </a>
 
-      <a
-        href="https://www.instagram.com/navo.ed?igsh=eGd5ZDVuZjBrdGs="
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-pink-500 hover:text-pink-600 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
-      >
-        <FaInstagram />
-      </a>
+            <div className="flex flex-col items-center gap-6">
 
-      <a
-        href="https://www.linkedin.com/company/navo-ed/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-400 hover:text-blue-500 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
-      >
-        <FaLinkedin />
-      </a>
+              <div className="flex flex-wrap justify-center gap-5 md:gap-8">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61574014345229"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-600 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
+                >
+                  <FaFacebook />
+                </a>
 
-      <a
-        href="https://twitter.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-600 hover:text-[#03336d] text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
-      >
-        <FaTwitter />
-      </a>
+                <a
+                  href="https://www.instagram.com/navo.ed?igsh=eGd5ZDVuZjBrdGs="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:text-pink-600 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
+                >
+                  <FaInstagram />
+                </a>
 
-      <a
-        href="https://www.tiktok.com/@navo1482?_t=ZS-8zxyInM47Hj&_r=1"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-black hover:text-gray-700 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
-      >
-        <SiTiktok />
-      </a>
-    </div>
-  </div>
-</div>
+                <a
+                  href="https://www.linkedin.com/company/navo-ed/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-500 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
+                >
+                  <FaLinkedin />
+                </a>
+
+                <a
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-[#03336d] text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
+                >
+                  <FaTwitter />
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@navo1482?_t=ZS-8zxyInM47Hj&_r=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black hover:text-gray-700 text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"
+                >
+                  <SiTiktok />
+                </a>
+              </div>
+            </div>
+          </div>
 
 
         </div>
@@ -384,10 +390,9 @@ export default function Component() {
 
       {/* Sticky CTA Section */}
 
-      <AboveFooter isAboveFooter={isAboveFooter} ctaRef={ctaRef} />
 
       {/* Footer  Main*/}
-      <footer
+      {/* <footer
         ref={footerRef}
         id="footer"
         className="bg-[#03336d] text-white px-6 py-12 lg:px-32 lg:py-16"
@@ -510,7 +515,16 @@ export default function Component() {
             <p className="text-white/80 text-sm">©2024 All rights reserved</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
+
+      {/* CTA bar */}
+      <AboveFooter isAboveFooter={isAboveFooter} ctaRef={ctaRef} />
+
+      {/* Footer */}
+      <div ref={footerRef}>
+        <Footer />
+      </div>
+
 
       {/* End Here */}
 

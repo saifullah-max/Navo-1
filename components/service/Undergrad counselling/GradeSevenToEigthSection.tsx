@@ -71,7 +71,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
           <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
             Grades 6th-8th
           </h1>
-          <p className="font-['Poppins'] text-lg text-gray-800 leading-relaxed mt-2 mb-6 text-center max-w-xl mx-auto">
+          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-2 mb-6 text-center max-w-xl mx-auto">
             For families who first come to us when their children are in sixth, seventh, or eighth grade, the path forward is as follows:
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                     />
                   </button>
 
-                  <div className="p-2 pr-20">
+                  <div className="py-2 px-1 md:pr-20">
                     {/* Badge */}
                     <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
@@ -150,7 +150,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                         <div className="hidden md:block md:w-1/2"></div>
 
                         {/* Right side content */}
-                        <div className="md:w-1/2">
+                        <div className="w-full md:w-1/2">
                           <p className="text-gray-800 text-[15px] md:text-base leading-relaxed mb-3">
                             {step.description}
                           </p>
@@ -162,9 +162,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                                   key={itemIndex}
                                   className="flex items-start text-gray-800"
                                 >
-                                  <span className="text-gray-800 mr-3 mt-1 flex-shrink-0">
-                                    •
-                                  </span>
+                                  <span className="text-gray-800 mr-3 mt-1 flex-shrink-0">•</span>
                                   <span className="leading-relaxed">{item}</span>
                                 </li>
                               ))}
@@ -189,6 +187,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                         </div>
                       </div>
                     )}
+
                   </div>
                 </div>
               </div>

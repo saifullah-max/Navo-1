@@ -54,13 +54,10 @@ export function MobileNav({
               About Us
             </a>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
+            <div className="relative">
               <button
-                className={`uppercase font-bold text-gray-700 hover:text-gray-900`}
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="text-lg uppercase font-bold text-gray-700 hover:text-gray-900 flex justify-between w-full"
               >
                 Services ▾
               </button>
@@ -71,13 +68,15 @@ export function MobileNav({
                   <Link
                     href="/undergraduate"
                     className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                    onClick={() => setOpen(false)}
                   >
                     Undergraduate Counselling
                   </Link>
 
                   <Link
-                    href="/services/graduate"
+                    href="/graduate"
                     className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                    onClick={() => setOpen(false)}
                   >
                     Graduate & MBA
                   </Link>

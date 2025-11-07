@@ -68,7 +68,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
           <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
             Grades 9th-11th
           </h1>
-          <p className="font-['Poppins'] text-lg text-gray-800 leading-relaxed mt-2 mb-6 text-center max-w-xl mx-auto">
+          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-2 mb-6 text-center max-w-xl mx-auto">
             For families who first come to us when their children are in ninth, tenth, or eleventh grade, the path forward is as follows:
           </p>
         </div>
@@ -139,7 +139,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
                         <div className="hidden md:block md:w-1/2"></div>
 
                         {/* Right content */}
-                        <div className="md:w-1/2">
+                        <div className="w-full md:w-1/2">
                           <p className="text-gray-800 text-[15px] md:text-base leading-relaxed mb-3">
                             {step.description}
                           </p>
@@ -169,6 +169,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
                         </div>
                       </div>
                     )}
+
                   </div>
                 </div>
               </div>

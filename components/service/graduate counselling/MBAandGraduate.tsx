@@ -1,19 +1,18 @@
-"use client";
-
-import { useState } from "react";
-import { ChevronUp, ArrowRight, ChevronDown } from "lucide-react";
-import Link from "next/link";
+import React, { useState } from "react";
 import Image from "next/image";
-import underline from "@/public/underline.png";
-interface Step {
+import Link from "next/link";
+import underline from "@/public/underline.png"; // Make sure you have this
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+
+type Step = {
   id: number;
   badge: string;
-  title: string;
   heading: string;
+  title: string;
   description: string;
-  hasButton?: boolean;
   listItems?: string[];
-}
+  hasButton?: boolean;
+};
 
 export default function MBAandGraduate(): JSX.Element {
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
@@ -53,47 +52,32 @@ export default function MBAandGraduate(): JSX.Element {
   ];
 
   const toggleStep = (index: number): void => {
-    if (expandedStep === index) {
-      setExpandedStep(null);
-    } else {
-      setExpandedStep(index);
-    }
+    setExpandedStep(expandedStep === index ? null : index);
   };
 
   const allCollapsed = expandedStep === null;
-
   const expandAll = (): void => setExpandedStep(-1);
   const collapseAll = (): void => setExpandedStep(null);
 
   return (
-    <div id="7to8" className="min-h-screen bg-gray-100 py-24 px-4">
+    <div id="7to8" className="bg-gray-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#07306A] ">
+        <div className="text-center mb-4">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
             MBA AND GRADUATE
-            <span className="relative left-3 inline-block">
-              COUNSELING
-              <Image
-                src={underline}
-                alt="Underline"
-                width={200}
-                className="md:h-2 md:w-64 h-1 w-44"
-                height={40}
-              />
-            </span>
           </h1>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#07306A] mb-4">
-            FOR TOP GLOBAL PROGRAMS
-          </h1>{" "}
-          <p className="text-[#222222] text-lg mt-6">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2 tracking-tight uppercase">
+            COUNSELING FOR TOP GLOBAL PROGRAMS
+          </h1>
+          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-2 mb-6 text-center max-w-xl mx-auto">
             For families who first connect with us when their children are in
             grade 7 or 8, the path forward is as follows:
           </p>
         </div>
 
         {/* Collapse / Expand All */}
-        <div className="flex justify-end mb-6">
+        <div className="flex justify-end mb-4">
           {allCollapsed ? (
             <button
               onClick={expandAll}
@@ -120,20 +104,20 @@ export default function MBAandGraduate(): JSX.Element {
         </div>
 
         {/* Steps */}
-        <div className="space-y-6">
+        <div className="">
           {steps.map((step, index) => {
             const isExpanded = expandedStep === index || expandedStep === -1; // -1 = expand all
 
             return (
               <div
                 key={step.id}
-                className="overflow-hidden   border-t-[1px] border-[#707D93]"
+                className="overflow-hidden border-t border-gray-300"
               >
                 <div className="relative">
                   {/* Toggle button */}
                   <button
                     onClick={() => toggleStep(index)}
-                    className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white rounded-full flex items-center justify-center transition-colors z-10"
+                    className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r from-[#03336D] to-[#0073FF] hover:from-[#1a4375] hover:to-[#375170] text-white rounded-full flex items-center justify-center transition-colors z-10"
                     aria-label={
                       isExpanded ? "Collapse section" : "Expand section"
                     }
@@ -141,63 +125,62 @@ export default function MBAandGraduate(): JSX.Element {
                     <ChevronUp
                       size={24}
                       strokeWidth={3}
-                      className={`transform transition-transform duration-300 ${
-                        isExpanded ? "" : "rotate-180"
-                      }`}
+                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"
+                        }`}
                     />
                   </button>
 
-                  <div className="py-6 md:pr-20">
+                  <div className="p-2 pr-20">
                     {/* Badge */}
-                    <span className="inline-block bg-gradient-to-r from-[#635AD9] to-[#FF4848] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase">
+                    <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
                     </span>
 
-                    {/* Heading / Title Logic */}
-                    <h2 className="md:text-2xl text-md font-bold text-[#07306A] mb-3">
-                      {isExpanded ? step.title : step.heading}
+                    {/* Heading / Title */}
+                    <h2 className="md:text-2xl text-md font-bold text-[#07306A] mb-0">
+                      {isExpanded
+                        ? step.title.toUpperCase()
+                        : step.heading.toUpperCase()}
                     </h2>
 
                     {/* Expandable Content */}
                     {isExpanded && (
-                      <div className="mt-4">
-                        <p className="text-gray-800 leading-relaxed mb-4">
-                          {step.description}
-                        </p>
+                      <div className="mt-4 flex flex-col md:flex-row md:items-start md:gap-10">
+                        {/* Left spacer */}
+                        <div className="hidden md:block md:w-1/2"></div>
 
-                        {step.listItems && (
-                          <ul className="space-y-3 mb-6">
-                            {step.listItems.map((item, itemIndex) => (
-                              <li
-                                key={itemIndex}
-                                className="flex items-start text-gray-800"
-                              >
-                                <span className="text-gray-800 mr-3 mt-1.5 flex-shrink-0">
-                                  •
-                                </span>
-                                <span className="leading-relaxed">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
+                        {/* Right content */}
+                        <div className="w-full md:w-1/2">
+                          <p className="text-gray-800 text-[15px] md:text-base leading-relaxed mb-3">
+                            {step.description}
+                          </p>
 
-                        {step.hasButton && (
-                          <Link
-                            href="/connect"
-                            className="bg-[#07306A] hover:bg-blue-800 text-[#D7FD34] font-bold px-4 py-2 rounded-full inline-flex items-center gap-8 transition-colors uppercase text-sm"
-                          >
-                            CONNECT
-                            <div className="w-6 h-6 bg-[#D7FD34] rounded-full flex items-center justify-center">
-                              <ArrowRight
-                                size={16}
-                                className="text-blue-900"
-                                strokeWidth={3}
-                              />
-                            </div>
-                          </Link>
-                        )}
+                          {step.listItems && (
+                            <ul className="space-y-2 mb-5">
+                              {step.listItems.map((item, itemIndex) => (
+                                <li key={itemIndex} className="flex items-start text-gray-800">
+                                  <span className="text-gray-800 mr-3 mt-1 flex-shrink-0">•</span>
+                                  <span className="leading-relaxed">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
+                          {step.hasButton && (
+                            <Link
+                              href="/connect"
+                              className="bg-[#07306A] hover:bg-blue-800 text-[#D7FD34] font-bold px-4 py-2 rounded-full inline-flex items-center gap-8 transition-colors uppercase text-sm"
+                            >
+                              CONNECT
+                              <div className="w-6 h-6 bg-[#D7FD34] rounded-full flex items-center justify-center">
+                                <ArrowRight size={16} className="text-blue-900" strokeWidth={3} />
+                              </div>
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     )}
+
                   </div>
                 </div>
               </div>
