@@ -33,14 +33,12 @@ export function MobileNav({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="max-[1023px]:flex hidden items-center justify-center text-gray-900 hover:text-gray-600"
+        <button
+          className="max-[1023px]:flex hidden items-center justify-center text-gray-900 hover:text-gray-600 w-20 h-20 p-0"
         >
-          <Menu className="h-6 w-6" />
+          <Menu className="w-10 h-10" />
           <span className="sr-only">Toggle menu</span>
-        </Button>
+        </button>
       </SheetTrigger>
       <SheetContent side="right" className="w-[300px] sm:w-[400px]">
         <SheetHeader>
@@ -50,7 +48,7 @@ export function MobileNav({
           <nav className="flex flex-col space-y-4">
             <a
               href="#"
-              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2 uppercase"
               onClick={() => setOpen(false)}
             >
               About Us
@@ -72,14 +70,14 @@ export function MobileNav({
                 <div className="absolute left-0 mt-0 w-80 bg-white shadow-lg rounded-lg py-2 z-50">
                   <Link
                     href="/undergraduate"
-                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
                   >
                     Undergraduate Counselling
                   </Link>
 
                   <Link
                     href="/services/graduate"
-                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
                   >
                     Graduate & MBA
                   </Link>
@@ -89,21 +87,21 @@ export function MobileNav({
 
             <a
               href="#"
-              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2 uppercase"
               onClick={() => setOpen(false)}
             >
               Explore
             </a>
             <a
               href="/connect"
-              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2 uppercase"
               onClick={() => setOpen(false)}
             >
               Connect
             </a>
             <a
               href="#"
-              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2 uppercase"
               onClick={() => setOpen(false)}
             >
               MyNavoPortal
@@ -115,7 +113,7 @@ export function MobileNav({
               <span>
                 <FaWhatsapp className="text-green-500 w-6 h-6" />{" "}
               </span>
-              <span>WhatsApp</span>
+              <span className="uppercase">WhatsApp</span>
             </button>
           </nav>
         </div>

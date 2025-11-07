@@ -64,7 +64,7 @@ export default function CounselorsHelpStudents() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-12">
           <div className="flex-1 text-center">
-            <h2 className="font-['Poppins',Helvetica] font-extrabold text-[#03336d] text-2xl sm:text-3xl md:text-4xl leading-tight sm:leading-[56px] md:leading-[68px] tracking-[-0.5px]">
+            <h2 className="font-['Poppins'] font-extrabold text-[#03336d] text-2xl sm:text-3xl md:text-4xl leading-tight sm:leading-[56px] md:leading-[68px] tracking-[-0.5px]">
               NAVO COACH&apos;S COLLEGE
               <br />
               COUNSELORS HELP STUDENTS:

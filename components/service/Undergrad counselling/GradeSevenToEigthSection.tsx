@@ -64,17 +64,20 @@ export default function GradeSevenToEigthSection(): JSX.Element {
   const collapseAll = (): void => setExpandedStep(null);
 
   return (
-    <div id="7to8" className="bg-gray-100 py-12 px-4">
+    <div id="7to8" className="bg-gray-100 pt-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-1 tracking-tight uppercase">
-            Grades 6<sup className="lowercase">th</sup>- 8<sup className="lowercase">th</sup>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
+            Grades 6th-8th
           </h1>
+          <p className="font-['Poppins'] text-lg text-gray-800 leading-relaxed mt-2 mb-6 text-center max-w-xl mx-auto">
+            For families who first come to us when their children are in sixth, seventh, or eighth grade, the path forward is as follows:
+          </p>
         </div>
 
         {/* Collapse / Expand All */}
-        <div className="flex justify-end mb-3">
+        <div className="flex justify-end">
           {allCollapsed ? (
             <button
               onClick={expandAll}
@@ -127,9 +130,9 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                     />
                   </button>
 
-                  <div className="p-6 pr-20">
+                  <div className="p-2 pr-20">
                     {/* Badge */}
-                    <span className="inline-block bg-gradient-to-r from-[#03336D] to-[#0073FF] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-2 uppercase">
+                    <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
                     </span>
 
@@ -195,6 +198,4 @@ export default function GradeSevenToEigthSection(): JSX.Element {
       </div>
     </div>
   );
-
-
 }

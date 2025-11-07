@@ -61,17 +61,20 @@ export default function GradeNineToElevenSection(): JSX.Element {
   const collapseAll = (): void => setExpandedStep(null);
 
   return (
-    <div id="9to11" className="bg-[#F4F8FF] py-12 px-4">
+    <div id="9to11" className="bg-gray-100 pt-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-1 tracking-tight uppercase">
-            Grades 9<sup className="lowercase">th</sup>- 11<sup className="lowercase">th</sup>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
+            Grades 9th-11th
           </h1>
+          <p className="font-['Poppins'] text-lg text-gray-800 leading-relaxed mt-2 mb-6 text-center max-w-xl mx-auto">
+            For families who first come to us when their children are in ninth, tenth, or eleventh grade, the path forward is as follows:
+          </p>
         </div>
 
         {/* Collapse / Expand All */}
-        <div className="flex justify-end mb-3">
+        <div className="flex justify-end">
           {allCollapsed ? (
             <button
               onClick={expandAll}
@@ -98,7 +101,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
         </div>
 
         {/* Steps */}
-        <div className="">
+        <div>
           {steps.map((step, index) => {
             const isExpanded = expandedStep === index || expandedStep === -1;
 
@@ -114,14 +117,13 @@ export default function GradeNineToElevenSection(): JSX.Element {
                     <ChevronUp
                       size={24}
                       strokeWidth={3}
-                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"
-                        }`}
+                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"}`}
                     />
                   </button>
 
-                  <div className="p-6 pr-20">
+                  <div className="p-2 pr-20">
                     {/* Badge */}
-                    <span className="inline-block bg-gradient-to-r from-[#03336D] to-[#0073FF] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-2 uppercase">
+                    <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
                     </span>
 
@@ -133,7 +135,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
                     {/* Expandable Content */}
                     {isExpanded && (
                       <div className="mt-4 flex flex-col md:flex-row md:items-start md:gap-10">
-                        {/* Left spacer (aligns exactly like 6–8) */}
+                        {/* Left spacer */}
                         <div className="hidden md:block md:w-1/2"></div>
 
                         {/* Right content */}
@@ -173,8 +175,8 @@ export default function GradeNineToElevenSection(): JSX.Element {
             );
           })}
         </div>
-
       </div>
     </div>
   );
+
 }

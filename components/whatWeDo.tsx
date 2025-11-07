@@ -20,7 +20,7 @@ const serviceCards = [
 export default function WhatWeDo() {
   return (
     <>
-      <div className="flex items-center justify-center gap-2.5 pt-16 pb-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full mb-[90px] sm:mb-0 lg:mb-0">
+      <div className="flex items-center justify-center gap-2.5 pt-8 pb-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full mb-[90px] sm:mb-0 lg:mb-0">
         <div className="flex flex-col w-full max-w-[1139px] min-h-[493px] md:h-[493px] items-center gap-6 md:gap-[38px] relative">
           <h2 className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-bold text-[#03336d] text-[32px] md:text-[45px] lg:text-[55.8px] text-center tracking-[0] leading-[normal] px-4">
             WHAT{" "}

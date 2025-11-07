@@ -23,7 +23,7 @@ export default function NavogateUniverse() {
           </h1>
 
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="font-['Poppins',Helvetica] text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-12">
+            <p className="font-['Poppins'] text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-12">
               If you're interested in Navo's college counseling, fill
               <br />
               out our complimentary consultation form and we'll be
@@ -33,7 +33,7 @@ export default function NavogateUniverse() {
 
             <a
               href="/connect"
-              className="uppercase bg-yellowCust hover:bg-yellowCust/90 text-blue-900 font-['Poppins',Helvetica] font-normal text-md px-12 py-4 transition-all duration-300 transform hover:scale-105 rounded-xl"
+              className="uppercase bg-yellowCust hover:bg-yellowCust/90 text-blue-900 font-['Poppins'] font-normal text-md px-12 py-4 transition-all duration-300 transform hover:scale-105 rounded-xl"
             >
               Connect
             </a>

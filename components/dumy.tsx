@@ -169,7 +169,7 @@ export default function Component() {
       <section className="bg-gray-50 py-16 md:py-24 px-6 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
           {/* Main Title */}
-          <h1 className="font-['Poppins',Helvetica] font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-12 tracking-tight">
+          <h1 className="font-['Poppins'] font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-12 tracking-tight">
             NAVO'S COLLEGE
             <br />
             ADMISSIONS <span className="relative inline-block">
@@ -184,13 +184,13 @@ export default function Component() {
 
           {/* Subtitle */}
           <div className="max-w-4xl mx-auto mb-8">
-            <p className="font-['Poppins',Helvetica] text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
+            <p className="font-['Poppins'] text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
               The percentage of Navo's package clients over the last 10 years
               <br />
               who earned admission to the following schools in the Early round.
             </p>
 
-            <p className="font-['Poppins',Helvetica] text-lg md:text-xl text-gray-700">
+            <p className="font-['Poppins'] text-lg md:text-xl text-gray-700">
               At most of these schools, we typically have{" "}
               <span className="relative">
                 <span className="font-bold text-[#03336d]">
@@ -206,10 +206,10 @@ export default function Component() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mt-16">
             {/* Row 1 */}
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Harvard University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 750<span className="text-4xl md:text-5xl">+</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -219,10 +219,10 @@ export default function Component() {
             </div>
 
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Yale University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 100<span className="text-4xl md:text-5xl">%</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -232,10 +232,10 @@ export default function Component() {
             </div>
 
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Princeton University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 120<span className="text-4xl md:text-5xl">+</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -245,10 +245,10 @@ export default function Component() {
             </div>
 
             <div className="text-center">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Columbia University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 900<span className="text-4xl md:text-5xl">+</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -264,10 +264,10 @@ export default function Component() {
           {/* Row 2 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Dartmouth College
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 3400<span className="text-4xl md:text-5xl">+</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -277,10 +277,10 @@ export default function Component() {
             </div>
 
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Brown University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 10<span className="text-4xl md:text-5xl">x</span>
                 <span className="text-lg md:text-2xl lg:text-4xl">
                   {" "}
@@ -290,19 +290,19 @@ export default function Component() {
             </div>
 
             <div className="text-center border-r border-gray-300 last:border-r-0 lg:border-r">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 University of Pennsylvania
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 88<span className="text-4xl md:text-5xl">%</span>
               </div>
             </div>
 
             <div className="text-center">
-              <h3 className="font-['Poppins',Helvetica] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
+              <h3 className="font-['Poppins'] text-xl md:text-2xl text-[#03336d] font-semibold mb-6">
                 Cornell University
               </h3>
-              <div className="font-['Poppins',Helvetica] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
+              <div className="font-['Poppins'] font-black text-6xl md:text-7xl lg:text-8xl text-[#03336d]">
                 71<span className="text-4xl md:text-5xl">%</span>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function Component() {
       {/* Your Universe With Us */}
       <div className="bg-blue-900 py-12 sm:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-bold mb-8 sm:mb-10 lg:mb-12 leading-tight font-['Poppins',Helvetica]">
+          <h2 className="font-bold mb-8 sm:mb-10 lg:mb-12 leading-tight font-['Poppins']">
             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-yellow-400 underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8 mb-4">
               Navogate
             </span>
@@ -337,7 +337,7 @@ export default function Component() {
             <div className="w-full sm:w-[325px]">
               <Button
                 variant="outline"
-                className="w-full font-['Poppins',Helvetica] bg-white text-blue-900 hover:bg-gray-50 border-0 text-base sm:text-lg lg:text-xl font-semibold py-10 px-10 rounded-lg h-auto transition-colors"
+                className="w-full font-['Poppins'] bg-white text-blue-900 hover:bg-gray-50 border-0 text-base sm:text-lg lg:text-xl font-semibold py-10 px-10 rounded-lg h-auto transition-colors"
               >
                 Undergraduate Counseling
               </Button>
@@ -345,7 +345,7 @@ export default function Component() {
             <div className="w-full sm:w-[325px]">
               <Button
                 variant="outline"
-                className="w-full font-['Poppins',Helvetica] bg-white text-blue-900 hover:bg-gray-50 border-0 text-base sm:text-lg lg:text-xl font-semibold py-10 px-10 rounded-lg h-auto transition-colors"
+                className="w-full font-['Poppins'] bg-white text-blue-900 hover:bg-gray-50 border-0 text-base sm:text-lg lg:text-xl font-semibold py-10 px-10 rounded-lg h-auto transition-colors"
               >
                 Graduate Counseling
               </Button>
@@ -359,24 +359,24 @@ export default function Component() {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 max-w-7xl mx-auto">
           {/* Text Content */}
           <div className="flex flex-col items-start justify-center gap-6 w-full md:max-w-[672px]">
-            <h2 className="font-['Poppins',Helvetica] font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-[-0.5px] leading-tight text-[#03336d]">
+            <h2 className="font-['Poppins'] font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-[-0.5px] leading-tight text-[#03336d]">
               We invest in the student&apos;s potential
             </h2>
 
-            <p className="font-['Poppins',Helvetica] text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed">
+            <p className="font-['Poppins'] text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed">
               Here at Navo we focus on students where technology, innovation,
               and capital can unlock long-term value and drive economic growth.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full sm:w-auto">
-              <Button className="bg-[#03336d] hover:bg-[#03336d]/90 text-white rounded-lg px-5 py-3 font-['Poppins',Helvetica] font-medium text-base w-full sm:w-auto">
+              <Button className="bg-[#03336d] hover:bg-[#03336d]/90 text-white rounded-lg px-5 py-3 font-['Poppins'] font-medium text-base w-full sm:w-auto">
                 Get started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
 
               <Button
                 variant="outline"
-                className="rounded-lg px-5 py-3 font-['Poppins',Helvetica] font-medium text-gray-800 text-base border-gray-200 w-full sm:w-auto"
+                className="rounded-lg px-5 py-3 font-['Poppins'] font-medium text-gray-800 text-base border-gray-200 w-full sm:w-auto"
               >
                 Learn more
               </Button>
@@ -462,7 +462,7 @@ export default function Component() {
       {/* Conquest Section */}
       <section className="bg-[#03336d] py-20 px-6 lg:px-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-['Poppins',Helvetica] font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight mb-8">
+          <h1 className="font-['Poppins'] font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight mb-8">
             <span className="block">TOWARD THE</span>
             <span className="block relative">
               <span className="relative">
@@ -474,7 +474,7 @@ export default function Component() {
           </h1>
 
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="font-['Poppins',Helvetica] text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-12">
+            <p className="font-['Poppins'] text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-12">
               If you're interested in Navo's college counseling, fill
               <br />
               out our complimentary consultation form and we'll be
@@ -482,7 +482,7 @@ export default function Component() {
               in touch.
             </p>
 
-            <Button className="bg-yellow-400 hover:bg-yellow-500 text-[#03336d] font-['Poppins',Helvetica] font-bold text-lg sm:text-xl px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-yellow-400 hover:bg-yellow-500 text-[#03336d] font-['Poppins'] font-bold text-lg sm:text-xl px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
               GET STARTED
             </Button>
           </div>

@@ -50,18 +50,20 @@ export default function GradeTwelveToThirteenSection(): JSX.Element {
   const collapseAll = () => setExpandedStep(null);
 
   return (
-    <div id="12to13" className="bg-[#F4F8FF] py-12 px-4">
+    <div id="12to13" className="bg-gray-100 pt-12 px-4">
       <div className="max-w-6xl mx-auto">
-
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4 tracking-tight uppercase">
-            Grades 12<sup className="lowercase">th</sup>- 13<sup className="lowercase">th</sup>
+        <div className="text-center mb-4">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
+            Grades 12th-13th
           </h1>
+          <p className="font-['Poppins'] text-lg text-gray-800 leading-relaxed mt-2 mb-6 text-center max-w-xl mx-auto">
+            For families who first come to us when their children are seniors before the Early Action/Early Decision deadline, the path forward is as follows:
+          </p>
         </div>
 
-        {/* Expand/Collapse All */}
-        <div className="flex justify-end mb-6">
+        {/* Collapse / Expand All */}
+        <div className="flex justify-end">
           {allCollapsed ? (
             <button
               onClick={expandAll}
@@ -88,65 +90,55 @@ export default function GradeTwelveToThirteenSection(): JSX.Element {
         </div>
 
         {/* Steps */}
-        <div className="space-y-6">
+        <div>
           {steps.map((step, index) => {
             const isExpanded = expandedStep === index || expandedStep === -1;
 
             return (
               <div key={step.id} className="overflow-hidden border-t border-gray-300">
                 <div className="relative">
-
-                  {/* Toggle Button */}
+                  {/* Toggle button */}
                   <button
                     onClick={() => toggleStep(index)}
                     className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r from-[#03336D] to-[#0073FF] hover:from-[#1a4375] hover:to-[#375170] text-white rounded-full flex items-center justify-center transition-colors z-10"
+                    aria-label={isExpanded ? "Collapse section" : "Expand section"}
                   >
                     <ChevronUp
                       size={24}
                       strokeWidth={3}
-                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"
-                        }`}
+                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"}`}
                     />
                   </button>
 
-                  <div className="p-6 pr-20 pb-0 pt-3">
-
+                  <div className="p-2 pr-20">
                     {/* Badge */}
-                    <span className="inline-block bg-gradient-to-r from-[#03336D] to-[#0073FF] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-2 uppercase">
+                    <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
                     </span>
 
-                    {/* Title / Heading */}
+                    {/* Heading / Title */}
                     <h2 className="md:text-2xl text-md font-bold text-[#07306A] mb-0">
-                      {isExpanded
-                        ? step.title.toUpperCase()
-                        : step.heading.toUpperCase()}
+                      {isExpanded ? step.title.toUpperCase() : step.heading.toUpperCase()}
                     </h2>
 
                     {/* Expandable Content */}
                     {isExpanded && (
                       <div className="mt-4 flex flex-col md:flex-row md:items-start md:gap-10">
+                        {/* Left spacer */}
+                        <div className="hidden md:block md:w-1/2"></div>
 
-                        {/* Left column */}
-                        <div className="hidden md:block md:w-1/2">
-                          <p className="text-gray-800 text-[15px] md:text-base leading-relaxed font-semibold">
-                            {step.description}
-                          </p>
-                        </div>
-
-                        {/* Right column */}
+                        {/* Right content */}
                         <div className="md:w-1/2">
-
                           <p className="text-gray-800 text-[15px] md:text-base leading-relaxed mb-3">
                             {step.description}
                           </p>
 
                           {step.listItems && (
                             <ul className="space-y-2 mb-5">
-                              {step.listItems.map((item, itemIndex) => (
-                                <li key={itemIndex} className="flex items-start text-gray-800">
-                                  <span className="text-gray-800 mr-3 mt-1">•</span>
-                                  <span>{item}</span>
+                              {step.listItems.map((item, idx) => (
+                                <li key={idx} className="flex items-start text-gray-800">
+                                  <span className="text-gray-800 mr-3 mt-1 flex-shrink-0">•</span>
+                                  <span className="leading-relaxed">{item}</span>
                                 </li>
                               ))}
                             </ul>
@@ -159,26 +151,21 @@ export default function GradeTwelveToThirteenSection(): JSX.Element {
                             >
                               CONNECT
                               <div className="w-6 h-6 bg-[#D7FD34] rounded-full flex items-center justify-center">
-                                <ArrowRight
-                                  size={16}
-                                  className="text-blue-900"
-                                  strokeWidth={3}
-                                />
+                                <ArrowRight size={16} className="text-blue-900" strokeWidth={3} />
                               </div>
                             </Link>
                           )}
                         </div>
                       </div>
                     )}
-
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-
       </div>
     </div>
   );
+
 }

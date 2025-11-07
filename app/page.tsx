@@ -199,10 +199,10 @@ export default function Component() {
       <Swiper />
 
       {/* Track Record Section */}
-      <section ref={sectionRef} className="bg-blue-50 py-16 md:py-24">
+      <section ref={sectionRef} className="bg-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-24 text-center">
           {/* Main Title */}
-          <h1 className="font-['Poppins',Helvetica] font-black text-3xl sm:text-3xl md:text-3xl lg:text-6xl text-[#03336d] leading-tight mb-12 tracking-tight">
+          <h1 className="font-['Poppins'] font-black text-3xl sm:text-3xl md:text-3xl lg:text-6xl text-[#03336d] leading-tight mb-6 tracking-tight">
             OUR{" "}
             <span className="relative inline-block">
               TRACK
@@ -214,10 +214,10 @@ export default function Component() {
             </span>{" "}
             RECORD
           </h1>
-          <p className="font-['Poppins',Helvetica] text-3xl text-gray-800 leading-relaxed mb-6">
+          <p className="font-['Poppins'] text-3xl text-gray-800 leading-relaxed mb-6">
             When Strategy Meets Talent, Admissions Say Yes
           </p>
-          <p className="font-['Poppins',Helvetica] text-xl text-gray-800 leading-relaxed mb-6">
+          <p className="font-['Poppins'] text-xl text-gray-800 leading-relaxed mb-6">
             With hundreds of students coached, 80% early acceptance success,
             100% students got admission and millions in scholarships awarded, we
             don't just guide — we deliver. These results aren't exceptions —
@@ -270,7 +270,7 @@ export default function Component() {
       </div>
 
       {/* Contact Information Section */}
-      <div className="py-16 px-4 md:px-12 lg:px-20 bg-gradient-to-br from-gray-50 to-gray-100 w-full">
+      <div className="py-4 px-4 md:px-12 lg:px-20 bg-gradient-to-br from-gray-50 to-gray-100 w-full">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {/* Address */}
           <div className="text-center bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
