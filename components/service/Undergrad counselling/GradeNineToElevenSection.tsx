@@ -78,40 +78,40 @@ export default function GradeNineToElevenSection(): JSX.Element {
           {allCollapsed ? (
             <button
               onClick={expandAll}
-              className="flex items-center gap-2 text-blue-900 font-bold text-sm hover:text-blue-700 transition-colors uppercase"
+              className="flex items-center gap-2 text-blue-900 font-bold text-sm hover:text-blue-700 transition-colors uppercase underline pb-3"
             >
               EXPAND ALL
-              <div>
+              {/* <div>
                 <ChevronUp size={20} strokeWidth={3} />
                 <ChevronDown size={20} strokeWidth={3} />
-              </div>
+              </div> */}
             </button>
           ) : (
             <button
               onClick={collapseAll}
-              className="flex items-center gap-2 text-blue-900 font-bold text-sm hover:text-blue-700 transition-colors uppercase"
+              className="flex items-center gap-2 text-blue-900 font-bold text-sm hover:text-blue-700 transition-colors uppercase underline pb-3"
             >
               COLLAPSE ALL
-              <div>
+              {/* <div>
                 <ChevronDown size={20} strokeWidth={3} />
                 <ChevronUp size={20} strokeWidth={3} />
-              </div>
+              </div> */}
             </button>
           )}
         </div>
 
         {/* Steps */}
-        <div>
+        <div className="border-b border-gray-900">
           {steps.map((step, index) => {
             const isExpanded = expandedStep === index || expandedStep === -1;
 
             return (
-              <div key={step.id} className="overflow-hidden border-t border-gray-300">
+              <div key={step.id} className="overflow-hidden border-t border-gray-900">
                 <div className="relative">
                   {/* Toggle button */}
                   <button
                     onClick={() => toggleStep(index)}
-                    className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r from-[#03336D] to-[#0073FF] hover:from-[#1a4375] hover:to-[#375170] text-white rounded-full flex items-center justify-center transition-colors z-10"
+                    className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r bg-[#03336D] text-white rounded-full flex items-center justify-center transition-colors z-10"
                     aria-label={isExpanded ? "Collapse section" : "Expand section"}
                   >
                     <ChevronUp
