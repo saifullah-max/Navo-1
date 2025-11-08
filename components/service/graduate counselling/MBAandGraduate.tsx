@@ -21,7 +21,7 @@ export default function MBAandGraduate(): JSX.Element {
     {
       id: 1,
       badge: "Step 01",
-      heading: "Complimentary 15-Minute Consultation",
+      heading: "NAVO Academic Roadmap",
       title: "NAVO Academic Roadmap",
       description:
         "We provide a 2-3 year academic roadmap to ensure students are building the right foundations before entering high school.",
@@ -130,7 +130,7 @@ export default function MBAandGraduate(): JSX.Element {
                     />
                   </button>
 
-                  <div className="p-2 pr-20">
+                  <div className="py-2 px-1 pr-2 md:pr-20">
                     {/* Badge */}
                     <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}

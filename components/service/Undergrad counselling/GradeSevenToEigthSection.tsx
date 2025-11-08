@@ -130,7 +130,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                     />
                   </button>
 
-                  <div className="py-2 px-1 md:pr-20">
+                  <div className="py-2 px-2 md:pr-20">
                     {/* Badge */}
                     <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
@@ -145,12 +145,12 @@ export default function GradeSevenToEigthSection(): JSX.Element {
 
                     {/* Expandable Content */}
                     {isExpanded && (
-                      <div className="mt-4 flex flex-col md:flex-row md:items-start md:gap-10">
+                      <div className="mt-4 flex flex-col md:flex-row md:items-start md:gap-10 w-full">
                         {/* Left spacer to align heading */}
                         <div className="hidden md:block md:w-1/2"></div>
 
                         {/* Right side content */}
-                        <div className="w-full md:w-1/2">
+                        <div className="w-full md:w-1/2 md:pl-2">
                           <p className="text-gray-800 text-[15px] md:text-base leading-relaxed mb-3">
                             {step.description}
                           </p>

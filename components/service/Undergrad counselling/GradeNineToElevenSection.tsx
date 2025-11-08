@@ -121,7 +121,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
                     />
                   </button>
 
-                  <div className="p-2 pr-20">
+                  <div className="py-2 px-1 md:pr-20">
                     {/* Badge */}
                     <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}

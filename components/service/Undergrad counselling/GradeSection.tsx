@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import underline from "@/public/underline.png";
 import Image from "next/image";
 import './grade.css'
@@ -12,11 +12,19 @@ const GradeSection = () => {
     { title: "Transfer", path: "transfer" },
   ];
 
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   const handleSmoothScroll = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleMobileClick = (index: number, path: string) => {
+    // toggle hover effect on mobile
+    setActiveIndex(activeIndex === index ? null : index);
+    handleSmoothScroll(path);
   };
 
   return (
@@ -44,33 +52,51 @@ const GradeSection = () => {
 
         {/* Grade Cards Grid */}
         <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          {grades.map((grade, index) => (
-            <button
-              key={index}
-              onClick={() => handleSmoothScroll(grade.path)}
-              className="group relative grade-btn h-44 sm:h-52 md:h-56 rounded-3xl p-8 sm:p-10 md:p-12 
-               transition-transform duration-300 shadow-sm hover:shadow-xl transform 
-               hover:-translate-y-1 flex items-center justify-center text-center w-full"
-              style={{
-                background:
-                  "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255,255,255,1) 100%)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background =
-                  "linear-gradient(35deg, #03336D 0%, #0073FF 100%)";
-                e.currentTarget.classList.add("grade-btn-hover");
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background =
-                  "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255,255,255,1) 100%)";
-                e.currentTarget.classList.remove("grade-btn-hover");
-              }}
-            >
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-700 group-hover:text-white transition-colors duration-300">
-                {grade.title}
-              </h2>
-            </button>
-          ))}
+          {grades.map((grade, index) => {
+            const isActive = activeIndex === index;
+
+            return (
+              <button
+                key={index}
+                onClick={() => handleMobileClick(index, grade.path)}
+                onMouseEnter={(e) => {
+                  // desktop hover effect
+                  if (window.innerWidth > 768) {
+                    (e.currentTarget as HTMLElement).style.background =
+                      "linear-gradient(35deg, #03336D 0%, #0073FF 100%)";
+                    e.currentTarget.classList.add("grade-btn-hover");
+
+                    const heading = e.currentTarget.querySelector("h2") as HTMLElement;
+                    if (heading) heading.style.color = "#ffffff";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (window.innerWidth > 768) {
+                    (e.currentTarget as HTMLElement).style.background =
+                      "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255,255,255,1) 100%)";
+                    e.currentTarget.classList.remove("grade-btn-hover");
+
+                    const heading = e.currentTarget.querySelector("h2") as HTMLElement;
+                    if (heading) heading.style.color = "#4B5563"; // Tailwind gray-700
+                  }
+                }}
+                className="group relative grade-btn h-44 sm:h-52 md:h-56 rounded-3xl p-8 sm:p-10 md:p-12 
+                  transition-transform duration-300 shadow-sm flex items-center justify-center text-center w-full"
+                style={{
+                  background: isActive
+                    ? "linear-gradient(35deg, #03336D 0%, #0073FF 100%)"
+                    : "linear-gradient(35deg,rgba(179, 210, 255, 0.35) 0%, rgba(255,255,255,1) 100%)",
+                }}
+              >
+                <h2
+                  className={`text-xl sm:text-2xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-gray-700"
+                    }`}
+                >
+                  {grade.title}
+                </h2>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
