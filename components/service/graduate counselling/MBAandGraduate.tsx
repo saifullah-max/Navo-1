@@ -117,7 +117,7 @@ export default function MBAandGraduate(): JSX.Element {
                   {/* Toggle button */}
                   <button
                     onClick={() => toggleStep(index)}
-                    className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r bg-[#03336D] text-white rounded-full flex items-center justify-center transition-colors z-10"
+                    className="absolute top-6 right-0 w-8 h-8 bg-gradient-to-r bg-[#03336D] text-white rounded-full flex items-center justify-center transition-colors z-10"
                     aria-label={
                       isExpanded ? "Collapse section" : "Expand section"
                     }

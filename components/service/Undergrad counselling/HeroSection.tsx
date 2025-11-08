@@ -23,17 +23,18 @@ const HeroSection = () => {
         <div className="container mx-auto px-4 lg:px-16 relative z-10">
           <div className="grid  lg:grid-cols-2 md:gap-12 items-center">
             {/* Left Content */}
-            <div className="text-white space-y-8  ">
-              <div className="">
-                <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold ">
+            <div className="text-white space-y-24">
+              <div className="mt-12 md:mt-0">
+                <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
                   Undergrad Counseling
                   <br />
                   Success Starts
                 </h1>
-                <div className="flex items-center  text-3xl lg:text-4xl">
+                <div className="flex items-center text-3xl lg:text-4xl -mt-1.5 lg:-mt-0">
                   <span className="font-bold">With</span>
                   <Image src={Logo} width={140} height={80} alt="logoLoading" />
                 </div>
+
               </div>
               <Link href="/connect">
                 <button className="group flex text-sm items-center md:mt-12 gap-3 bg-gradient-to-r from-[#635AD9]  to-[#FF4848] hover:from-[#FF4848] hover:to-[#635AD9] text-white md:px-3 md:py-2 px-2 py-1 rounded-full font-semibold md:text-lg transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl">

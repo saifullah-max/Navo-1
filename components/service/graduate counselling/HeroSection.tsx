@@ -48,13 +48,13 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 lg:pl-16 relative z-10">
         <div className="md:flex justify-between items-center md:gap-5">
           <div className="text-white space-y-8">
-            <div>
+            <div className="mt-12 md:mt-0">
               <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
                 Graduate Counseling
                 <br />
                 Success Starts
               </h1>
-              <div className="flex items-center text-3xl lg:text-4xl">
+              <div className="flex items-center text-3xl lg:text-4xl -mt-1.5 lg:-mt-0">
                 <span className="font-bold">With</span>
                 <Image src={Logo} width={140} height={80} alt="logoLoading" />
               </div>

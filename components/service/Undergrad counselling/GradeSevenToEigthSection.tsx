@@ -118,7 +118,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
                   {/* bg-gradient-to-r from-[#03336D] to-[#0073FF] */}
                   <button
                     onClick={() => toggleStep(index)}
-                    className="absolute top-6 right-6 w-8 h-8 bg-[#03336D] text-white rounded-full flex items-center justify-center transition-colors z-10"
+                    className="absolute top-6 right-0 w-8 h-8 bg-[#03336D] text-white rounded-full flex items-center justify-center transition-colors z-10"
                     aria-label={
                       isExpanded ? "Collapse section" : "Expand section"
                     }

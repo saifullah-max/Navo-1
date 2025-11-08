@@ -1,4 +1,5 @@
 'use client'
+import Footer from '@/components/footer'
 import NavogateUniverse from '@/components/navogateUniverse'
 import HeroSection from '@/components/service/graduate counselling/HeroSection'
 import MBAandGraduate from '@/components/service/graduate counselling/MBAandGraduate'
@@ -12,6 +13,7 @@ const page = () => {
       <MBAandGraduate />
       <NavogateUniverse />
       <WeWorkSection />
+      <Footer />
     </>
   )
 }
