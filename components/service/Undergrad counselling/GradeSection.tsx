@@ -22,7 +22,6 @@ const GradeSection = () => {
   };
 
   const handleMobileClick = (index: number, path: string) => {
-    // toggle hover effect on mobile
     setActiveIndex(activeIndex === index ? null : index);
     handleSmoothScroll(path);
   };
@@ -40,8 +39,8 @@ const GradeSection = () => {
                 src={underline}
                 alt="Underline"
                 width={200}
-                className="md:h-2 md:w-44 h-1 w-32"
                 height={40}
+                className="md:h-2 md:w-44 h-1 w-32"
               />
             </span>
           </h1>
@@ -51,7 +50,7 @@ const GradeSection = () => {
         </div>
 
         {/* Grade Cards Grid */}
-        <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-4 justify-center max-w-4xl items-center mx-auto md:mx-52 py-10">
           {grades.map((grade, index) => {
             const isActive = activeIndex === index;
 
@@ -60,7 +59,6 @@ const GradeSection = () => {
                 key={index}
                 onClick={() => handleMobileClick(index, grade.path)}
                 onMouseEnter={(e) => {
-                  // desktop hover effect
                   if (window.innerWidth > 768) {
                     (e.currentTarget as HTMLElement).style.background =
                       "linear-gradient(35deg, #03336D 0%, #0073FF 100%)";
@@ -77,10 +75,10 @@ const GradeSection = () => {
                     e.currentTarget.classList.remove("grade-btn-hover");
 
                     const heading = e.currentTarget.querySelector("h2") as HTMLElement;
-                    if (heading) heading.style.color = "#4B5563"; // Tailwind gray-700
+                    if (heading) heading.style.color = "#4B5563";
                   }
                 }}
-                className="group relative grade-btn h-44 sm:h-52 md:h-56 rounded-3xl p-8 sm:p-10 md:p-12 
+                className="group relative grade-btn h-36 sm:h-44 md:h-44 md:w-80 rounded-3xl p-6 sm:p-10 md:p-6 
                   transition-transform duration-300 shadow-sm flex items-center justify-center text-center w-full"
                 style={{
                   background: isActive
@@ -89,7 +87,7 @@ const GradeSection = () => {
                 }}
               >
                 <h2
-                  className={`text-xl sm:text-2xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-gray-700"
+                  className={`text-xl sm:text-2xl md:text-2xl font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-gray-700"
                     }`}
                 >
                   {grade.title}
