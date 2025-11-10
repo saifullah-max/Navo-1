@@ -335,7 +335,7 @@ export default function Page() {
 
       <div className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-poppins font-black text-4xl lg:text-6xl text-center text-[#03336d] mb-8 uppercase">
+          <h1 className="font-poppins font-black text-4xl lg:text-6xl text-center text-[#03336d] mb-8 uppercase mt-10">
             Speak to Us
           </h1>
         </div>
