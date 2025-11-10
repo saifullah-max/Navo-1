@@ -518,12 +518,12 @@ export default function Component() {
       </footer> */}
 
       {/* CTA bar */}
-      <AboveFooter isAboveFooter={isAboveFooter} ctaRef={ctaRef} />
+      {/* <AboveFooter isAboveFooter={isAboveFooter} ctaRef={ctaRef} /> */}
 
       {/* Footer */}
-      <div ref={footerRef}>
+      {/* <div ref={footerRef}>
         <Footer />
-      </div>
+      </div> */}
 
 
       {/* End Here */}

@@ -33,7 +33,7 @@ export default function Transfer(): JSX.Element {
         "Help with professor recommendations, transfer coursework alignment, resume and activities.",
         "Assist with credit transfer planning, document submission, and deadlines.",
       ],
-      hasButton: true,
+      // hasButton: true,
     },
   ];
 

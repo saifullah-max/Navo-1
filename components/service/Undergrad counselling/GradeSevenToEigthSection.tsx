@@ -33,7 +33,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
         "Help students develop skills to map and document daily observations and reflections — forming a foundation of content for high school essays, personal statements, and future university applications.",
         "Introduce global university storytelling styles: light exposure to how students eventually write about themselves — U.S. narrative-style essays, U.K. academic-focused statements, and reflective writing formats.",
       ],
-      hasButton: true,
+      // hasButton: true,
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ export default function GradeSevenToEigthSection(): JSX.Element {
         "Look for extracurricular depth (debate, robotics, STEM labs, sports, arts).",
         "Prioritize schools with counsellor support and international exposure.",
       ],
-      hasButton: true
+      // hasButton: true
     },
   ];
 

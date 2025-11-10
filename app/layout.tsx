@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Poppins, Public_Sans, Roboto, Dancing_Script, Caveat } from "next/font/google";
 import Header from '@/components/header';
+import AboveFooter from '@/components/AboveFooter';
+import Footer from '@/components/footer';
 
 // Poppins setup
 const poppins = Poppins({
@@ -54,9 +56,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
       <body className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
-    <Header/>
+        <Header />
         {children}
-    
+        <div id="cta-stop-here" className="h-1"></div>
+        <AboveFooter />
+        <Footer />
       </body>
     </html>
   );

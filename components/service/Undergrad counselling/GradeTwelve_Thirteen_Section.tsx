@@ -35,7 +35,7 @@ export default function GradeTwelveToThirteenSection(): JSX.Element {
         "Interview prep (UK Oxbridge, US alumni interviews, scholarships).",
         "Submit applications, follow deadlines, scholarship and financial aid forms.",
       ],
-      hasButton: true,
+      // hasButton: true,
     },
 
     // ✅ Add more steps here the same way

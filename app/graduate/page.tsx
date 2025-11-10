@@ -17,7 +17,7 @@ const page = () => {
       <Testimonials />
       <NavogateUniverse />
       {/* <WeWorkSection /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

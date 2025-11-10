@@ -25,7 +25,7 @@ export default function MBAandGraduate(): JSX.Element {
       title: "NAVO Academic Roadmap",
       description:
         "We provide a 2-3 year academic roadmap to ensure students are building the right foundations before entering high school.",
-      hasButton: true,
+      // hasButton: true,
     },
     {
       id: 2,

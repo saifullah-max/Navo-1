@@ -34,7 +34,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
         "Writing Style Preparation for Global Universities: Introduce differences between U.S. storytelling essays, U.K. subject-focused personal statements, and structured formats used in Canada, Europe, and Asia.",
         "Help students refine journaling and documentation to convert observations and reflections into structured content — useful for future essays and applications.",
       ],
-      hasButton: true,
+      // hasButton: true,
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ export default function GradeNineToElevenSection(): JSX.Element {
         "Guide subject selection (IB, A-Level, AP) based on future degrees.",
         "Provide feedback on projects, competitions, and research outreach.",
       ],
-      hasButton: true
+      // hasButton: true
     },
   ];
 

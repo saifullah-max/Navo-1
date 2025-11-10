@@ -56,7 +56,7 @@ export default function Header() {
                   : "text-gray-900 hover:text-gray-600"
                   }`}
               >
-                SERVICES ▾
+                SERVICES
               </button>
 
               {/* Dropdown menu */}
