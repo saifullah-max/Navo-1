@@ -16,7 +16,7 @@ const page = () => {
       <SuccessRate />
       <Testimonials />
       <NavogateUniverse />
-      <WeWorkSection />
+      {/* <WeWorkSection /> */}
       <Footer />
     </>
   )
