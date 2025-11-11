@@ -51,22 +51,34 @@ const Testimonials = () => {
     return (
         <section className="w-full py-12 sm:py-16 flex flex-col items-center bg-white">
             {/* Heading */}
-            <div className="relative inline-block mb-12 sm:mb-16 text-center px-4">
-                <h2 className="font-bold uppercase leading-tight text-[#07306A] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-                    Admissions success, straight from our clients
-                </h2>
+            <div className="text-center mb-6">
+                <h1 className="text-2xl sm:text-4xl font-bold text-blue-900 mb-2 leading-snug uppercase">
+                    Admissions success,{" "}
 
-                {/* Underline */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[88%]">
-                    <Image
-                        src={underline}
-                        alt="underline"
-                        width={160}
-                        height={6}
-                        className="opacity-95 ml-4 sm:ml-0"
-                    />
-                </div>
+                    <span className="relative inline-block">
+                        straight
+                        {/* ✅ Absolute underline: stays under "straight", not the p tag */}
+                        <span className="absolute left-1/2 -translate-x-1/2 top-full">
+                            <Image
+                                src={underline}
+                                alt="Underline"
+                                width={200}
+                                height={40}
+                                className="h-2 w-44 sm:h-2 md:w-72"
+                            />
+                        </span>
+                    </span>
+
+                    {" "}from our clients
+                </h1>
+
+                <p className="text-gray-700 text-xl mt-2">
+                    If you're interested in Navo's college counseling, fill
+                    out our complimentary consultation <br></br>
+                    form and we'll be in touch.
+                </p>
             </div>
+
 
             {/* Testimonials Section */}
             <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] relative overflow-hidden">
@@ -81,35 +93,55 @@ const Testimonials = () => {
                         className="absolute inset-0 w-full h-full"
                         viewBox="0 0 1000 600"
                         preserveAspectRatio="none"
+                        xmlns="http://www.w3.org/2000/svg"
                     >
                         <defs>
                             <clipPath id="blueSection">
                                 <polygon points="0,0 600,0 0,600" />
                             </clipPath>
                         </defs>
-                        <g clipPath="url(#blueSection)">
-                            {Array.from({ length: 10 }).map((_, i) => {
-                                const x = i * 42;
-                                let startY;
-                                if (i === 0) startY = 600;
-                                else if (i === 1) startY = 0;
-                                else startY = (10 - i) * 6;
-                                const endY = 600;
-                                const controlX = x - 60;
-                                const controlY = 300;
-                                return (
+
+                        {/* Curved, top-compressed lines */}
+                        {(() => {
+                            const width = 600;
+                            const height = 600;
+                            const lines = [];
+
+                            const lineCount = 10;
+                            const baseSpacing = 35;
+                            const startX = 30;
+
+                            for (let i = 0; i < lineCount; i++) {
+                                // Regular bottom spacing
+                                const bottomX = startX + i * baseSpacing;
+
+                                // Tapered top spacing – compress gradually to the right
+                                const compressionFactor = 0.5; // smaller = tighter compression
+                                const topX =
+                                    startX + i * baseSpacing * (1 - compressionFactor * (i / lineCount));
+
+                                // Define a subtle curve
+                                const controlX = (topX + bottomX) / 2 - 30;
+                                const controlY = height * 0.5;
+
+                                const d = `M ${topX} 0 Q ${controlX} ${controlY} ${bottomX} ${height}`;
+
+                                lines.push(
                                     <path
                                         key={i}
-                                        d={`M ${x} ${startY} Q ${controlX} ${controlY} ${x} ${endY}`}
+                                        d={d}
                                         stroke="#104A9C"
                                         strokeWidth="1.5"
                                         fill="none"
                                         opacity="0.32"
                                     />
                                 );
-                            })}
-                        </g>
+                            }
+
+                            return lines;
+                        })()}
                     </svg>
+
                 </div>
 
                 {/* Cards */}
