@@ -130,7 +130,7 @@ While interviews may not be the most decisive factor in admissions, a strong con
                 className="overflow-hidden border-t border-gray-900 cursor-pointer"
                 onClick={() => toggleStep(index)}
               >
-                <div className="relative py-1.5 px-2 md:pr-8">
+                <div className="relative py-1.5 md:pr-2">
 
                   {/* Toggle button */}
                   <button
@@ -144,7 +144,9 @@ While interviews may not be the most decisive factor in admissions, a strong con
                     <ChevronUp
                       size={24}
                       strokeWidth={3}
-                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"}`}
+                      className={`transform transition-transform duration-300 ${
+                        isExpanded ? "" : "rotate-180"
+                      }`}
                     />
                   </button>
 
@@ -155,53 +157,47 @@ While interviews may not be the most decisive factor in admissions, a strong con
 
                   {/* Heading */}
                   <h2 className="md:text-2xl text-md font-bold text-[#07306A] mb-0">
-                    {isExpanded ? step.title.toUpperCase() : step.heading.toUpperCase()}
+                    {isExpanded
+                      ? step.title.toUpperCase()
+                      : step.heading.toUpperCase()}
                   </h2>
 
                   {/* Expand Content */}
                   {isExpanded && (
-                    <div className="mt-4 flex flex-col w-full">
+                    <div className="mt-4 flex flex-col md:flex-row md:items-start w-full">
 
-                      {/* Main description */}
-                      {step.description && (
-                        <div className="md:flex md:flex-row w-full mb-6">
-                          <div className="hidden md:block md:w-1/2"></div>
-                          <div className="w-full md:w-1/2 md:pl-4 md:mr-[-2rem]">
-                            {renderParagraphs(step.description)}
-                          </div>
-                        </div>
-                      )}
+                      {/* Left spacer */}
+                      <div className="hidden md:block md:w-1/2"></div>
 
-                      {/* Subsections with heading left, text right */}
-                      {step.subSections &&
-                        step.subSections.map((sub, i) => (
-                          <div key={i} className="md:flex md:flex-row mb-6">
-                            {/* Heading on left */}
-                            <div className="hidden md:block md:w-1/2 pr-4 flex justify-end">
-                              <h3 className="font-bold text-[#07306A] text-lg uppercase">
+                      {/* Right Content */}
+                      <div className="w-full md:w-1/2 md:pl-4 md:pr-0 md:mr-[-2rem]">
+
+                        {/* Main Description */}
+                        {step.description && renderParagraphs(step.description)}
+
+                        {/* Sub Sections */}
+                        {step.subSections &&
+                          step.subSections.map((sub, i) => (
+                            <div key={i} className="mb-6">
+                              <h3 className="font-semibold text-[#07306A] text-2xl mb-2 uppercase">
                                 {sub.title}
                               </h3>
-                            </div>
-
-                            {/* Paragraph on right */}
-                            <div className="w-full md:w-1/2 md:pl-4 md:mr-[-2rem]">
                               {renderParagraphs(sub.text)}
                             </div>
-                          </div>
-                        ))}
+                          ))}
 
-                      {step.hasButton && (
-                        <Link
-                          href="/connect"
-                          className="bg-[#07306A] hover:bg-blue-800 text-[#D7FD34] font-bold px-4 py-2 rounded-full inline-flex items-center gap-8 transition-colors uppercase text-sm"
-                        >
-                          CONNECT
-                          <div className="w-6 h-6 bg-[#D7FD34] rounded-full flex items-center justify-center">
-                            <ArrowRight size={16} className="text-blue-900" strokeWidth={3} />
-                          </div>
-                        </Link>
-                      )}
-
+                        {step.hasButton && (
+                          <Link
+                            href="/connect"
+                            className="bg-[#07306A] hover:bg-blue-800 text-[#D7FD34] font-bold px-4 py-2 rounded-full inline-flex items-center gap-8 transition-colors uppercase text-sm"
+                          >
+                            CONNECT
+                            <div className="w-6 h-6 bg-[#D7FD34] rounded-full flex items-center justify-center">
+                              <ArrowRight size={16} className="text-blue-900" strokeWidth={3} />
+                            </div>
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
