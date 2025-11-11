@@ -179,7 +179,7 @@ While interviews may not be the most decisive factor in admissions, a strong con
                         {step.subSections &&
                           step.subSections.map((sub, i) => (
                             <div key={i} className="mb-6">
-                              <h3 className="font-semibold text-[#07306A] text-2xl mb-2 uppercase">
+                              <h3 className="font-semibold text-[#07306A] text-2xl mb-2">
                                 {sub.title}
                               </h3>
                               {renderParagraphs(sub.text)}
