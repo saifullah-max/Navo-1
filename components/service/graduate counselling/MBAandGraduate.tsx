@@ -112,6 +112,7 @@ export default function MBAandGraduate(): JSX.Element {
               <div
                 key={step.id}
                 className="overflow-hidden border-t border-gray-900"
+                onClick={() => toggleStep(index)}
               >
                 <div className="relative">
                   {/* Toggle button */}
@@ -130,7 +131,7 @@ export default function MBAandGraduate(): JSX.Element {
                     />
                   </button>
 
-                  <div className="py-2 px-1 pr-2 md:pr-20">
+                  <div className="py-2 px-1 pr-2 md:pr-8">
                     {/* Badge */}
                     <span className="inline-block text-black text-xs font-bold rounded-full mb-2 uppercase">
                       {step.badge}
@@ -159,8 +160,8 @@ export default function MBAandGraduate(): JSX.Element {
                             <ul className="space-y-2 mb-5">
                               {step.listItems.map((item, itemIndex) => (
                                 <li key={itemIndex} className="flex items-start text-gray-800">
-                                  <span className="text-gray-800 mr-3 mt-1 flex-shrink-0">•</span>
-                                  <span className="leading-relaxed">{item}</span>
+                                  <span className="text-gray-800 mr-2 flex-shrink-0">•</span>
+                                  <span className="!leading-[1.25rem]">{item}</span>
                                 </li>
                               ))}
                             </ul>

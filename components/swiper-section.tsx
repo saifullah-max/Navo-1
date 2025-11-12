@@ -220,7 +220,7 @@ export default function Swiper() {
             />
           </span>
         </p>
-        <p className="font-['Poppins'] text-3xl text-gray-800 leading-relaxed text-center">
+        <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
           Your Roadmap to a Winning Application: The NAVO 6-Step Process
         </p>
         {/* <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-start"> */}
@@ -246,7 +246,7 @@ export default function Swiper() {
                 {/* <p className="text-gray-700 leading-relaxed transition-all duration-500 text-base sm:text-lg">
                   {swipeData[currentIndex].details}
                 </p> */}
-                <div className="text-gray-700 leading-relaxed transition-all duration-500 text-base sm:text-lg space-y-3">
+                <div className="text-gray-700 !leading-[1.25rem] transition-all duration-500 text-base sm:text-lg space-y-3">
                   <p>{introLine}</p>
                   <ul className="list-disc pl-5 space-y-2">
                     {bulletPoints.map((point, idx) => (

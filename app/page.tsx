@@ -220,10 +220,10 @@ export default function Component() {
             </span>{" "}
             RECORD
           </h1>
-          <p className="font-['Poppins'] text-3xl text-gray-800 leading-relaxed mb-6">
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed mb-6">
             When Strategy Meets Talent, Admissions Say Yes
           </p>
-          <p className="font-['Poppins'] text-xl text-gray-800 leading-relaxed mb-6">
+          <p className="font-['Poppins'] text-xl text-gray-800 leading-snug mb-6">
             With hundreds of students coached, 80% early acceptance success,
             100% students got admission and millions in scholarships awarded, we
             don't just guide — we deliver. These results aren't exceptions —
