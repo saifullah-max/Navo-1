@@ -81,7 +81,7 @@ const Testimonials = () => {
 
 
             {/* Testimonials Section */}
-            <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] relative overflow-hidden">
+            <div className="w-full h-[700px] relative overflow-hidden">
                 {/* Background */}
                 <div
                     className="absolute inset-0"
@@ -100,8 +100,6 @@ const Testimonials = () => {
                                 <polygon points="0,0 600,0 0,600" />
                             </clipPath>
                         </defs>
-
-                        {/* Curved, top-compressed lines */}
                         {(() => {
                             const width = 600;
                             const height = 600;
@@ -112,19 +110,34 @@ const Testimonials = () => {
                             const startX = 30;
 
                             for (let i = 0; i < lineCount; i++) {
-                                // Regular bottom spacing
+                                let topX, topY;
+
+                                // ✅ Lines 1–3 unchanged
+                                if (i === 0) {
+                                    topX = 0;
+                                    topY = 80;
+                                } else if (i === 1) {
+                                    topX = 0;
+                                    topY = 130;
+                                } else if (i === 2) {
+                                    topX = 5;
+                                    topY = 0;
+                                }
+                                // ✅ 4–10: smoother + closer to 3rd
+                                else {
+                                    const compression = 0.55; // tighter than before (closer lines)
+                                    const reductionFactor = 0.3; // keeps slight decrease across width
+                                    const dynamicSpacing =
+                                        baseSpacing * compression * (1 - reductionFactor * (i / lineCount));
+                                    topX = startX + (i - 3.3) * dynamicSpacing;
+                                    topY = 0;
+                                }
+
                                 const bottomX = startX + i * baseSpacing;
-
-                                // Tapered top spacing – compress gradually to the right
-                                const compressionFactor = 0.5; // smaller = tighter compression
-                                const topX =
-                                    startX + i * baseSpacing * (1 - compressionFactor * (i / lineCount));
-
-                                // Define a subtle curve
-                                const controlX = (topX + bottomX) / 2 - 30;
+                                const controlX = (topX + bottomX) / 2 - 25;
                                 const controlY = height * 0.5;
 
-                                const d = `M ${topX} 0 Q ${controlX} ${controlY} ${bottomX} ${height}`;
+                                const d = `M ${topX} ${topY} Q ${controlX} ${controlY} ${bottomX} ${height}`;
 
                                 lines.push(
                                     <path
@@ -133,13 +146,15 @@ const Testimonials = () => {
                                         stroke="#104A9C"
                                         strokeWidth="1.5"
                                         fill="none"
-                                        opacity="0.32"
+                                        opacity="0.7"
                                     />
                                 );
                             }
 
                             return lines;
                         })()}
+
+
                     </svg>
 
                 </div>
@@ -148,8 +163,9 @@ const Testimonials = () => {
                 <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16">
                     <div className="relative max-w-4xl w-full flex justify-center">
                         {/* Main Card */}
-                        <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300">
-                            <div className="relative bg-gray-200 rounded-xl overflow-hidden mb-4 sm:mb-6 h-48 sm:h-64">
+                        <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300
+                h-auto sm:h-[400px] md:h-[330px] lg:h-[456px]">
+                            <div className="relative bg-gray-200 rounded-xl overflow-hidden mb-4 sm:mb-6 h-72 sm:h-[200px] md:h-[220px] lg:h-[270px]">
                                 <img
                                     src={current.image}
                                     alt={current.name}
@@ -185,6 +201,7 @@ const Testimonials = () => {
                                 "{current.text}"
                             </p>
                         </div>
+
 
                         {/* Small Preview Card (hide on sm) */}
                         <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 
