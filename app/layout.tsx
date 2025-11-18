@@ -4,6 +4,7 @@ import { Poppins, Public_Sans, Roboto, Dancing_Script, Caveat } from "next/font/
 import Header from '@/components/header';
 import AboveFooter from '@/components/AboveFooter';
 import Footer from '@/components/footer';
+import { Toaster } from 'sonner';
 
 // Poppins setup
 const poppins = Poppins({
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
       <body className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
         <Header />
+        <Toaster richColors position="top-center" />
         {children}
         <div id="cta-stop-here" className="h-1"></div>
         <AboveFooter />

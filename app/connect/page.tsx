@@ -17,6 +17,7 @@ import {
 import emailjs from '@emailjs/browser'
 
 import React, { useRef, useState } from "react";
+import { toast } from "sonner";
 
 const countries = [
   { code: "af", name: "Afghanistan" },
@@ -226,7 +227,7 @@ interface AdmissionForm {
   parentFirstname: string;
   parentLastname: string;
   email: string;
-  confirmEmail: string;
+  // confirmEmail: string;
   phone: string;
   country: string;
   city: string;
@@ -250,7 +251,7 @@ export default function Page() {
     parentFirstname: "",
     parentLastname: "",
     email: "",
-    confirmEmail: "",
+    // confirmEmail: "",
     phone: "",
     country: "",
     city: "",
@@ -270,13 +271,11 @@ export default function Page() {
     if (!formData.lastname.trim()) return "Last name required";
     if (!formData.gender) return "Gender required";
     if (!formData.admissionNeed) return "Admission need required";
-    if (!formData.parentFirstname.trim()) return "Parent first name required";
-    if (!formData.parentLastname.trim()) return "Parent last name required";
     if (!formData.email.trim()) return "Email required";
-    if (formData.email !== formData.confirmEmail) return "Emails must match";
     if (!formData.phone.trim()) return "Phone required";
-    if (!formData.country) return "Country required";
+    if (!formData.country.trim()) return "Country required";
     if (!formData.city.trim()) return "City required";
+
     if (formData.privacyAcknowledged !== "Yes")
       return "You must accept the privacy policy";
 
@@ -291,9 +290,10 @@ export default function Page() {
     const err = validate();
     if (err) {
       setError(true);
-      alert(err);
+      toast.error(err); // simple & beautiful
       return;
     }
+
 
     emailjs
       .send(
@@ -313,7 +313,7 @@ export default function Page() {
           parentFirstname: "",
           parentLastname: "",
           email: "",
-          confirmEmail: "",
+          // confirmEmail: "",
           phone: "",
           country: "",
           city: "",
@@ -448,12 +448,12 @@ export default function Page() {
                   type="email"
                   className="h-12 border-2 px-4"
                 />
-                <Input
+                {/* <Input
                   value={formData.confirmEmail}
                   onChange={(e) => update("confirmEmail", e.target.value)}
                   type="email"
                   className="h-12 border-2 px-4"
-                />
+                /> */}
               </div>
             </div>
 
@@ -579,12 +579,12 @@ export default function Page() {
 
               {success && (
                 <p className="text-green-600 mt-4 font-medium">
-                  ✅ Form sent successfully!
+                  Form sent successfully!
                 </p>
               )}
               {error && (
                 <p className="text-red-600 mt-4 font-medium">
-                  ❌ Failed to send. Try again.
+                  Failed to send. Try again.
                 </p>
               )}
             </div>
