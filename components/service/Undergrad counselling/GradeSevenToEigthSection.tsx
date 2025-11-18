@@ -36,13 +36,17 @@ export default function GradeSevenToEigthSection(): JSX.Element {
       badge: "Step 01",
       heading: "Foundation & Discovery",
       title: "Foundation & Discovery",
-      description: `
+      subSections: [
+        {
+          title: "Preparing Minds for Elite Global Universities",
+          text: `
 In middle school years our focus is to build curiosity, confidence, and early direction. Students are encouraged to explore interests through hobbies, books, beginner-level online courses, and age-appropriate competitions. We help them develop strong reading, writing, and critical thinking habits that support long-term academic success. Exposure to global learning opportunities—such as STEM camps, writing workshops, debating, coding, arts, podcasts or language programs—broadens perspective and builds confidence.
 
 At this stage, students also begin small community initiatives or independent projects that teach responsibility and social awareness. We introduce simple journaling and documentation techniques to help them record daily observations and reflect on experiences. Over time, these notes become valuable raw material for high-school essays, personal statements, and future university storytelling. While this is not a test-preparation phase, we gently introduce the idea of different university writing styles—such as the narrative-driven U.S. approach and the academic-focused U.K. format—at a very light and age-appropriate level. The purpose is not to prepare for applications, but to build awareness and confidence for the future.
       `,
+        },
+      ],
     },
-
     {
       id: 2,
       badge: "Step 02",
@@ -144,9 +148,8 @@ While interviews may not be the most decisive factor in admissions, a strong con
                     <ChevronUp
                       size={24}
                       strokeWidth={3}
-                      className={`transform transition-transform duration-300 ${
-                        isExpanded ? "" : "rotate-180"
-                      }`}
+                      className={`transform transition-transform duration-300 ${isExpanded ? "" : "rotate-180"
+                        }`}
                     />
                   </button>
 

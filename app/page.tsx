@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
 import { TestimonialSlider } from "@/components/testimonial-slider";
 import { Mail, Phone, MapPin, Hash, Volume2, VolumeOff } from "lucide-react";
-
 import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import NavoStellerSection from "@/components/NavoStellerSection";
@@ -13,8 +11,6 @@ import NavogateUniverse from "@/components/navogateUniverse";
 import WhatWeDo from "@/components/whatWeDo";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import emailjs from "@emailjs/browser";
-import AboveFooter from "@/components/AboveFooter";
-import Footer from "@/components/footer";
 
 const data = [
   { name: "Students", percentage: 550, signs: "+" },
