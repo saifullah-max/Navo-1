@@ -418,7 +418,7 @@ export default function Page() {
             {/* Parent Name */}
             <div className="mb-8">
               <Label className="font-poppins text-lg font-semibold text-[#03336d]">
-                Name of Parent: *
+                Name of Parent:
               </Label>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
@@ -578,7 +578,7 @@ export default function Page() {
               </button>
 
               {success && (
-                <p className="text-green-600 mt-4 font-medium">
+                <p className="text-green-600 mt-4 font-medium">``
                   Form sent successfully!
                 </p>
               )}
