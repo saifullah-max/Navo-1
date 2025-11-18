@@ -63,16 +63,25 @@ export default function MBAandGraduate(): JSX.Element {
     <div id="7to8" className="bg-gray-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-4">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
-            MBA AND GRADUATE
+        <div className="text-center mb-6">
+          <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight tracking-tight text-center">
+            MBA AND GRADUATE{" "}
+            <span className="relative inline-block">
+              COUNSELING
+              <Image
+                src={underline}
+                alt="Underline"
+                width={200}
+                height={40}
+                className="md:h-2 md:w-72 h-1 w-32 absolute left-1/2 -translate-x-1/2 top-full"
+              />
+            </span>{" "}
+            FOR TOP GLOBAL PROGRAMS
           </h1>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2 tracking-tight uppercase">
-            COUNSELING FOR TOP GLOBAL PROGRAMS
-          </h1>
-          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-2 mb-6 text-center max-w-xl mx-auto">
-            For families who first connect with us when their children are in
-            grade 7 or 8, the path forward is as follows:
+
+          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-4 mb-6 text-center max-w-xl mx-auto">
+            For families who first connect with us when their children are in grade 7
+            or 8, the path forward is as follows:
           </p>
         </div>
 

@@ -46,8 +46,8 @@ const HeroSection = () => {
 
       {/* Hero Content */}
       <div className="container mx-auto px-4 lg:pl-16 relative z-10">
-        <div className="md:flex justify-between items-center md:gap-5">
-          <div className="text-white space-y-8">
+        <div className="grid lg:grid-cols-2 md:gap-12 items-center">
+          <div className="text-white space-y-24 mt-20">
             <div className="mt-12 md:mt-0">
               <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
                 Graduate Counseling
