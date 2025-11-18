@@ -239,7 +239,7 @@ export default function Swiper() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 transition-all duration-500 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#03336d] transition-all duration-500 leading-tight">
                   {swipeData[currentIndex].title}
                 </h2>
 

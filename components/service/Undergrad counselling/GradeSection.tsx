@@ -31,7 +31,7 @@ const GradeSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-6">
-          <h1 className="text-2xl sm:text-4xl font-bold text-blue-900 mb-2">
+          <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
             CHOOSE YOUR PATH TO{" "}
             <span className="relative inline-block">
               SUCCESS
@@ -40,7 +40,7 @@ const GradeSection = () => {
                 alt="Underline"
                 width={200}
                 height={40}
-                className="md:h-2 md:w-44 h-1 w-32"
+                className="md:h-2 md:w-72 h-1 w-32"
               />
             </span>
           </h1>

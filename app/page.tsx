@@ -204,7 +204,7 @@ export default function Component() {
       <section ref={sectionRef} className="bg-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-24 text-center">
           {/* Main Title */}
-          <h1 className="font-['Poppins'] font-black text-3xl sm:text-3xl md:text-3xl lg:text-6xl text-[#03336d] leading-tight mb-6 tracking-tight">
+          <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
             OUR{" "}
             <span className="relative inline-block">
               TRACK
