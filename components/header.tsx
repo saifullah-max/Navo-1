@@ -12,6 +12,8 @@ export default function Header() {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+
 
   const phoneNumber = "923250341777"; // Format: countrycode + number
   const message = encodeURIComponent("");
@@ -34,16 +36,46 @@ export default function Header() {
 
           {/* Left Links (Desktop only) */}
           <nav className="hidden min-[1024px]:flex absolute left-0 space-x-6 lg:space-x-8 font-bold uppercase">
-            <Link
-              href="/"
-              className={
-                isHomePage
-                  ? "text-white hover:text-gray-400 transition-colors uppercase"
-                  : "text-gray-900 hover:text-gray-600 transition-colors uppercase"
-              }
+            <div
+              className="relative"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => setAboutOpen(false)}
             >
-              ABOUT US
-            </Link>
+              <button
+                className={`uppercase font-bold ${isHomePage
+                  ? "text-white hover:text-gray-400"
+                  : "text-gray-900 hover:text-gray-600"
+                  }`}
+              >
+                ABOUT US
+              </button>
+
+              {aboutOpen && (
+                <div className="absolute left-0 mt-0 w-80 bg-white shadow-lg rounded-lg py-2 z-50">
+                  <Link
+                    href="/meet-the-founders"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                  >
+                    MEET THE FOUNDERS
+                  </Link>
+
+                  <Link
+                    href="/case-studies"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                  >
+                    CASE STUDIES
+                  </Link>
+
+                  <Link
+                    href="/why-hire"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                  >
+                    WHY HIRE?
+                  </Link>
+                </div>
+              )}
+            </div>
+
 
             <div
               className="relative"

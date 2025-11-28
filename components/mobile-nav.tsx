@@ -27,6 +27,8 @@ export function MobileNav({
     window.open(url, "_blank");
   };
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+
 
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -46,13 +48,43 @@ export function MobileNav({
         </SheetHeader>
         <div className="flex flex-col space-y-6 mt-6">
           <nav className="flex flex-col space-y-4">
-            <a
-              href="#"
-              className="text-lg font-medium text-gray-700 hover:text-gray-900 py-2 uppercase"
-              onClick={() => setOpen(false)}
-            >
-              About Us
-            </a>
+            <div className="relative">
+              <button
+                onClick={() => setAboutOpen(!aboutOpen)}
+                className="text-lg uppercase text-gray-700 hover:text-gray-900 flex justify-between w-full"
+              >
+                About Us ▾
+              </button>
+
+              {aboutOpen && (
+                <div className="mt-2 bg-white shadow-lg rounded-lg py-2 z-50">
+                  <Link
+                    href="/meet-the-founders"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                    onClick={() => setOpen(false)}
+                  >
+                    Meet The Founders
+                  </Link>
+
+                  <Link
+                    href="/case-studies"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                    onClick={() => setOpen(false)}
+                  >
+                    Case Studies
+                  </Link>
+
+                  <Link
+                    href="/why-hire"
+                    className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
+                    onClick={() => setOpen(false)}
+                  >
+                    Why Hire?
+                  </Link>
+                </div>
+              )}
+            </div>
+
 
             <div className="relative">
               <button
