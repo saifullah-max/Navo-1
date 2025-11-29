@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { caseStudies } from "@/components/service/case studies/caseStudies";
+import { caseStudies } from "@/components/service/case-studies/caseStudies";
 
 export default function CaseStudies() {
     return (
