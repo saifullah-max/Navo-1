@@ -23,7 +23,7 @@ export default function CaseStudies() {
                 {caseStudies.map((item) => (
                     <Link key={item.slug} href={`/case-studies/${item.slug}`}>
                         <div className="relative group cursor-pointer overflow-hidden">
-                            <div className="w-full h-[499px] w-full overflow-hidden">
+                            <div className="w-full h-[499px] overflow-hidden">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
