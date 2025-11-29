@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { caseStudies } from "@/components/service/case studies/caseStudies";
+import { caseStudies } from "@/components/service/case-studies/caseStudies";
 import NavogateUniverse from "@/components/navogateUniverse";
 
 export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
