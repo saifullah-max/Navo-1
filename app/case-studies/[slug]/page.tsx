@@ -53,7 +53,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     {study.sections.map((sec, i) => (
                         <div key={i} className="border-b-2 border-gray-900 pb-6">
                             <h3 className="text-xl font-extrabold mb-3 text-[#03336D]">{sec.heading}</h3>
-                            <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+                            <p className="text-gray-700 whitespace-pre-line leading-tight">
                                 {sec.content}
                             </p>
                         </div>
