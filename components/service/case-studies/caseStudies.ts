@@ -15,8 +15,8 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
     // 1 — LENA
     {
-        slug: "lena",
-        title: "Lena’s Case",
+        slug: "Lorem",
+        title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/ria-case.jpg",
         intro:
@@ -24,31 +24,31 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "SITUATION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
             },
             {
-                heading: "GOAL SCHOOLS",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
-
-            },
-            {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "HOW WE GUIDED HER",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "APPLICATION STRATEGY",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "COLLEGE RESULTS",
+                heading: "LOREM",
+                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
+
+            },
+            {
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -57,8 +57,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 2 — NOAH
     {
-        slug: "noah",
-        title: "Noah’s Case",
+        slug: "Lorem",
+        title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/andrew-case.jpg",
         intro:
@@ -66,32 +66,32 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "SITUATION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ACADEMIC INTERESTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "STRATEGIC CHANGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ESSAY REFINEMENT",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -100,8 +100,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 3 — MAYA
     {
-        slug: "maya",
-        title: "Maya’s Case",
+        slug: "Lorem",
+        title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/caroline-case.jpeg",
         intro:
@@ -109,32 +109,32 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "BACKGROUND",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "IDENTIFYING A FOCUS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "PROJECT DEVELOPMENT",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ESSAY APPROACH",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -143,8 +143,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 4 — ARIA
     {
-        slug: "aria",
-        title: "Aria’s Case",
+        slug: "Lorem",
+        title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/jake-case.jpeg",
         intro:
@@ -152,32 +152,32 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "SITUATION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ACADEMIC POSITIONING",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "NEW PROJECTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ESSAY DIRECTION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -186,8 +186,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 5 — DYLAN
     {
-        slug: "dylan",
-        title: "Dylan’s Case",
+        slug: "Lorem",
+        title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/matt-case.jpeg",
         intro:
@@ -195,32 +195,32 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "INITIAL PROFILE",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "BUILDING A TECH ANGLE",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "PROJECT EXECUTION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ESSAY STRATEGY",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -229,8 +229,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 6 — JORDAN
     {
-        slug: "jordan",
-        title: "Jordan’s Case",
+        slug: "Lorem",
+        title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/michelle-case.webp",
         intro:
@@ -238,32 +238,32 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "BACKGROUND",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ACADEMIC POSITIONING",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "PROJECT INITIATIVES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "ESSAY DEVELOPMENT",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.`,
 
             },
@@ -272,8 +272,8 @@ export const caseStudies: CaseStudy[] = [
 
     // 7 — EMMA
     {
-        slug: "emma",
-        title: "Emma’s Case",
+        slug: "Lorem",
+        title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/andrew-case.jpg",
         intro:
@@ -281,7 +281,7 @@ export const caseStudies: CaseStudy[] = [
 
         sections: [
             {
-                heading: "INITIAL POSITION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -289,7 +289,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "IDENTIFYING OPPORTUNITIES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -297,7 +297,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -305,7 +305,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "NEW PROJECTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -313,7 +313,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "ESSAY DIRECTION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -321,7 +321,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -333,8 +333,8 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
     // 8 — ZAYN
     {
-        slug: "zayn",
-        title: "Zayn’s Case",
+        slug: "Lorem",
+        title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/vikram-case.jpeg",
         intro:
@@ -342,7 +342,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
         sections: [
             {
-                heading: "BACKGROUND",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -350,7 +350,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "CHALLENGE",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -358,7 +358,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "NEW DIRECTIONS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -366,7 +366,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "PROJECT EXECUTION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -374,7 +374,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "ESSAY STRATEGY",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -382,7 +382,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -394,8 +394,8 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
     // 9 — LUCAS
     {
-        slug: "lucas",
-        title: "Lucas’s Case",
+        slug: "Lorem",
+        title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
         image: "/ria-case.jpg",
         intro:
@@ -403,7 +403,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
         sections: [
             {
-                heading: "INITIAL PROFILE",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -411,7 +411,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "CHALLENGES",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -419,7 +419,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "DEVELOPING A FOCUS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -427,7 +427,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "PROJECT EXPANSION",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -435,7 +435,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "ESSAY STRATEGY",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
@@ -443,7 +443,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
             },
             {
-                heading: "RESULTS",
+                heading: "LOREM",
                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
