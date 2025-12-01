@@ -90,12 +90,12 @@ export default function WhatWeDo() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="[font-family:'Arial-Black',Helvetica] font-black text-white text-[16px] md:text-[17px] lg:text-[19.1px] leading-[24px] md:leading-[28px] lg:leading-[34.1px] max-w-[400px] group-hover:text-white">
+                    <h3 className="[font-family:'Poppins',Helvetica] font-black text-white text-[16px] md:text-[17px] lg:text-[19.1px] leading-[24px] md:leading-[28px] lg:leading-[34.1px] max-w-[400px] group-hover:text-white">
                       {service.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="mt- [font-family:'Arial-Regular',Helvetica] font-normal text-white/80 text-[12px] md:text-[13px] lg:text-[14.2px] leading-[16px] md:leading-[17px] lg:leading-[18.1px] group-hover:text-white/90">
+                    <p className="mt- [font-family:'Poppins',Helvetica] font-normal text-white/80 text-[12px] md:text-[13px] lg:text-[14.2px] leading-[16px] md:leading-[17px] lg:leading-[18.1px] group-hover:text-white/90">
                       {service.description}
                     </p>
                     <Link

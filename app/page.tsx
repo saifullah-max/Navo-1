@@ -279,11 +279,11 @@ export default function Component() {
             <div className="flex justify-center mb-5">
               <MapPin className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[#03336d] transition-transform duration-300 hover:scale-110" />
             </div>
-            <p className="font-['Roboto',Helvetica] text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed">
+            <p className="font-['Poppins',Helvetica] text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed">
               Office 88, 6th Floor, Rasis Business Center, Al Barsha 1, Dubai.
             </p>
             <br />
-            <p className="font-['Roboto',Helvetica] text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed">
+            <p className="font-['Poppins',Helvetica] text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed">
               41-C, Khayaban-e-Bukhari, Phase 6, DHA, Karachi, Pakistan.
             </p>
           </div>

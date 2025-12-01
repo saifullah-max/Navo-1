@@ -100,7 +100,7 @@ function TestimonialSliderComponent() {
            <div className="transition-all duration-500 ease-in-out">
   <blockquote
     className={cn(
-      "font-roboto font-medium text-lg sm:text-xl text-gray-800 md:leading-relaxed mb-8 sm:mb-12 text-center"
+      "font-poppins font-medium text-lg sm:text-xl text-gray-800 md:leading-relaxed mb-8 sm:mb-12 text-center"
     )}
   >
     "{currentTestimonial.quote}"
@@ -123,7 +123,7 @@ function TestimonialSliderComponent() {
                 />
               </div>
               <div className="text-center sm:text-left">
-                <div className="font-roboto font-semibold text-gray-900">
+                <div className="font-poppins font-semibold text-gray-900">
                   {currentTestimonial.name}
                 </div>
               </div>

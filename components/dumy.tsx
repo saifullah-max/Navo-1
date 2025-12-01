@@ -405,15 +405,15 @@ export default function Component() {
             <div className="flex justify-center mb-7">
               <Mail className="w-16 h-16" />
             </div>
-            <h3 className="font-['Roboto',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
+            <h3 className="font-['Poppins',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
               Email
             </h3>
-            <p className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
+            <p className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
               Feel free to reach out to us with any questions or inquiries.
             </p>
             <a
               href="mailto:hello@navoconsulting.com"
-              className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full"
+              className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full"
             >
               hello@navoconsulting.com
             </a>
@@ -424,16 +424,16 @@ export default function Component() {
             <div className="flex justify-center mb-7">
               <Phone className="w-16 h-16" />
             </div>
-            <h3 className="font-['Roboto',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
+            <h3 className="font-['Poppins',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
               Phone
             </h3>
-            <p className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
+            <p className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
               Give us a call for immediate assistance or to schedule a
               consultation.
             </p>
             <a
               href="tel:+15551234567"
-              className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full"
+              className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full"
             >
               +1 (555) 123-4567
             </a>
@@ -444,14 +444,14 @@ export default function Component() {
             <div className="flex justify-center mb-7">
               <MapPin className="w-16 h-16" />
             </div>
-            <h3 className="font-['Roboto',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
+            <h3 className="font-['Poppins',Helvetica] font-bold text-[#03336d] text-[37px] text-center leading-[48.2px] mt-[-1.16px] mb-7">
               Office
             </h3>
-            <p className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
+            <p className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] mb-7">
               Visit our office for a face-to-face meeting or to drop off
               documents.
             </p>
-            <span className="font-['Roboto',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full">
+            <span className="font-['Poppins',Helvetica] font-normal text-black text-[18.5px] text-center leading-[27.8px] underline w-full">
               Somewhere in DHA
             </span>
           </div>

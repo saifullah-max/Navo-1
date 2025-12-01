@@ -593,7 +593,7 @@ export default function Page() {
       </div>
 
       <NavogateUniverse />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
