@@ -18,7 +18,7 @@ export const caseStudies: CaseStudy[] = [
         slug: "Lorem",
         title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/ria-case.jpg",
+        image: "/dummy.png",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae varius libero, non iaculis leo.",
 
@@ -57,10 +57,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 2 — NOAH
     {
-        slug: "Lorem",
+        slug: "Lorem2",
         title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/andrew-case.jpg",
+        image: "/dummy.png",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod sapien ac lorem dignissim imperdiet.",
 
@@ -100,10 +100,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 3 — MAYA
     {
-        slug: "Lorem",
+        slug: "Lorem3",
         title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/caroline-case.jpeg",
+        image: "/dummy.png",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non erat ac ligula suscipit fermentum.",
 
@@ -143,10 +143,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 4 — ARIA
     {
-        slug: "Lorem",
+        slug: "Lorem4",
         title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/jake-case.jpeg",
+        image: "/dummy.png",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed justo eu erat fermentum dictum.",
 
@@ -186,10 +186,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 5 — DYLAN
     {
-        slug: "Lorem",
+        slug: "Lorem5",
         title: "Lorem's Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/matt-case.jpeg",
+        image: "/dummy.png",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac felis at enim tincidunt malesuada.",
 
@@ -229,10 +229,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 6 — JORDAN
     {
-        slug: "Lorem",
+        slug: "Lorem6",
         title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/michelle-case.webp",
+        image: "/dummy.png",
         intro:
             "Jordan excelled in athletics but needed to demonstrate academic depth and intellectual direction.",
 
@@ -272,10 +272,10 @@ export const caseStudies: CaseStudy[] = [
 
     // 7 — EMMA
     {
-        slug: "Lorem",
+        slug: "Lorem7",
         title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/andrew-case.jpg",
+        image: "/dummy.png",
         intro:
             "Emma was passionate about writing but needed help building external recognition to elevate her profile.",
 
@@ -333,10 +333,10 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
     // 8 — ZAYN
     {
-        slug: "Lorem",
+        slug: "Lorem8",
         title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/vikram-case.jpeg",
+        image: "/dummy.png",
         intro:
             "Zayn excelled in competitions but needed help transforming his achievements into a broader real-world narrative.",
 
@@ -394,10 +394,10 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
 
     // 9 — LUCAS
     {
-        slug: "Lorem",
+        slug: "Lorem9",
         title: "Lorem’s Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/ria-case.jpg",
+        image: "/dummy.png",
         intro:
             "Lucas was an aspiring entrepreneur who needed help creating a cohesive narrative around his projects.",
 

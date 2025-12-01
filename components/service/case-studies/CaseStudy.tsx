@@ -35,9 +35,10 @@ export default function CaseStudies() {
                                 className="absolute inset-0"
                                 style={{
                                     background:
-                                        "linear-gradient(0deg, #002e21 0%, rgba(0,46,33,0) 100%)",
+                                        "linear-gradient(0deg, rgba(3, 51, 109, 0.7) 0%, rgba(3, 51, 109, 0) 100%)",
                                 }}
                             />
+
 
                             <div className="absolute bottom-6 left-6 text-white">
                                 <h3 className="text-3xl font-bold mb-4 hover:text-[#d2daa7]">
