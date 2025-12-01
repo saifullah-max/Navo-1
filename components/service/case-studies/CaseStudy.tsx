@@ -13,9 +13,7 @@ export default function CaseStudies() {
                 </h1>
 
                 <p className="font-['Poppins'] text-md text-gray-900 max-w-4xl mx-auto mt-4 leading-tight">
-                    From a student who created a simple salivary test to detect early risk of oral cancer to an
-                    art historian tracking down stolen masterpieces to an engineer bolstering the bulletproof
-                    vests of America’s soldiers with nanotechnology, our students showcase their singular hook.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis corrupti facilis provident dolore rerum repellendus dicta dolorem praesentium. Possimus, odit delectus fuga quas ut modi voluptatum impedit itaque quo ipsa.
                 </p>
             </div>
 
