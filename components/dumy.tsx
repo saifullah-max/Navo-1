@@ -492,10 +492,10 @@ export default function Component() {
       {/* Newsletter Section */}
       <div className="bg-gray-100 py-12 sm:py-16 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-900 mb-2 text-center leading-[48px] font-roboto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-900 mb-2 text-center leading-[48px] font-poppins">
             Get the Latest
           </h2>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-6 sm:mb-8 text-center leading-[48px] font-roboto">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-6 sm:mb-8 text-center leading-[48px] font-poppins">
             Educational Updates
           </h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
