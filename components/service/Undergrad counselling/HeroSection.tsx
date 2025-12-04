@@ -8,7 +8,11 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <>
-      <div className="relative bg-gradient-to-r md:mt-24 mt-20   bg-[#07306A]  md:min-h-[600px] flex items-center overflow-hidden">
+      <div
+        className="relative md:mt-24 mt-20 md:min-h-[600px] flex items-center overflow-hidden 
+  bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]"
+      >
+
         {/* Background Icon - Left Side */}
         <div className="absolute -left-16 md:-left-32 md:top-1/2 top-1/3   -translate-y-1/2 opacity-10">
           <Image
@@ -20,16 +24,17 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="container mx-auto px-4 lg:px-16 relative z-10">
+        <div className="container mx-auto px-2 sm:px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 md:gap-12 items-center">
             {/* Left Content */}
             <div className="text-white space-y-24">
               <div className="mt-12 md:mt-0">
                 <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
-                  Undergrad Counseling
+                  <span className="whitespace-nowrap">Undergrad Counseling</span>
                   <br />
                   Success Starts
                 </h1>
+
                 <div className="flex items-center text-3xl lg:text-4xl -mt-1.5 lg:-mt-0">
                   <span className="font-bold">With</span>
                   <Image src={Logo} width={140} height={80} alt="logoLoading" />
