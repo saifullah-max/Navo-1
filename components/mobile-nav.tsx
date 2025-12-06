@@ -53,7 +53,7 @@ export function MobileNav({
                 onClick={() => setAboutOpen(!aboutOpen)}
                 className="text-lg uppercase text-gray-700 hover:text-gray-900 flex justify-between w-full"
               >
-                About Us ▾
+                About Us
               </button>
 
               {aboutOpen && (
@@ -89,9 +89,9 @@ export function MobileNav({
             <div className="relative">
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className="text-lg uppercase font-bold text-gray-700 hover:text-gray-900 flex justify-between w-full"
+                className="text-lg uppercase text-gray-700 hover:text-gray-900 flex justify-between w-full"
               >
-                Services ▾
+                Services
               </button>
 
               {/* Dropdown menu */}
