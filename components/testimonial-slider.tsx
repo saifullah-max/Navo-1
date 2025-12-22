@@ -75,118 +75,113 @@ function TestimonialSliderComponent() {
         ))}
       </div>
 
-      {/* Navigation and Content */}
+      {/* Testimonial Section */}
       <div className="relative">
-        {/* Desktop Navigation Arrows */}
-        <Button
-          onClick={handlePrevious}
-          className="hidden sm:flex absolute left-0 top-1/2 transform -translate-y-1/2 rounded-xl bg-blue-900 hover:bg-blue-800 h-10 w-10 sm:h-12 sm:w-12 items-center justify-center p-0 transition-colors z-10"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-        </Button>
+        {/* Quote + Arrows Wrapper */}
+        <div className="relative sm:mx-16">
+          {/* LEFT Arrow */}
+          <Button
+            onClick={handlePrevious}
+            className="hidden sm:flex absolute left-0 inset-y-0 my-auto rounded-xl bg-blue-900 hover:bg-blue-800 h-12 w-12 items-center justify-center p-0 z-10 transition-colors"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-5 h-5 text-white" />
+          </Button>
 
-        <Button
-          onClick={handleNext}
-          className="hidden sm:flex absolute right-0 top-1/2 transform -translate-y-1/2 rounded-xl bg-blue-900 hover:bg-blue-800 h-10 w-10 sm:h-12 sm:w-12 items-center justify-center p-0 transition-colors z-10"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-        </Button>
+          {/* RIGHT Arrow */}
+          <Button
+            onClick={handleNext}
+            className="hidden sm:flex absolute right-0 inset-y-0 my-auto rounded-xl bg-blue-900 hover:bg-blue-800 h-12 w-12 items-center justify-center p-0 z-10 transition-colors"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-5 h-5 text-white" />
+          </Button>
 
-        {/* Testimonial Content */}
-        <div className="sm:mx-16">
-          <div className="relative w-full">
-           <div className="transition-all duration-500 ease-in-out">
-  <blockquote
-    className={cn(
-      "font-poppins font-medium text-lg sm:text-xl text-gray-800 md:leading-relaxed mb-8 sm:mb-12 text-center"
-    )}
-  >
-    "{currentTestimonial.quote}"
-  </blockquote>
-</div>
+          {/* Quote */}
+          <blockquote className="font-poppins font-medium text-lg sm:text-xl text-gray-800 md:leading-relaxed text-center px-16 mb-8 sm:mb-6">
+            "{currentTestimonial.quote}"
+          </blockquote>
+        </div>
 
-          </div>
-
-          {/* Profile */}
-          <div className="flex flex-row items-center justify-center gap-4 mb-6 sm:mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden">
-                <Image
-                  src={currentTestimonial.image}
-                  alt={currentTestimonial.name}
-                  width={48}
-                  height={48}
-                  className="object-cover w-full h-full"
-                  priority={currentIndex === 0}
-                />
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="font-poppins font-semibold text-gray-900">
-                  {currentTestimonial.name}
-                </div>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="flex items-center space-x-2">
+        {/* Profile */}
+        <div className="flex flex-row items-center justify-center gap-4 mb-6 sm:mb-4">
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-full overflow-hidden">
               <Image
-                src="/divider.svg"
-                alt="Divider"
-                width={2}
-                height={75}
-                priority={false}
+                src={currentTestimonial.image}
+                alt={currentTestimonial.name}
+                width={48}
+                height={48}
+                className="object-cover w-full h-full"
+                priority={currentIndex === 0}
               />
             </div>
 
-            {/* Institution Logo */}
-            <div className="flex items-center space-x-2">
-              <Image
-                src={currentTestimonial.institutionLogo}
-                alt="University logo"
-                width={125}
-                height={70}
-                className="object-cover"
-              />
+            <div className="text-center sm:text-left">
+              <div className="font-poppins font-semibold text-gray-900">
+                {currentTestimonial.name}
+              </div>
             </div>
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToTestimonial(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  currentIndex === index ? "bg-blue-900" : "bg-gray-300"
+          {/* Divider */}
+          <div className="flex items-center">
+            <Image
+              src="/divider.svg"
+              alt="Divider"
+              width={2}
+              height={75}
+            />
+          </div>
+
+          {/* Institution Logo */}
+          <div className="flex items-center">
+            <Image
+              src={currentTestimonial.institutionLogo}
+              alt="University logo"
+              width={125}
+              height={70}
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center space-x-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToTestimonial(index)}
+              className={`w-2 h-2 rounded-full transition-colors ${currentIndex === index ? "bg-blue-900" : "bg-gray-300"
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
 
-          {/* Mobile Navigation Buttons */}
-          <div className="flex justify-center mt-6 space-x-4 sm:hidden">
-            <Button
-              onClick={handlePrevious}
-              className="rounded-lg bg-blue-900 hover:bg-blue-800 h-10 w-10 flex items-center justify-center p-0"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-4 h-4 text-white" />
-            </Button>
-            <Button
-              onClick={handleNext}
-              className="rounded-lg bg-blue-900 hover:bg-blue-800 h-10 w-10 flex items-center justify-center p-0"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-4 h-4 text-white" />
-            </Button>
-          </div>
+        {/* Mobile Navigation */}
+        <div className="flex justify-center mt-6 space-x-4 sm:hidden">
+          <Button
+            onClick={handlePrevious}
+            className="rounded-lg bg-blue-900 hover:bg-blue-800 h-10 w-10 flex items-center justify-center p-0"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-4 h-4 text-white" />
+          </Button>
+
+          <Button
+            onClick={handleNext}
+            className="rounded-lg bg-blue-900 hover:bg-blue-800 h-10 w-10 flex items-center justify-center p-0"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-4 h-4 text-white" />
+          </Button>
         </div>
       </div>
     </div>
   );
+
+
 }
 
 export const TestimonialSlider = memo(TestimonialSliderComponent);

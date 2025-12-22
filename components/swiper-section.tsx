@@ -207,7 +207,7 @@ export default function Swiper() {
   const bulletPoints = detailLines.slice(1);
 
   return (
-    <div className="sm:py-8 mt-20">
+    <div className="sm:py-8 mt-10 mb-6">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
           HOW WE{" "}
@@ -220,11 +220,11 @@ export default function Swiper() {
             />
           </span>
         </p>
-        <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
+        <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
           Your Roadmap to a Winning Application: The NAVO 6-Step Process
         </p>
         {/* <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-start"> */}
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-center">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-4 items-center lg:items-center">
           {/* Content Section - First on large screens */}
           {/* <div className="w-full lg:flex-1 space-y-6 order-2 lg:order-1 mt-4 sm:mt-20"> */}
           <div className="w-full lg:flex-1  order-2 lg:order-1">
@@ -274,8 +274,8 @@ export default function Swiper() {
                       key={index}
                       onClick={() => setCurrentIndex(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                          ? "bg-blue-600 w-8"
-                          : "bg-gray-300 hover:bg-gray-400"
+                        ? "bg-blue-600 w-8"
+                        : "bg-gray-300 hover:bg-gray-400"
                         }`}
                     />
                   ))}
@@ -299,7 +299,7 @@ export default function Swiper() {
             <div className="relative w-full max-w-lg sm:max-w-md lg:max-w-lg mx-auto">
               <div
                 ref={containerRef}
-                className="relative h-[600px] sm:h-[600px] lg:h-[700px] perspective-1000"
+                className="relative min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}

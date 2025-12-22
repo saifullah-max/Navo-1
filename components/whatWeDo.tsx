@@ -20,9 +20,9 @@ const serviceCards = [
 export default function WhatWeDo() {
   return (
     <>
-      <div className="flex items-center justify-center gap-2.5 pt-8 pb-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full mb-[90px] sm:mb-0 lg:mb-0">
+      <div className="flex items-center justify-center gap-2.5 py-8 sm:py-2 md:py-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full sm:mb-0 lg:mb-0">
         <div className="flex flex-col w-full max-w-[1139px] min-h-[493px] md:h-[493px] items-center gap-6 md:gap-[38px] relative">
-          <h2 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+          <h2 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight tracking-tight text-center">
             WHAT{" "}
             <span className="relative inline-block">
               WE
@@ -35,7 +35,7 @@ export default function WhatWeDo() {
             DO
           </h2>
 
-          <div className="flex flex-col lg:flex-row w-full max-w-[1120px] items-center lg:items-start justify-center gap-24 md:gap-32 pt-[22px] pb-0 px-4 md:px-0 relative flex-[0_0_auto]">
+          <div className="flex flex-col lg:flex-row w-full max-w-[1120px] items-center lg:items-start justify-center gap-4 sm:gap-12 md:gap-32 pt-[22px] pb-0 px-4 md:px-0 relative flex-[0_0_auto]">
             {serviceCards.map((service, index) => (
               <div
                 key={index}

@@ -201,10 +201,10 @@ export default function Component() {
       <Swiper />
 
       {/* Track Record Section */}
-      <section ref={sectionRef} className="bg-blue-50 py-16">
+      <section ref={sectionRef} className="bg-blue-50 py-16 mb-6">
         <div className="max-w-7xl mx-auto px-6 lg:px-24 text-center">
           {/* Main Title */}
-          <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+          <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
             OUR{" "}
             <span className="relative inline-block">
               TRACK
@@ -215,11 +215,13 @@ export default function Component() {
               />
             </span>{" "}
             RECORD
-          </h1>
-          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed mb-6">
+          </p>
+
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
             When Strategy Meets Talent, Admissions Say Yes
           </p>
-          <p className="font-['Poppins'] text-xl text-gray-800 leading-snug mb-6">
+
+          <p className="font-['Poppins'] text-xl text-gray-800 leading-snug mb-6 mt-4">
             With hundreds of students coached, 80% early acceptance success,
             100% students got admission and millions in scholarships awarded, we
             don't just guide — we deliver. These results aren't exceptions —
@@ -267,7 +269,7 @@ export default function Component() {
       <NavogateUniverse />
 
       {/* Testimonial Section */}
-      <div className="bg-white py-12 sm:py-16 lg:py-20">
+      <div className="bg-white py-12 sm:py-16 md:py-14">
         <TestimonialSlider />
       </div>
 

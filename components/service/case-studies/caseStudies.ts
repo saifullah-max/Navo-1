@@ -270,187 +270,187 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
-    // 7 — EMMA
-    {
-        slug: "Lorem7",
-        title: "Lorem’s Case",
-        subtitle: "READ FULL CASE STUDY",
-        image: "/dummy.png",
-        intro:
-            "Emma was passionate about writing but needed help building external recognition to elevate her profile.",
+//     // 7 — EMMA
+//     {
+//         slug: "Lorem7",
+//         title: "Lorem’s Case",
+//         subtitle: "READ FULL CASE STUDY",
+//         image: "/dummy.png",
+//         intro:
+//             "Emma was passionate about writing but needed help building external recognition to elevate her profile.",
 
-        sections: [
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-        ],
-    },
+//         sections: [
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//         ],
+//     },
 
-    // 8 — ZAYN
-    {
-        slug: "Lorem8",
-        title: "Lorem’s Case",
-        subtitle: "READ FULL CASE STUDY",
-        image: "/dummy.png",
-        intro:
-            "Zayn excelled in competitions but needed help transforming his achievements into a broader real-world narrative.",
+//     // 8 — ZAYN
+//     {
+//         slug: "Lorem8",
+//         title: "Lorem’s Case",
+//         subtitle: "READ FULL CASE STUDY",
+//         image: "/dummy.png",
+//         intro:
+//             "Zayn excelled in competitions but needed help transforming his achievements into a broader real-world narrative.",
 
-        sections: [
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-        ],
-    },
+//         sections: [
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//         ],
+//     },
 
-    // 9 — LUCAS
-    {
-        slug: "Lorem9",
-        title: "Lorem’s Case",
-        subtitle: "READ FULL CASE STUDY",
-        image: "/dummy.png",
-        intro:
-            "Lucas was an aspiring entrepreneur who needed help creating a cohesive narrative around his projects.",
+//     // 9 — LUCAS
+//     {
+//         slug: "Lorem9",
+//         title: "Lorem’s Case",
+//         subtitle: "READ FULL CASE STUDY",
+//         image: "/dummy.png",
+//         intro:
+//             "Lucas was an aspiring entrepreneur who needed help creating a cohesive narrative around his projects.",
 
-        sections: [
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-            {
-                heading: "LOREM",
-                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
-            },
-        ],
-    },
+//         sections: [
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//             {
+//                 heading: "LOREM",
+//                 content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+// Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. 
+// Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. 
+// Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.`,
+//             },
+//         ],
+//     },
 
 ];

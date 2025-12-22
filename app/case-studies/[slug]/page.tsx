@@ -3,20 +3,40 @@ import Link from "next/link";
 import { caseStudies } from "@/components/service/case-studies/caseStudies";
 import NavogateUniverse from "@/components/navogateUniverse";
 
-// ✅ Pre-generate all case study pages
-export async function generateStaticParams() {
-    return caseStudies.map(study => ({ slug: study.slug }));
+interface CaseStudyPageProps {
+    params: { slug: string };
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+export async function generateStaticParams() {
+    return caseStudies.map((study) => ({ slug: study.slug }));
+}
 
-    const studyIndex = caseStudies.findIndex((c) => c.slug === slug);
+export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+    // If params is async, you can unwrap it
+    const { slug } = await params;
+
+    if (!slug) {
+        return (
+            <div className="p-10 text-center text-red-600 font-bold">
+                Invalid case study link.
+            </div>
+        );
+    }
+
+    const studyIndex = caseStudies.findIndex(
+        (c) => c.slug.toLowerCase() === slug.toLowerCase()
+    );
+
+    if (studyIndex === -1) {
+        return (
+            <div className="p-10 text-center text-red-600 font-bold">
+                Case study not found.
+            </div>
+        );
+    }
+
     const study = caseStudies[studyIndex];
 
-    if (!study) return <div className="p-10">Case study not found.</div>;
-
-    // Compute next 3 recommended case studies (wrap around)
     const recommended = [
         caseStudies[(studyIndex + 1) % caseStudies.length],
         caseStudies[(studyIndex + 2) % caseStudies.length],
@@ -52,7 +72,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 <div className="mt-14 space-y-10">
                     {study.sections.map((sec, i) => (
                         <div key={i} className="border-b-2 border-gray-900 pb-6">
-                            <h3 className="text-xl font-extrabold mb-3 text-[#03336D]">{sec.heading}</h3>
+                            <h3 className="text-xl font-extrabold mb-3 text-[#03336D]">
+                                {sec.heading}
+                            </h3>
                             <p className="text-gray-700 whitespace-pre-line leading-tight">
                                 {sec.content}
                             </p>
@@ -74,9 +96,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                                     height={300}
                                     className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
-
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-
                                 <div className="absolute bottom-4 left-4 text-white">
                                     <h3 className="text-lg font-semibold">{item.title}</h3>
                                     <p className="text-sm">{item.subtitle}</p>

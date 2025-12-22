@@ -5,7 +5,7 @@ export default function NavogateUniverse() {
   return (
     <div>
       {/* Conquest Section */}
-      <section className="bg-[#03336d] py-20 px-6 lg:px-24 relative overflow-hidden">
+      <section className="bg-[#03336d] py-20 px-6 lg:px-24 relative overflow-hidden md:pb-12">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-guthenBloots font-[400] text-5xl sm:text-8xl text-white mb-8">
             <span className="block mb-2 leading-[1.5]">NAVOGATE YOUR</span>

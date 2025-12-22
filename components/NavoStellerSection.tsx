@@ -83,7 +83,7 @@ export default function ImageSliderSection() {
   return (
     <>
       {/* Slider */}
-      <div className="bg-white py-6 sm:py-8 md:py-8 lg:py-8 xl:py-12">
+      <div className="bg-white pb-12 pt-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-center">
             <ChevronsLeft
