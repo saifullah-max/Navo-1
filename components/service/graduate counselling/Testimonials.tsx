@@ -49,10 +49,10 @@ const Testimonials = () => {
     const next = testimonials[(currentIndex + 1) % testimonials.length];
 
     return (
-        <section className="w-full py-12 sm:py-16 flex flex-col items-center bg-white">
+        <section className="w-full pt-8 pb-12 flex flex-col items-center bg-white">
             {/* Heading */}
             <div className="text-center mb-6">
-                <h1 className="text-2xl sm:text-4xl font-bold text-blue-900 mb-2 leading-snug uppercase">
+                <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
                     Admissions success,{" "}
 
                     <span className="relative inline-block">
@@ -64,7 +64,7 @@ const Testimonials = () => {
                                 alt="Underline"
                                 width={200}
                                 height={40}
-                                className="h-2 w-44 sm:h-2 md:w-72"
+                                className="h-2 w-44 sm:h-2 md:w-96"
                             />
                         </span>
                     </span>
@@ -72,10 +72,9 @@ const Testimonials = () => {
                     {" "}from our clients
                 </h1>
 
-                <p className="text-gray-700 text-xl mt-2">
+                <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
                     If you're interested in Navo's college counseling, fill
-                    out our complimentary consultation <br></br>
-                    form and we'll be in touch.
+                    out our complimentary consultation form and we'll be in touch.
                 </p>
             </div>
 

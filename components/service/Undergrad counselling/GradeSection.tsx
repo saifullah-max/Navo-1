@@ -27,7 +27,7 @@ const GradeSection = () => {
   };
 
   return (
-    <div className="bg-[#ECF1F6] py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#ECF1F6] pt-12 pb-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-6">
@@ -44,7 +44,7 @@ const GradeSection = () => {
               />
             </span>
           </h1>
-          <p className="text-gray-700 text-lg mt-2">
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
             Select your grade level to see tailored counseling guidance.
           </p>
         </div>

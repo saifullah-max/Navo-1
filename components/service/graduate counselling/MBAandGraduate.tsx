@@ -105,11 +105,11 @@ The service also includes rapid feedback rounds on essays and personal statement
   };
 
   return (
-    <div id="mba-graduate" className="bg-gray-100 pt-12 px-4 pb-16">
+    <div id="mba-graduate" className="bg-gray-100 pt-8 px-4 pb-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="font-['Poppins'] font-bold text-3xl sm:text-xl md:text-3xl lg:text-5xl text-[#03336d] leading-tight tracking-tight text-center"> MBA AND GRADUATE{" "}
+          <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase"> MBA AND GRADUATE{" "}
             <span className="relative inline-block"> COUNSELING
               <Image src={underline} alt="Underline" width={200} height={40} className="md:h-2 md:w-72 h-1 w-32 absolute left-1/2 -translate-x-1/2 top-full" />
             </span>
