@@ -15,10 +15,10 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
     // 1 — LENA
     {
-        slug: "Lorem",
-        title: "Lorem's Case",
+        slug: "Faiz",
+        title: "Faiz Iqbal's Case",
         subtitle: "READ FULL CASE STUDY",
-        image: "/dummy.png",
+        image: "/faiz.jpeg",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae varius libero, non iaculis leo.",
 
