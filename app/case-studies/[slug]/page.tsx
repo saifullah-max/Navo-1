@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     {study.title}
                 </h1>
 
-                <p className="mt-4 text-center max-w-sm text-lg mx-auto leading-tight">
+                <p className="mt-4 text-center max-w-lg text-lg mx-auto leading-tight font-semibold">
                     {study.intro}
                 </p>
 
@@ -62,10 +62,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     <Image
                         src={study.image}
                         alt={study.title}
-                        width={1200}
-                        height={550}
-                        className="rounded-lg w-full h-auto object-cover"
+                        width={830}
+                        height={500}
+                        className="
+    rounded-lg object-cover mx-auto
+    w-full h-auto
+    sm:max-w-[720px]
+    md:max-w-[780px]
+    lg:max-w-[820px]
+    xl:max-w-[830px] xl:h-[460px]
+    2xl:max-w-[950px] 2xl:h-[520px]
+  "
                     />
+
                 </div>
 
                 {/* Dynamic Sections */}

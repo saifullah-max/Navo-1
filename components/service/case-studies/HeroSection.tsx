@@ -1,35 +1,71 @@
-import React from 'react';
+import React from "react";
+import Image from "next/image";
 
 const HeroSection = () => {
     return (
-        <div
-            className="
-                relative
-                w-full
-                h-[calc(100vh-80px)]
-                sm:h-[calc(100vh-80px)]
-                md:h-[calc(100vh-96px)]
-                mt-20
-                md:mt-24
-                flex flex-col
-                items-center
-                overflow-hidden
-                bg-[url('/case-study-sm.png')]
-                md:bg-[url('/case-study-md.png')]
-                lg:bg-[url('/case-study-lg.png')]
-                bg-center
-                bg-cover
-                bg-no-repeat
-            "
-        >
-            {/* Text Content */}
-            <div className="flex flex-col items-center text-center px-4 pt-4">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic text-[#E5FF00] leading-tight tracking-tight">
+        <div className="">
+            {/* ================= MOBILE ( < sm ) ================= */}
+            <div className="sm:hidden text-center pt-20 bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
+                <h1 className="text-4xl font-black italic text-[#E5FF00] leading-tight tracking-tight mt-12">
                     ZOOM IN ON YOUR FUTURE
                 </h1>
-                <p className="text-white text-xl sm:text-2xl md:text-3xl italic mt-2 sm:mt-4">
+
+                <p className="text-white text-xl italic mt-4">
                     We will get you there!
                 </p>
+
+                <div className="w-full">
+                    <Image
+                        src="/case-study-mobile.png"
+                        alt="Case Study Hero"
+                        width={1000}
+                        height={600}
+                        className="w-full h-auto object-contain"
+                        priority
+                    />
+                </div>
+            </div>
+
+            {/* ================= TABLET ( sm → lg ) ================= */}
+            <div className="hidden sm:block lg:hidden text-center pt-28 bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
+                <h1 className="text-5xl md:text-6xl font-black italic text-[#E5FF00] leading-tight tracking-tight">
+                    ZOOM IN ON YOUR FUTURE
+                </h1>
+
+                <p className="text-white text-2xl italic mt-4">
+                    We will get you there!
+                </p>
+
+                <div className="w-full mt-6">
+                    <Image
+                        src="/case-study-mobile.png"
+                        alt="Case Study Hero"
+                        width={1400}
+                        height={800}
+                        className="w-full h-auto object-contain"
+                    />
+                </div>
+            </div>
+
+            {/* ================= DESKTOP ( lg+ ) ================= */}
+            <div className="hidden lg:block text-center bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
+                <h1 className="text-6xl xl:text-7xl font-black italic text-[#E5FF00] leading-tight tracking-tight mt-24 pt-12">
+                    ZOOM IN ON YOUR FUTURE
+                </h1>
+
+                <p className="text-white text-3xl italic mt-4">
+                    We will get you there!
+                </p>
+
+                <div className="w-full">
+                    <Image
+                        src="/case-study-mobile.png"
+                        alt="Case Study Hero"
+                        width={1800}
+                        height={1000}
+                        className="w-full h-auto object-contain"
+                    />
+                </div>
             </div>
         </div>
     );
