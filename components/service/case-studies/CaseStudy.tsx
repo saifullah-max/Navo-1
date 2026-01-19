@@ -23,7 +23,7 @@ export default function CaseStudies() {
                         <div className="relative group cursor-pointer overflow-hidden">
                             <div className="w-full h-[499px] overflow-hidden">
                                 <Image
-                                    src={item.image}
+                                    src={item.student_image ? `/${item.student_image}` : item.image}
                                     alt={item.title}
                                     width={393}
                                     height={499}

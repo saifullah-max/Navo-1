@@ -7,6 +7,7 @@ export interface CaseStudy {
     slug: string;
     title: string;
     subtitle: string;
+    student_image?: string;
     image: string;
     intro: string;
     sections: CaseStudySection[];
@@ -18,6 +19,7 @@ export const caseStudies: CaseStudy[] = [
         slug: "Faiz",
         title: "Faiz Iqbal",
         subtitle: "READ FULL CASE STUDY",
+        student_image: 'faiz.jpeg',
         image: "/UCLA.jpg",
         intro:
             "Faiz entered the admissions journey as a high-achieving, intellectually curious student who had not yet aligned his interests into a clear sense of purpose. His story is one of clarity, alignment, and ambition grounded in self-understanding.",
@@ -66,6 +68,7 @@ export const caseStudies: CaseStudy[] = [
         slug: "Meekail-Abbas",
         title: "Meekail Abbas",
         subtitle: "READ FULL CASE STUDY",
+        student_image: 'meekail-abbas.jpg',
         image: "/UC-Berkeley.jpg",
         intro:
             "Meekail entered the process driven by discipline, athletic rigor, and an unwavering belief in effort. His journey became one of transforming momentum into meaning and ambition into systems-level impact.",
@@ -109,7 +112,50 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
-    // 3 — MAYA
+    // 3 — LAMIAH AHMAD
+    {
+        slug: "Lamiah-Ahmad",
+        title: "Lamiah Ahmad",
+        subtitle: "READ FULL CASE STUDY",
+        student_image: "lamiah-ahmed.jpeg",
+        image: "/University-of-Michigan.jpeg",
+        intro:
+            "Lamiah entered Navo as an intellectually serious student with a strong academic foundation and a keen interest in economics, climate policy, and human-centered systems. Her journey became one of translating abstract curiosity into applied research, leadership, and a coherent academic narrative.",
+
+        sections: [
+            {
+                heading: "Where She Started",
+                content:
+                    "When Lamiah came to Navo, she had a distinctive writing voice, strong academics, and genuine interest in economics, climate policy, and human-centered systems. Her thinking was abstract, analytical, and imaginative. She asked sophisticated questions about how markets shape lived experience and how policy can be designed with care. However, her extracurricular profile was nearly empty, offering little evidence of her interests beyond the classroom. Her SAT score was below the level typically expected at selective American universities, so she had depth but not yet the structure or proof points required by admissions officers.",
+            },
+            {
+                heading: "The Challenge",
+                content:
+                    "Lamiah began the process without an ambitious college list, uncertain about her competitiveness and hesitant to aim high. Her goals were exploratory rather than targeted. Navo identified the University of Michigan as an ideal fit for her interdisciplinary interests, and decided to pursue Early Decision. Her challenge was translation: she had research instincts and a clear ethical orientation toward climate justice, but no applied work or strong testing profile to demonstrate her potential. The task was to make her intellectual seriousness visible in a credible and efficient way.",
+            },
+            {
+                heading: "Navo’s Approach",
+                content:
+                    "The focus was on precision and alignment. Instead of a broad range of activities, Lamiah anchored her application around one central question: how economic systems can reduce vulnerability and create resilience in the context of climate and development. Parallel priorities were set: academic credibility, which included raising her SAT past 1500, and building substantive, aligned extracurricular work. This approach ensured both rigor and coherence.",
+            },
+            {
+                heading: "Building Direction and Momentum",
+                content:
+                    "Lamiah’s most significant work emerged through independent research. She developed a paper titled “The Economic Promise of Climate Finance: Insights from Asia,” analyzing whether climate finance alleviates debt and inequality or merely redistributes risk. She also conducted applied environmental analysis at Clifton Urban Forest in Karachi, measuring temperature differentials across shaded and unshaded urban spaces. These efforts linked economics, climate research, behavioral insight, and social design into a coherent academic identity.",
+            },
+            {
+                heading: "Admissions Results",
+                content:
+                    "Following Navo’s guidance, Lamiah applied Early Decision to the University of Michigan. Her application demonstrated academic rigor, intellectual clarity, and initiative, supported by a testing profile aligned with her ambitions. She earned admission, transforming from a student with minimal extracurricular evidence into one with credible research, applied fieldwork, and leadership grounded in substance.",
+            },
+            {
+                heading: "Why This Matters",
+                content:
+                    "Lamiah’s journey reflects a core Navo principle: students do not need reinvention to succeed. With structure, belief, and strategy, who they already are can be made visible. Her case illustrates the power of translating intellectual curiosity into applied inquiry, demonstrating impact, and pursuing aligned ambition.",
+            },
+        ],
+    },
+
     {
         slug: "Lorem3",
         title: "Lorem's Case",
