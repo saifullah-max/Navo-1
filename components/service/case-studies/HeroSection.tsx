@@ -14,15 +14,20 @@ const HeroSection = () => {
                     We will get you there!
                 </p>
 
-                <div className="w-full">
-                    <Image
-                        src="/case-study-mobile.png"
-                        alt="Case Study Hero"
-                        width={1000}
-                        height={600}
-                        className="w-full h-auto object-contain"
-                        priority
-                    />
+                {/* Responsive images for different breakpoints */}
+                <div className="w-full flex-1 flex items-center justify-center">
+                    {/* Mobile */}
+                    <div className="block sm:hidden w-full">
+                        <Image
+                            src="/case-study-mobile.png"
+                            alt="Case Study Hero Mobile"
+                            width={1000}
+                            height={600}
+                            className="w-full h-auto object-contain"
+                            priority
+                        />
+                    </div>
+
                 </div>
             </div>
 
@@ -38,31 +43,55 @@ const HeroSection = () => {
 
                 <div className="w-full mt-6">
                     <Image
-                        src="/case-study-mobile.png"
+                        src="/case-study-laptop.png"
                         alt="Case Study Hero"
                         width={1400}
                         height={800}
+                        priority
                         className="w-full h-auto object-contain"
                     />
                 </div>
             </div>
 
             {/* ================= DESKTOP ( lg+ ) ================= */}
-            <div className="hidden lg:block text-center bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
-                <h1 className="text-6xl xl:text-7xl font-black italic text-[#E5FF00] leading-tight tracking-tight mt-24 pt-12">
+            <div className="hidden lg:block 2xl:hidden text-center bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
+                <h1 className="text-6xl xl:text-5xl font-black italic text-[#E5FF00] leading-tight tracking-tight mt-24 pt-4">
                     ZOOM IN ON YOUR FUTURE
                 </h1>
 
-                <p className="text-white text-3xl italic mt-4">
+                <p className="text-white text-3xl italic mt-2">
+                    We will get you there!
+                </p>
+
+                <div className="w-full mt-2">
+                    <Image
+                        src="/case-study-large.png"
+                        alt="Case Study Hero"
+                        width={1800}
+                        height={1000}
+                        priority
+                        className="w-full h-auto object-contain"
+                    />
+                </div>
+            </div>
+
+            {/* ================= 2XL ( 2xl+ ) ================= */}
+            <div className="hidden 2xl:block text-center bg-gradient-to-r from-[#2271bb] to-[#206fb9]">
+                <h1 className="text-7xl font-black italic text-[#E5FF00] leading-tight tracking-tight mt-24 pt-4">
+                    ZOOM IN ON YOUR FUTURE
+                </h1>
+
+                <p className="text-white text-3xl italic mt-2">
                     We will get you there!
                 </p>
 
                 <div className="w-full">
                     <Image
-                        src="/case-study-mobile.png"
-                        alt="Case Study Hero"
-                        width={1800}
-                        height={1000}
+                        src="/case-study-laptop.png"
+                        alt="Case Study Hero 2XL"
+                        width={2200}
+                        height={1200}
+                        priority
                         className="w-full h-auto object-contain"
                     />
                 </div>
