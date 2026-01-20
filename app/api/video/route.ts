@@ -14,34 +14,32 @@ export async function GET(req: NextRequest) {
     // range header (partial load ke liye)
     const range = req.headers.get("range");
 
+    // Always support range requests for chunked video delivery
+    let start = 0;
+    let end = fileSize - 1;
+    let status = 200;
+    let headers: Headers;
+    let file;
+
     if (range) {
-      // agar range di hui hai to partial response bhejna hai
       const parts = range.replace(/bytes=/, "").split("-");
-      const start = parseInt(parts[0], 10);
-      const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
-      const chunkSize = end - start + 1;
-
-      const file = fs.createReadStream(videoPath, { start, end });
-
-      const headers = new Headers({
-        "Content-Range": `bytes ${start}-${end}/${fileSize}`,
-        "Accept-Ranges": "bytes",
-        "Content-Length": chunkSize.toString(),
-        "Content-Type": "video/mp4",
-      });
-
-      return new Response(file as any, { status: 206, headers });
-    } else {
-      // agar range nahi hai to full video bhej do
-      const file = fs.createReadStream(videoPath);
-
-      const headers = new Headers({
-        "Content-Length": fileSize.toString(),
-        "Content-Type": "NavoVideo/mp4",
-      });
-
-      return new Response(file as any, { status: 200, headers });
+      start = parseInt(parts[0], 10);
+      end = parts[1] ? parseInt(parts[1], 10) : end;
+      status = 206;
     }
+
+    const chunkSize = end - start + 1;
+    file = fs.createReadStream(videoPath, { start, end });
+
+    headers = new Headers({
+      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+      "Accept-Ranges": "bytes",
+      "Content-Length": chunkSize.toString(),
+      "Content-Type": "video/mp4",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    });
+
+    return new Response(file as any, { status, headers });
   } catch (error) {
     console.error("Video stream error:", error);
     return new Response("Error streaming video", { status: 500 });

@@ -163,6 +163,8 @@ export default function Component() {
           loop
           muted={isMuted}
           playsInline
+          preload="auto"
+          poster="/your-poster-image.jpg" // Optional: add a lightweight poster image
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/api/video" type="video/mp4" />
