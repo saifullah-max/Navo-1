@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { caseStudies } from "@/components/service/case-studies/caseStudies";
 import NavogateUniverse from "@/components/navogateUniverse";
+import CaseStudiesCarouselWrapper from "@/components/service/case-studies/CaseStudiesCarouselWrapper";
 
 interface CaseStudyPageProps {
     params: { slug: string };
@@ -37,11 +38,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
     const study = caseStudies[studyIndex];
 
-    const recommended = [
-        caseStudies[(studyIndex + 1) % caseStudies.length],
-        caseStudies[(studyIndex + 2) % caseStudies.length],
-        caseStudies[(studyIndex + 3) % caseStudies.length],
-    ];
+    // recommended carousel handled in client component
 
     return (
         <>
@@ -53,7 +50,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     {study.title}
                 </h1>
 
-                <p className="mt-4 text-center max-w-lg text-lg mx-auto leading-tight font-semibold">
+                <p className="mt-4 text-center max-w-lg text-lg mx-auto leading-tight font-medium">
                     {study.intro}
                 </p>
 
@@ -92,28 +89,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </div>
 
                 {/* More Case Studies */}
-                <h2 className="text-3xl font-bold mt-20 mb-6">More Case Studies</h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {recommended.map((item) => (
-                        <Link key={item.slug} href={`/case-studies/${item.slug}`}>
-                            <div className="cursor-pointer overflow-hidden rounded-lg shadow-md group relative">
-                                <Image
-                                    src={item.image}
-                                    alt={item.title}
-                                    width={400}
-                                    height={300}
-                                    className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                                <div className="absolute bottom-4 left-4 text-white">
-                                    <h3 className="text-lg font-semibold">{item.title}</h3>
-                                    <p className="text-sm">{item.subtitle}</p>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+                <CaseStudiesCarouselWrapper currentSlug={slug} />
             </div>
 
             <NavogateUniverse />

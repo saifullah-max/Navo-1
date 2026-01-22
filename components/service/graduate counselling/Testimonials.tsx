@@ -52,30 +52,25 @@ const Testimonials = () => {
         <section className="w-full pt-8 pb-12 flex flex-col items-center bg-white">
             {/* Heading */}
             <div className="text-center mb-6">
-                <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
-                    Admissions success,{" "}
-
-                    <span className="relative inline-block">
-                        straight
-                        {/* ✅ Absolute underline: stays under "straight", not the p tag */}
-                        <span className="absolute left-1/2 -translate-x-1/2 top-full">
-                            <Image
-                                src={underline}
-                                alt="Underline"
-                                width={200}
-                                height={40}
-                                className="h-2 w-44 sm:h-2 md:w-96"
-                            />
+                <div className="relative inline-block">
+                    <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+                        Client Admission <span className="relative">Successes
+                            <span className="block absolute left-1/2 -translate-x-1/2 top-[88%]">
+                                <Image
+                                    src={underline}
+                                    alt="underline"
+                                    width={200}
+                                    height={8}
+                                    className="opacity-95"
+                                />
+                            </span>
                         </span>
-                    </span>
-
-                    {" "}from our clients
-                </h1>
-
-                <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
+                    </h1>
+                </div>
+                {/* <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
                     If you're interested in Navo's college counseling, fill
                     out our complimentary consultation form and we'll be in touch.
-                </p>
+                </p> */}
             </div>
 
 

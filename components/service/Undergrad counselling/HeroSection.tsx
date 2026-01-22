@@ -9,8 +9,9 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className="relative md:mt-24 mt-20 md:min-h-[600px] flex items-center overflow-hidden 
-  bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]"
+        className="relative md:mt-24 mt-20 md:min-h-[600px] flex items-center overflow-hidden bg-[#07306A]
+"
+  // bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]
       >
 
         {/* Background Icon - Left Side */}

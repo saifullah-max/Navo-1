@@ -8,8 +8,8 @@ export default function CaseStudies() {
     return (
         <section className="py-16 px-4 bg-white">
             <div className="text-center mb-12">
-                <h1 className="font-['Poppins'] font-bold text-3xl lg:text-5xl text-[#03336D]">
-                    NAVO's STUDENTS ARE WEIRD
+                <h1 className="font-['Poppins'] font-bold text-3xl lg:text-5xl text-[#03336D] uppercase">
+                    We follow our own beat
                 </h1>
 
                 <p className="font-['Poppins'] text-md text-gray-900 max-w-4xl mx-auto mt-4 leading-tight">

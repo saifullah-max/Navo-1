@@ -5,7 +5,7 @@ import underline from "@/public/underline.png";
 
 const SuccessRate = () => {
     return (
-        <section className="relative w-full h-[700px] md:h-[780px] flex items-center justify-center mb-4">
+        <section className="relative w-full h-[700px] md:h-screen flex items-center justify-center mb-4">
 
             {/* Background */}
             <Image
