@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import undergradBanner from "@/public/undergrad-banner.png";
 
 const IpsumSection = () => {
   return (
@@ -35,16 +37,14 @@ const IpsumSection = () => {
           className="flex justify-center lg:justify-end items-end -mb-5"
           style={{ backgroundColor: "#e7f941" }}
         >
-          <img
-            src="/undergrad-banner.png"
+          <Image
+            src={undergradBanner}
             alt="undergrad banner"
-            className="
-              w-full
-              h-[300px] md:h-[400px]
-              lg:h-[450px]
-              object-contain
-            "
-            style={{ display: "block" }}
+            width={800}
+            height={340}
+            className="max-w-full max-h-[60vh] w-auto h-auto object-contain"
+            style={{ backgroundColor: '#e7f941', borderRadius: '24px', display: 'block' }}
+            priority
           />
         </div>
       </div>

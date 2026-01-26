@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { Button } from './ui/button'
 
 export default function NavogateUniverse() {
@@ -12,10 +13,13 @@ export default function NavogateUniverse() {
             <span className="block relative mb-8">
               <span className="relative inline-block">
                 UNIVERSE
-                <img
+                <Image
                   src="/underline.png"
                   alt="underline"
+                  width={400}
+                  height={16}
                   className="absolute -bottom-2 left-0 w-full h-2"
+                  priority
                 />
               </span>
             </span>

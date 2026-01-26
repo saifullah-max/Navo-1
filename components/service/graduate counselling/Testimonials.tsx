@@ -62,6 +62,7 @@ const Testimonials = () => {
                                     width={200}
                                     height={8}
                                     className="opacity-95"
+                                    priority
                                 />
                             </span>
                         </span>
@@ -160,10 +161,13 @@ const Testimonials = () => {
                         <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300
                 h-auto sm:h-[400px] md:h-[330px] lg:h-[456px]">
                             <div className="relative bg-gray-200 rounded-xl overflow-hidden mb-4 sm:mb-6 h-72 sm:h-[200px] md:h-[220px] lg:h-[270px]">
-                                <img
+                                <Image
                                     src={current.image}
                                     alt={current.name}
+                                    fill
                                     className="w-full h-full object-cover"
+                                    sizes="(max-width: 768px) 100vw, 400px"
+                                    priority
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <button className="bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
@@ -201,10 +205,12 @@ const Testimonials = () => {
                         <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 
                 bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-300">
                             <div className="relative bg-gray-200 rounded-lg overflow-hidden mb-3 h-36 sm:h-44">
-                                <img
+                                <Image
                                     src={next.image}
                                     alt={next.name}
+                                    fill
                                     className="w-full h-full object-cover"
+                                    sizes="(max-width: 768px) 100vw, 320px"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow">

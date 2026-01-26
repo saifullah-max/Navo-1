@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { FaPlay, FaTimes } from "react-icons/fa";
 export default function WeWorkSection() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -14,10 +15,13 @@ export default function WeWorkSection() {
             HOW WE{" "}
             <span className="relative inline-block">
               WORK
-              <img
+              <Image
                 src="/underline.png"
                 alt="underline"
+                width={400}
+                height={16}
                 className="w-full h-2"
+                priority
               />
             </span>
           </h1>
@@ -32,10 +36,13 @@ export default function WeWorkSection() {
             {!isVideoPlaying ? (
               // Thumbnail with Play Button
               <div className="relative aspect-video bg-gray-300">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop"
                   alt="Student studying"
+                  fill
                   className="w-full h-full object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                   <button

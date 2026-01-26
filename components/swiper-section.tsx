@@ -213,10 +213,13 @@ export default function Swiper() {
           HOW WE{" "}
           <span className="relative inline-block">
             WORK
-            <img
+            <Image
               src="/underline.png"
               alt="underline"
+              width={400}
+              height={16}
               className="absolute -bottom-2 left-0 w-full h-2"
+              priority
             />
           </span>
         </p>

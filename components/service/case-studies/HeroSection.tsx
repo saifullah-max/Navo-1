@@ -25,6 +25,8 @@ const HeroSection = () => {
                             height={600}
                             className="w-full h-auto object-contain"
                             priority
+                            sizes="100vw"
+                            quality={90}
                         />
                     </div>
 
@@ -49,6 +51,8 @@ const HeroSection = () => {
                         height={800}
                         priority
                         className="w-full h-auto object-contain"
+                        sizes="(max-width: 1024px) 100vw, 1400px"
+                        quality={90}
                     />
                 </div>
             </div>
@@ -71,6 +75,8 @@ const HeroSection = () => {
                         height={1000}
                         priority
                         className="w-full h-auto object-contain"
+                        sizes="(max-width: 1536px) 100vw, 1800px"
+                        quality={90}
                     />
                 </div>
             </div>
@@ -93,6 +99,8 @@ const HeroSection = () => {
                         height={1200}
                         priority
                         className="w-full h-auto object-contain"
+                        sizes="(min-width: 1536px) 100vw, 2200px"
+                        quality={90}
                     />
                 </div>
             </div>
