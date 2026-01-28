@@ -230,10 +230,10 @@ export default function Swiper() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-4 items-center lg:items-center">
           {/* Content Section - First on large screens */}
           {/* <div className="w-full lg:flex-1 space-y-6 order-2 lg:order-1 mt-4 sm:mt-20"> */}
-          <div className="w-full lg:flex-1 order-2 lg:order-1 h-full flex items-center max-h-full">
+          <div className="w-full lg:w-7/12 order-2 lg:order-1 h-full flex items-center max-h-full">
             <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border 
-                h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col">
-              <div className="space-y-4">
+      h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col relative">
+              <div className="space-y-4 flex-1">
                 <div className="flex items-center gap-3">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     {swipeData[currentIndex].category}
@@ -243,13 +243,10 @@ export default function Swiper() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#03336d] transition-all duration-500 leading-tight uppercase">
+                <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-[#03336d] transition-all duration-500 leading-tight uppercase">
                   {swipeData[currentIndex].title}
                 </h2>
 
-                {/* <p className="text-gray-700 leading-relaxed transition-all duration-500 text-base sm:text-lg">
-                  {swipeData[currentIndex].details}
-                </p> */}
                 <div className="text-gray-700 !leading-[1.25rem] transition-all duration-500 text-base sm:text-xl space-y-3">
                   <p>{introLine}</p>
                   <ul className="list-disc pl-5 space-y-2">
@@ -260,8 +257,8 @@ export default function Swiper() {
                 </div>
               </div>
 
-              {/* Desktop Navigation Controls */}
-              <div className="hidden lg:flex items-center justify-between mt-8">
+              {/* Desktop Navigation Controls - Fixed at Bottom */}
+              <div className="hidden lg:flex items-center justify-between mt-4 absolute bottom-6 left-6 right-6">
                 <Button
                   variant="outline"
                   onClick={prevSlide}
@@ -298,8 +295,9 @@ export default function Swiper() {
             </div>
           </div>
 
+
           {/* Image Swiper Section - Second on large screens, First on mobile */}
-          <div className="w-full lg:flex-1 order-1 lg:order-2">
+          <div className="w-full lg:w-5/12 order-1 lg:order-2">
             <div className="relative w-full max-w-lg sm:max-w-md lg:max-w-lg mx-auto">
               <div
                 ref={containerRef}
