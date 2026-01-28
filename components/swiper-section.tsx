@@ -230,8 +230,9 @@ export default function Swiper() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-4 items-center lg:items-center">
           {/* Content Section - First on large screens */}
           {/* <div className="w-full lg:flex-1 space-y-6 order-2 lg:order-1 mt-4 sm:mt-20"> */}
-          <div className="w-full lg:flex-1  order-2 lg:order-1">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border">
+          <div className="w-full lg:flex-1 order-2 lg:order-1 h-full flex items-center max-h-full">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border 
+                h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
