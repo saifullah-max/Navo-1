@@ -53,19 +53,22 @@ const Testimonials = () => {
             {/* Heading */}
             <div className="text-center mb-6">
                 <div className="relative inline-block">
-                    <h1 className="uppercase font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
-                        Client Admission <span className="relative">Successes
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
+                        Client
+                        <span className="relative">
+                           {" "} Success
                             <span className="block absolute left-1/2 -translate-x-1/2 top-[88%]">
                                 <Image
                                     src={underline}
                                     alt="underline"
-                                    width={200}
+                                    width={300}
                                     height={8}
-                                    className="opacity-95"
+                                    className="opacity-95 w-48 md:w-60"
                                     priority
                                 />
                             </span>
                         </span>
+                        <span>{" "} Stories</span>
                     </h1>
                 </div>
                 {/* <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
