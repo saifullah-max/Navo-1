@@ -572,7 +572,7 @@ export default function Page() {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-yellowCust rounded-full px-10 py-6"
+                className="bg-yellowCust  rounded-lg px-10 py-3"
               >
                 SUBMIT
               </button>

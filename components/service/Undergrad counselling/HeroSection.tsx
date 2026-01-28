@@ -9,9 +9,8 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className="relative md:mt-24 mt-20 md:min-h-[600px] flex items-center overflow-hidden bg-[#07306A]
-"
-  // bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]
+        className="relative mt-16 md:mt-20 xl:mt-24 min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden bg-[#07306A]"
+        // bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]
       >
 
         {/* Background Icon - Left Side */}
@@ -25,10 +24,14 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="container mx-auto px-2 sm:px-6 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-2 md:gap-12 items-center">
+        <div className="container mx-auto px-2 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+          <div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 xl:gap-8 2xl:gap-12 items-center"
+          >
             {/* Left Content */}
-            <div className="text-white space-y-24">
+            <div
+              className="text-white space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-16 xl:space-y-24"
+            >
               <div className="mt-12 md:mt-0">
                 <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
                   <span className="whitespace-nowrap">Undergrad Counseling</span>
@@ -53,8 +56,21 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Open Book Icon */}
-            <div className="flex justify-center  lg:justify-end">
-              <Image src={Book} alt="book" height={400} width={500} />
+            <div
+              className="flex justify-center lg:justify-end w-full"
+            >
+              <div
+                className="relative w-[220px] h-[260px] sm:w-[320px] sm:h-[340px] md:w-[400px] md:h-[440px] lg:w-[480px] lg:h-[520px] xl:w-[540px] xl:h-[600px] 2xl:w-[600px] 2xl:h-[680px]"
+              >
+                <Image
+                  src={Book}
+                  alt="book"
+                  fill
+                  style={{ objectFit: "contain" }}
+                  sizes="(max-width: 640px) 220px, (max-width: 768px) 320px, (max-width: 1024px) 400px, (max-width: 1280px) 540px, (max-width: 1536px) 600px, 680px"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>

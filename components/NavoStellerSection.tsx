@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronsLeft, ChevronsRight, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import underline from "@/public/underline.png";
+
 
 const testimonialVideos = [
   {
@@ -85,7 +87,22 @@ export default function ImageSliderSection() {
       {/* Slider */}
       <div className="bg-white pb-12 pt-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative flex items-center justify-center">
+          <div className="relative inline-block text-center flex justify-center w-full my-10">
+            <h1 className="uppercase font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+              NAVO<span className="relative"> STELLAR
+                <span className="block absolute left-1/2 -translate-x-1/2 top-[88%]">
+                  <Image
+                    src={underline}
+                    alt="underline"
+                    width={200}
+                    height={8}
+                    className="opacity-95 w-32 md:w-72 md:h-2"
+                    priority
+                  />
+                </span>
+              </span>
+            </h1>
+          </div>          <div className="relative flex items-center justify-center">
             <ChevronsLeft
               onClick={handlePrev}
               className="absolute left-0 sm:-left-10 text-[#03336d] 
@@ -103,9 +120,13 @@ export default function ImageSliderSection() {
                     src={video.thumbnail}
                     alt={`Testimonial ${video.id}`}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform"
+                    className={`object-cover transition-transform duration-300 ${video.id >= 3
+                      ? "scale-[1.40] group-hover:scale-[1.45]"
+                      : "scale-[1.05] group-hover:scale-[1.1]"
+                      }`}
                     sizes="(max-width: 640px) 150px, (max-width: 768px) 200px, (max-width: 1024px) 220px, 240px"
                   />
+
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                     <div className="bg-white/90 rounded-full p-2 sm:p-3">
                       <Play className="h-4 w-4 sm:h-6 sm:w-6 text-blue-900 fill-blue-900" />
@@ -125,32 +146,32 @@ export default function ImageSliderSection() {
       </div>
 
       {/* Modal with manual close */}
-     {isModalOpen && selectedVideo && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-    <div className="relative w-full max-w-[90vw] sm:max-w-2xl lg:max-w-4xl rounded-lg overflow-hidden shadow-2xl">
-      
-      {/* ❌ Close Button Overlay */}
-      <button
-        onClick={closeModal}
-        className="absolute top-3 right-20 z-50 bg-black/70 hover:bg-black/90 text-white rounded-full p-2"
-      >
-        <X className="h-6 w-6" />
-      </button>
+      {isModalOpen && selectedVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <div className="relative w-full max-w-[90vw] sm:max-w-2xl lg:max-w-4xl rounded-lg overflow-hidden shadow-2xl">
 
-      {/* Video Frame */}
-      <div className="relative w-full aspect-video">
-        <iframe
-          key={selectedVideo} 
-          className="w-full h-full"
-          src={`${selectedVideo}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
-    </div>
-  </div>
-)}
+            {/* ❌ Close Button Overlay */}
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-20 z-50 bg-black/70 hover:bg-black/90 text-white rounded-full p-2"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Video Frame */}
+            <div className="relative w-full aspect-video">
+              <iframe
+                key={selectedVideo}
+                className="w-full h-full"
+                src={`${selectedVideo}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
 
     </>
   );

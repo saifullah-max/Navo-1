@@ -103,7 +103,7 @@ export default function WhatWeDo() {
                       className="relative z-10 mt-auto w-full py-2 md:py-2.5 lg:py-3 rounded-full text-sm md:text-base
   bg-white text-black font-semibold transition
   group-hover:bg-gradient-to-br group-hover:from-[#635AD9] group-hover:to-[#FF4848]
-  group-hover:text-white group-hover:opacity-90 text-center block"
+  group-hover:text-white group-hover:opacity-90 text-center block uppercase"
                     >
                       View Details
                     </Link>

@@ -69,7 +69,7 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center md:max-w-[810px] lg:justify-end -mt-20 md:mt-0">
+          <div className="flex justify-center md:max-w-[810px] lg:justify-end -mt-20 md:mt-20">
             <Image src={Bird} alt="bird" height={800} width={800} className="md:w-full h-auto w-auto" />
           </div>
 

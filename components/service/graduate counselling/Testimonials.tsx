@@ -53,7 +53,7 @@ const Testimonials = () => {
             {/* Heading */}
             <div className="text-center mb-6">
                 <div className="relative inline-block">
-                    <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+                    <h1 className="uppercase font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
                         Client Admission <span className="relative">Successes
                             <span className="block absolute left-1/2 -translate-x-1/2 top-[88%]">
                                 <Image

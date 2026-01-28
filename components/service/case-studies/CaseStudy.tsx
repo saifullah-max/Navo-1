@@ -3,18 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { caseStudies } from "@/components/service/case-studies/caseStudies";
+import underline from "@/public/underline.png";
+
 
 export default function CaseStudies() {
     return (
         <section className="py-16 px-4 bg-white">
             <div className="text-center mb-12">
-                <h1 className="font-['Poppins'] font-bold text-3xl lg:text-5xl text-[#03336D] uppercase">
-                    We follow our own beat
+                <h1 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center uppercase">
+                    WE FOLLOW OUR
+                    <span className="relative inline-block ml-2">
+                        OWN BEAT
+                        <Image
+                            src={underline}
+                            alt="Underline"
+                            width={200}
+                            height={40}
+                            className="md:h-2 md:w-72 h-1 w-40 absolute left-0 mt-1"
+                        />
+                    </span>
                 </h1>
-
-                <p className="font-['Poppins'] text-md text-gray-900 max-w-4xl mx-auto mt-4 leading-tight">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis corrupti facilis provident dolore rerum repellendus dicta dolorem praesentium. Possimus, odit delectus fuga quas ut modi voluptatum impedit itaque quo ipsa.
-                </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
