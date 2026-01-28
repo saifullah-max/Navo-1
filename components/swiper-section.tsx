@@ -209,7 +209,7 @@ export default function Swiper() {
   return (
     <div className="sm:py-8 mt-10 mb-6">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center">
+        <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center uppercase">
           HOW WE{" "}
           <span className="relative inline-block">
             WORK
@@ -242,14 +242,14 @@ export default function Swiper() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#03336d] transition-all duration-500 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#03336d] transition-all duration-500 leading-tight uppercase">
                   {swipeData[currentIndex].title}
                 </h2>
 
                 {/* <p className="text-gray-700 leading-relaxed transition-all duration-500 text-base sm:text-lg">
                   {swipeData[currentIndex].details}
                 </p> */}
-                <div className="text-gray-700 !leading-[1.25rem] transition-all duration-500 text-base sm:text-lg space-y-3">
+                <div className="text-gray-700 !leading-[1.25rem] transition-all duration-500 text-base sm:text-xl space-y-3">
                   <p>{introLine}</p>
                   <ul className="list-disc pl-5 space-y-2">
                     {bulletPoints.map((point, idx) => (

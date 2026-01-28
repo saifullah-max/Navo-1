@@ -56,14 +56,14 @@ const Testimonials = () => {
                     <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
                         Client
                         <span className="relative">
-                           {" "} Success
+                            {" "}Success
                             <span className="block absolute left-1/2 -translate-x-1/2 top-[88%]">
                                 <Image
                                     src={underline}
                                     alt="underline"
-                                    width={300}
-                                    height={8}
-                                    className="opacity-95 w-48 md:w-60"
+                                    width={400}
+                                    height={10}
+                                    className="opacity-95 w-[140%] md:w-[160%] max-w-none"
                                     priority
                                 />
                             </span>
