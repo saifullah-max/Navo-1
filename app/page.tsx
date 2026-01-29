@@ -36,6 +36,7 @@ export default function Component() {
   const [ctaHeight, setCtaHeight] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
@@ -179,7 +180,10 @@ export default function Component() {
           poster="/navo-video-poster-blur.jpg"
           className="absolute inset-0 w-full h-full object-cover bg-black z-10"
           style={{ backgroundColor: '#000' }}
-          onLoadedData={e => e.currentTarget.style.opacity = '1'}
+          onLoadedData={e => {
+            e.currentTarget.style.opacity = '1';
+            setVideoLoaded(true);
+          }}
         >
           <source src="/api/video" type="video/mp4" />
           Your browser does not support the video tag.
@@ -205,10 +209,12 @@ export default function Component() {
         </div>
       </div>
 
-      {/* How We Work Section (Lazy Loaded) */}
-      <Suspense fallback={<div className="w-full text-center py-12 text-gray-400">Loading...</div>}>
-        <Swiper />
-      </Suspense>
+      {/* How We Work Section (Lazy Loaded, only after video loaded) */}
+      {videoLoaded && (
+        <Suspense fallback={<div className="w-full text-center py-12 text-gray-400">Loading...</div>}>
+          <Swiper />
+        </Suspense>
+      )}
 
       {/* Track Record Section */}
       <section ref={sectionRef} className="bg-blue-50 py-16 mb-6">
