@@ -4,17 +4,10 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    // video file ka path
     const videoPath = path.join(process.cwd(), "public/NavoVideo.mp4");
-
-    // file ka size nikal lo
-    const stats = fs.statSync(videoPath);
+    const stats = await fs.promises.stat(videoPath);
     const fileSize = stats.size;
-
-    // range header (partial load ke liye)
     const range = req.headers.get("range");
-
-    // Always support range requests for chunked video delivery
     let start = 0;
     let end = fileSize - 1;
     let status = 200;
@@ -36,7 +29,11 @@ export async function GET(req: NextRequest) {
       "Accept-Ranges": "bytes",
       "Content-Length": chunkSize.toString(),
       "Content-Type": "video/mp4",
-      "Cache-Control": "public, max-age=31536000, immutable",
+      // Aggressive cache and preload hints
+      "Cache-Control": "public, max-age=31536000, immutable, s-maxage=31536000, must-revalidate, proxy-revalidate, stale-while-revalidate=60, stale-if-error=86400",
+      "Cross-Origin-Resource-Policy": "cross-origin",
+      "Timing-Allow-Origin": "*",
+      "X-Accel-Buffering": "no"
     });
 
     return new Response(file as any, { status, headers });

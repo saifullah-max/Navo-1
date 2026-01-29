@@ -165,8 +165,9 @@ export default function Component() {
           style={{ backgroundColor: '#000' }}
           aria-hidden="true"
           draggable="false"
+          fetchPriority="high"
         />
-        {/* Video loads instantly with a lightweight, visually-matching poster */}
+        {/* Video loads instantly with a lightweight, visually-matching poster and fetchpriority */}
         <video
           ref={videoRef}
           autoPlay
