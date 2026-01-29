@@ -227,7 +227,7 @@ export default function Swiper() {
           Your Roadmap to a Winning Application: The NAVO 6-Step Process
         </p>
         {/* <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-start"> */}
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-4 items-center lg:items-center">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center lg:items-center">
           {/* Content Section - First on large screens */}
           {/* <div className="w-full lg:flex-1 space-y-6 order-2 lg:order-1 mt-4 sm:mt-20"> */}
           <div className="w-full lg:w-7/12 order-2 lg:order-1 h-full flex items-center max-h-full">

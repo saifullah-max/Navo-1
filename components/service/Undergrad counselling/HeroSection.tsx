@@ -10,7 +10,7 @@ const HeroSection = () => {
     <>
       <div
         className="relative mt-16 md:mt-20 xl:mt-24 min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden bg-[#07306A]"
-        // bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]
+      // bg-[linear-gradient(to_right,#07306A_0%,#07306A_56%,#041938_56%,#041938_100%)]
       >
 
         {/* Background Icon - Left Side */}
@@ -33,16 +33,16 @@ const HeroSection = () => {
               className="text-white space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-16 xl:space-y-24"
             >
               <div className="mt-12 md:mt-0">
-                <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
-                  <span className="whitespace-nowrap">Undergrad Counseling</span>
+                <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold overflow-visible">
+                  <span className="whitespace-nowrap text-[38px] italic">
+                    Standing Out Is a Process.
+                  </span>
                   <br />
-                  Success Starts
+                  <span className="mt-4 whitespace-nowrap inline-block">
+                    We Make Sure You Do.
+                  </span>
                 </h1>
 
-                <div className="flex items-center text-3xl lg:text-4xl -mt-1.5 lg:-mt-0">
-                  <span className="font-bold">With</span>
-                  <Image src={Logo} width={140} height={80} alt="logoLoading" />
-                </div>
               </div>
               <Link href="/connect">
                 <button className="group flex text-sm items-center md:mt-12 gap-3 bg-gradient-to-r from-[#635AD9]  to-[#FF4848] hover:from-[#FF4848] hover:to-[#635AD9] text-white md:px-3 md:py-2 px-2 py-1 rounded-full font-semibold md:text-lg transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl">

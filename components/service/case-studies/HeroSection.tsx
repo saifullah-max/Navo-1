@@ -26,7 +26,11 @@ const HeroSection = () => {
                             className="w-full h-auto object-contain"
                             priority
                             sizes="100vw"
-                            quality={90}
+                            quality={10}
+                            placeholder="blur"
+                            blurDataURL="/case-study-mobile.png"
+                            loading="eager"
+                            decoding="async"
                         />
                     </div>
 
@@ -52,7 +56,11 @@ const HeroSection = () => {
                         priority
                         className="w-full h-auto object-contain"
                         sizes="(max-width: 1024px) 100vw, 1400px"
-                        quality={90}
+                        quality={10}
+                        placeholder="blur"
+                        blurDataURL="/case-study-laptop.png"
+                        loading="eager"
+                        decoding="async"
                     />
                 </div>
             </div>
@@ -76,7 +84,11 @@ const HeroSection = () => {
                         priority
                         className="w-full h-auto object-contain"
                         sizes="(max-width: 1536px) 100vw, 1800px"
-                        quality={90}
+                        quality={10}
+                        placeholder="blur"
+                        blurDataURL="/case-study-large.png"
+                        loading="eager"
+                        decoding="async"
                     />
                 </div>
             </div>
@@ -100,7 +112,11 @@ const HeroSection = () => {
                         priority
                         className="w-full h-auto object-contain"
                         sizes="(min-width: 1536px) 100vw, 2200px"
-                        quality={90}
+                        quality={10}
+                        placeholder="blur"
+                        blurDataURL="/case-study-laptop.png"
+                        loading="eager"
+                        decoding="async"
                     />
                 </div>
             </div>

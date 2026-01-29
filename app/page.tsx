@@ -156,7 +156,17 @@ export default function Component() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem]">
+      <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem] bg-black">
+        {/* Blurred background image as instant fallback */}
+        <img
+          src="/navo-video-poster-blur.jpg"
+          alt="Video background blur"
+          className="absolute inset-0 w-full h-full object-cover blur-xl scale-105 z-0"
+          style={{ backgroundColor: '#000' }}
+          aria-hidden="true"
+          draggable="false"
+        />
+        {/* Video loads instantly with a lightweight, visually-matching poster */}
         <video
           ref={videoRef}
           autoPlay
@@ -164,17 +174,17 @@ export default function Component() {
           muted={isMuted}
           playsInline
           preload="auto"
-          poster="/your-poster-image.jpg" // Optional: add a lightweight poster image
-          className="absolute inset-0 w-full h-full object-cover"
+          poster="/navo-video-poster-blur.jpg"
+          className="absolute inset-0 w-full h-full object-cover bg-black z-10"
+          style={{ backgroundColor: '#000' }}
+          onLoadedData={e => e.currentTarget.style.opacity = '1'}
         >
           <source src="/api/video" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black/20" />
 
         {/* Sound Toggle Button */}
-        {/* Toggle Button for Mute/Unmute */}
-        <div className="absolute bottom-4 right-4 z-10">
+        <div className="absolute bottom-4 right-4 z-20">
           <button
             onClick={() => {
               setIsMuted(!isMuted);
@@ -182,18 +192,12 @@ export default function Component() {
                 videoRef.current.muted = !isMuted;
               }
             }}
-            className={`relative inline-flex h-[40px] w-[85px] items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isMuted ? "bg-[#03336d]" : "bg-transparent"
-              }`}
+            className={`relative inline-flex h-[40px] w-[85px] items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isMuted ? "bg-[#03336d]" : "bg-transparent"}`}
           >
-            {/* Unmute icon on the left */}
             <Volume2 className="absolute left-1 w-[20px] text-white ml-1" />
-
-            {/* Mute icon on the right */}
             <VolumeOff className="absolute right-1 w-[20px] text-white mr-1" />
-            {/* Moving circle */}
             <span
-              className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform duration-200 ${isMuted ? "translate-x-12" : "translate-x-1"
-                }`}
+              className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform duration-200 ${isMuted ? "translate-x-12" : "translate-x-1"}`}
             ></span>
           </button>
         </div>
