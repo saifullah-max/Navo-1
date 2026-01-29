@@ -6,7 +6,8 @@ import { Mail, Phone, MapPin, Hash, Volume2, VolumeOff } from "lucide-react";
 import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import NavoStellerSection from "@/components/NavoStellerSection";
-import Swiper from "@/components/swiper-section";
+import React, { Suspense } from "react";
+const Swiper = React.lazy(() => import("@/components/swiper-section"));
 import NavogateUniverse from "@/components/navogateUniverse";
 import WhatWeDo from "@/components/whatWeDo";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
@@ -204,8 +205,10 @@ export default function Component() {
         </div>
       </div>
 
-      {/* How We Work Section */}
-      <Swiper />
+      {/* How We Work Section (Lazy Loaded) */}
+      <Suspense fallback={<div className="w-full text-center py-12 text-gray-400">Loading...</div>}>
+        <Swiper />
+      </Suspense>
 
       {/* Track Record Section */}
       <section ref={sectionRef} className="bg-blue-50 py-16 mb-6">
