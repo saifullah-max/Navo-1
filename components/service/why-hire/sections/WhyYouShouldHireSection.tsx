@@ -259,11 +259,11 @@ const WhyYouShouldHireSection = () => {
             </p>
           </div>
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <Image
+            {/* <Image
               src={PuzzleImage}
               alt="Puzzle illustration"
               className="w-full max-w-md h-auto rotate-3"
-            />
+            /> */}
           </div>
         </div>
       </section>
