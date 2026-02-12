@@ -37,6 +37,7 @@ export function MobileNav({
       <SheetTrigger asChild>
         <button
           className="max-[1023px]:flex hidden items-center justify-center text-gray-900 hover:text-gray-600 w-20 h-20 p-0"
+          suppressHydrationWarning
         >
           <Menu className="w-10 h-10" />
           <span className="sr-only">Toggle menu</span>

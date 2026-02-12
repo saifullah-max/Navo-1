@@ -83,7 +83,7 @@ Optimize waitlist chances with strategic positioning`,
   },
 ];
 
-export default function Swiper() {
+export default function Swiper({ hideHeadings = false }: { hideHeadings?: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
@@ -209,23 +209,27 @@ export default function Swiper() {
   return (
     <div className="sm:py-8 mt-10 mb-6">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center uppercase">
-          HOW WE{" "}
-          <span className="relative inline-block">
-            WORK
-            <Image
-              src="/underline.png"
-              alt="underline"
-              width={400}
-              height={16}
-              className="absolute -bottom-2 left-0 w-full h-2"
-              priority
-            />
-          </span>
-        </p>
-        <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
-          Your Roadmap to a Winning Application: The NAVO 6-Step Process
-        </p>
+        {!hideHeadings && (
+          <>
+            <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight text-center uppercase">
+              HOW WE{" "}
+              <span className="relative inline-block">
+                WORK
+                <Image
+                  src="/underline.png"
+                  alt="underline"
+                  width={400}
+                  height={16}
+                  className="absolute -bottom-2 left-0 w-full h-2"
+                  priority
+                />
+              </span>
+            </p>
+            <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
+              Your Roadmap to a Winning Application: The NAVO 6-Step Process
+            </p>
+          </>
+        )}
         {/* <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-start"> */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center lg:items-center">
           {/* Content Section - First on large screens */}
