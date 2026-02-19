@@ -12,8 +12,8 @@ const HeroSection = () => {
           <div className="container mx-auto px-2 sm:px-6 lg:px-8 xl:px-12">
             <div className="text-[#0E2B2B] sm:space-y-4 md:space-y-6 lg:space-y-8 xl:space-y-10">
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm lg:text-base xl:text-lg font-bold text-center pt-2">Why Hire</h3>
-                <h1 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 text-center tracking-tighter uppercase text-[#03336d]">
+                <h3 className="text-xs lg:text-sm xl:text-base font-bold text-center pt-8">Why Hire</h3>
+                <h1 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-2 text-center tracking-tighter uppercase text-[#03336d]">
                   Why You Should Hire a College{" "}
                   <span className="relative inline-block pb-1">
                     Counselor

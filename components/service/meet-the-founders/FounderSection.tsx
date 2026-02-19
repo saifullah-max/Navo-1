@@ -23,27 +23,27 @@ const FounderSection: React.FC<FounderSectionProps> = ({
     return (
         <section className="w-full py-12 px-4">
             <div
-                className={`container mx-auto grid grid-cols-1 md:grid-cols-2 items-stretch gap-8 md:gap-16 min-h-[400px]`}
+                className={`container mx-auto flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} items-start gap-8 md:gap-16 min-h-[400px]`}
             >
-                <div className={`${reverse ? 'md:order-2' : 'md:order-1'} flex items-stretch`}>
-                    <div className="w-full aspect-square relative rounded-none overflow-hidden bg-[#07306A] flex items-center justify-center min-h-full">
+                <div className="flex-shrink-0 flex justify-center items-start md:items-center w-full md:w-auto" style={{minWidth: 0, maxWidth: '340px'}}>
+                    <div className="w-[260px] h-[260px] relative rounded-none overflow-hidden bg-[#07306A] flex items-center justify-center">
                         <Image
                             src={imageSrc}
                             alt={imageAlt}
                             fill
                             style={{ objectFit: "cover" }}
                             className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
+                            sizes="260px"
                             priority
                         />
                     </div>
                 </div>
-                <div className={`${reverse ? 'md:order-1' : 'md:order-2'} flex flex-col justify-center items-start max-w-2xl min-h-full`}>
-                    <h2 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tighter">{name}</h2>
-                    <div className="text-xl md:text-2xl font-bold mb-2">{title}</div>
-                    <div className="text-xl md:text-2xl font-bold mb-6">{subtitle}</div>
+                <div className="flex-1 flex flex-col justify-center items-start max-w-4xl min-h-full">
+                    <h2 className="text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-2 tracking-tighter text-[#03336d]">{name}</h2>
+                    <div className="text-lg md:text-xl xl:text-2xl font-bold mb-1">{title}</div>
+                    <div className="text-lg md:text-xl xl:text-2xl font-bold mb-6">{subtitle}</div>
                     {paragraphs.map((p, i) => (
-                        <p key={i} className="text-[#003828] text-lg md:text-xl mb-6 leading-tight">{p}</p>
+                        <p key={i} className="text-[#003828] text-lg md:text-lg mb-1 leading-tight">{p}</p>
                     ))}
                 </div>
             </div>
