@@ -163,11 +163,10 @@ const WhyHireContent = () => {
                                     <button
                                         type="button"
                                         onClick={() => handleJump(section.id)}
-                                        className={`text-xs px-3 py-2 rounded transition-colors ${
-                                            isActive
+                                        className={`text-xs px-3 py-2 rounded transition-colors ${isActive
                                                 ? "font-semibold text-[#0E2B2B] bg-blue-100"
                                                 : "font-medium text-[#7B8B87]"
-                                        }`}
+                                            }`}
                                     >
                                         {section.title}
                                     </button>
@@ -196,8 +195,8 @@ const WhyHireContent = () => {
                                             type="button"
                                             onClick={() => handleJump(section.id)}
                                             className={`text-left leading-tight text-xs transition-colors ${isActive
-                                                    ? "font-semibold text-[#0E2B2B]"
-                                                    : "font-medium text-[#7B8B87]"
+                                                ? "font-semibold text-[#0E2B2B]"
+                                                : "font-medium text-[#7B8B87]"
                                                 }`}
                                         >
                                             {section.title}
@@ -215,7 +214,7 @@ const WhyHireContent = () => {
                         <section
                             key={section.id}
                             id={section.id}
-                            className="scroll-mt-28 relative py-12 px-4 lg:px-0"
+                            className="scroll-mt-28 relative px-4 lg:px-0"
                         >
                             {section.id === "why-you-should-hire" && (
                                 <div className="absolute inset-0 bg-blue-50 -left-[50vw] -right-[50vw] lg:-left-[200vw] lg:-right-[200vw] w-[200vw] lg:w-[400vw] -z-10" />
@@ -224,7 +223,11 @@ const WhyHireContent = () => {
                                 <div className="absolute inset-0 bg-[#07306A] -left-[50vw] -right-[50vw] lg:-left-[200vw] lg:-right-[200vw] w-[200vw] lg:w-[400vw] -z-10" />
                             )}
                             {section.id === "independent-vs-school" && (
-                                <div className="absolute inset-0 bg-[#2F5FA3] -left-[50vw] -right-[50vw] lg:-left-[200vw] lg:-right-[200vw] w-[200vw] lg:w-[400vw] -z-10" />
+                                <div className="absolute inset-0 
+  bg-gradient-to-br from-[#B3D2FF] to-[#336DBF] 
+  -left-[50vw] -right-[50vw] lg:-left-[200vw] lg:-right-[200vw] 
+  w-[200vw] lg:w-[400vw] -z-10"
+                                />
                             )}
                             {section.id === "worth-it" && (
                                 <div className="absolute inset-0 bg-[#07306A] -left-[50vw] -right-[50vw] lg:-left-[200vw] lg:-right-[200vw] w-[200vw] lg:w-[400vw] -z-10" />

@@ -1,50 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import PuzzleImage from "@/public/ivy-images/puzzle.png";
-import CostImage from "@/public/ivy-images/money.png";
-
-const PieIcon = ({ className }: { className?: string }) => {
-  return (
-    <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
-      <circle cx="60" cy="60" r="58" fill="#C8D4B4" />
-      <path d="M60 60 L60 2 A58 58 0 0 1 110 38 Z" fill="#0E6B4A" />
-    </svg>
-  );
-};
-
-const SolidCircle = ({ className }: { className?: string }) => {
-  return (
-    <div className={`rounded-full bg-[#0E6B4A] ${className ?? ""}`} />
-  );
-};
+import underline from "@/public/underline.png";
 
 const WhyYouShouldHireSection = () => {
   const [count, setCount] = useState(0);
   const [applicationsCount, setApplicationsCount] = useState(0);
   const [countriesCount, setCountriesCount] = useState(0);
+  const firstSectionRef = useRef<HTMLDivElement | null>(null);
+  const secondSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const [isFirstVisible, setIsFirstVisible] = useState(false);
+  const [isSecondVisible, setIsSecondVisible] = useState(false);
+
+
 
   useEffect(() => {
-    const duration = 1000; // 1 second
+    if (!isFirstVisible) return;
+
+    const duration = 1000;
     const target = 400;
     const startTime = Date.now();
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Easing function: easeOutQuad (fast start, slow end)
       const eased = 1 - Math.pow(1 - progress, 2);
-      const currentCount = Math.floor(eased * target);
-      setCount(currentCount);
+      setCount(Math.floor(eased * target));
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     };
 
     animate();
-  }, []);
+  }, [isFirstVisible]);
+
 
   useEffect(() => {
+    if (!isSecondVisible) return;
+
     const duration = 1000;
     const target = 50000;
     const startTime = Date.now();
@@ -53,16 +45,33 @@ const WhyYouShouldHireSection = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 2);
-      const currentCount = Math.floor(eased * target);
-      setApplicationsCount(currentCount);
+      setApplicationsCount(Math.floor(eased * target));
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     };
 
     animate();
-  }, []);
+  }, [isSecondVisible]);
+
+  useEffect(() => {
+    if (!isSecondVisible) return;
+
+    const duration = 1000;
+    const target = 150;
+    const startTime = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 2);
+      setCountriesCount(Math.floor(eased * target));
+
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, [isSecondVisible]);
+
 
   useEffect(() => {
     const duration = 1000;
@@ -84,66 +93,116 @@ const WhyYouShouldHireSection = () => {
     animate();
   }, []);
 
-  const salaryData = [
-    { school: "Penn", value: 103246 },
-    { school: "Princeton", value: 81689 },
-    { school: "Cornell", value: 87176 },
-    { school: "Dartmouth", value: 58627 },
-    { school: "Columbia", value: 79871 },
-    { school: "Yale", value: 88655 },
-    { school: "Harvard", value: 64918 },
-    { school: "Brown", value: 54943 },
-  ];
-  const chartMin = 50000;
-  const chartMax = 100000;
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsFirstVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (firstSectionRef.current) {
+      observer.observe(firstSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSecondVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (secondSectionRef.current) {
+      observer.observe(secondSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
     <div className="w-full space-y-16">
-      <section className="border-t-2 border-[#0E2B2B] pt-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#0E2B2B] tracking-tight text-center lg:text-left">
+      <section ref={firstSectionRef} className="border-t-2 border-[#0E2B2B] pt-8">
+        {/* <h2 className="text-xl lg:text-2xl xl:text-3xl font-extrabold uppercase text-[#03336d] tracking-tight text-center lg:text-left">
           High School Counselors Have Limited Capacity
+        </h2> */}
+        <h2 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 tracking-tighter uppercase text-[#03336d]">
+          High School {" "}
+          <span className="relative inline-block pb-0 mb-3 lg:mb-0 lg:pb-1">
+            Counselor
+            <Image
+              src={underline}
+              alt="Underline"
+              width={250}
+              height={30}
+              className="absolute left-0 right-0 mx-auto -bottom-2 w-full h-auto"
+            />
+          </span>
+          {" "} Have Limited Capacity
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start">
-          <p className="text-lg leading-tight text-[#0E2B2B] lg:col-span-1">
+          <p className="text-sm lg:text-base leading-tight text-[#0E2B2B] lg:col-span-1">
             <span className="font-semibold">Jack’s counselor cared.</span><br></br>
             But like most high school counselors, they had hundreds of students to support and many responsibilities beyond college admissions.
           </p>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:col-span-2">
-            <div className="flex justify-center items-center flex-col">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:col-span-2 pt-0 xl:pt-4">
+            <div className="flex justify-start items-center flex-col">
               <div className="flex items-center">
-                {/* <PieIcon className="w-16 h-16" /> */}
                 <p className="text-5xl sm:text-6xl font-extrabold text-[#07306A]">
-                  {count}<span className="text-5xl sm:text-6xl text-[#0E2B2B]"> :1</span>
+                  {count}<span className="text-5xl sm:text-6xl"> :1</span>
                 </p>
               </div>
-              <p className="mt-3 text-sm text-[#0E2B2B]">
+              <p className="mt-3 text-sm lg:text-base text-[#0E2B2B]">
                 The average student-to-counselor ratio
               </p>
             </div>
-            <div className="flex items-start gap-5">
-              <div className="flex justify-center items-center flex-col">
-                <div className="flex items-center">
-                  {/* <SolidCircle className="w-16 h-16" /> */}
-                  <p className="text-5xl sm:text-6xl font-extrabold text-[#07306A]">
-                    24/7
-                  </p>
-                </div>
-                <p className="mt-3 text-sm text-[#0E2B2B] text-center">
-                  Many college consultants are available to students and parents around the clock
+
+            <div className="flex justify-center items-center flex-col">
+              <div className="flex items-center">
+                <p className="text-5xl sm:text-6xl font-extrabold text-[#07306A]">
+                  24/7
                 </p>
               </div>
+              <p className="mt-3 text-sm lg:text-base text-[#0E2B2B] text-center">
+                Many college consultants are available to students and parents around the clock
+              </p>
             </div>
           </div>
+
         </div>
       </section>
 
-      <section className="border-t-2 border-[#0E2B2B] pt-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#0E2B2B] tracking-tighter text-center lg:text-left">
+      <section ref={secondSectionRef} className="border-t-2 border-[#0E2B2B] pt-8">
+        {/* <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#0E2B2B] tracking-tighter text-center lg:text-left">
           Admissions Rates Are Exceptionally Low
-        </h2>
+        </h2> */}
 
+        <h2 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 tracking-tighter uppercase text-[#03336d]">
+          Admissions Rates Are {" "}
+          <span className="relative inline-block pb-1">
+            Exceptionally
+            <Image
+              src={underline}
+              alt="Underline"
+              width={250}
+              height={30}
+              className="absolute left-0 right-0 mx-auto -bottom-2 w-full h-auto"
+            />
+          </span>
+          {" "} Low
+        </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start">
-          <div className="text-lg leading-tight text-[#0E2B2B] lg:col-span-1">
+          <div className="text-sm lg:text-base leading-tight text-[#0E2B2B] lg:col-span-1">
             <p className="font-medium">
               <strong>Jack</strong> wasn't competing against a handful of students.
             </p>
@@ -159,7 +218,7 @@ const WhyYouShouldHireSection = () => {
               <p className="text-lg font-semibold text-[#0E2B2B] mt-2">
                 Applications
               </p>
-              <p className="text-sm text-[#0E2B2B] mt-4 leading-tight text-center">
+              <p className="text-sm lg:text-base text-[#0E2B2B] mt-4 text-center">
                 Top U.S. universities now receive tens of thousands of applications for just a few thousand seats.
               </p>
             </div>
@@ -170,7 +229,7 @@ const WhyYouShouldHireSection = () => {
               <p className="text-lg font-semibold text-[#0E2B2B] mt-2">
                 Countries Represented
               </p>
-              <p className="text-sm text-[#0E2B2B] mt-4 leading-tight text-center">
+              <p className="text-sm lg:text-base text-[#0E2B2B] mt-4 leading-tight text-center">
                 Elite colleges evaluate students from around the world, not just one school, city, or country.
               </p>
             </div>
@@ -229,31 +288,44 @@ const WhyYouShouldHireSection = () => {
       </section> */}
 
       <section className="border-t-2 border-[#0E2B2B] py-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#0E2B2B] tracking-tighter text-center lg:text-left">
+        {/* <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#0E2B2B] tracking-tighter text-center lg:text-left">
           Weaving the Threads
+        </h2> */}
+        <h2 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 tracking-tighter uppercase text-[#03336d]">
+          Weaving the {" "}
+          <span className="relative inline-block pb-1">
+            Threads
+            <Image
+              src={underline}
+              alt="Underline"
+              width={250}
+              height={30}
+              className="absolute left-0 right-0 mx-auto -bottom-2 w-full h-auto"
+            />
+          </span>
         </h2>
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="order-2 lg:order-1">
-            <p className="text-lg leading-tight text-[#0E2B2B]">
+            <p className="text-sm lg:text-base leading-tight text-[#0E2B2B]">
               Grades, course rigour, test scores, essays, recommendations, activities, interviews all matter.
               But none of them is evaluated in isolation.
             </p>
-            <p className="mt-4 text-lg leading-tight text-[#0E2B2B]">
+            <p className="mt-4 text-sm lg:text-base leading-tight text-[#0E2B2B]">
               Admissions officers aren't assembling a checklist.
               They're reading for coherence.
             </p>
-            <p className="mt-4 text-lg leading-tight text-[#0E2B2B]">
+            <p className="mt-4 text-sm lg:text-base leading-tight text-[#0E2B2B]">
               A strong application weaves every thread—academic choices, interests, experiences, and voice—
               into a single, credible story about who a student is and where they're headed.
             </p>
-            <p className="mt-4 text-lg leading-tight text-[#0E2B2B]">
+            <p className="mt-4 text-sm lg:text-base leading-tight text-[#0E2B2B]">
               <strong>This is where college counseling matters.</strong>
             </p>
-            <p className="mt-4 text-lg leading-tight text-[#0E2B2B]">
+            <p className="mt-4 text-sm lg:text-base leading-tight text-[#0E2B2B]">
               A college counselor doesn't just help improve individual components. They ensure every decision
               supports the same narrative.
             </p>
-            <p className="mt-4 text-lg leading-tight text-[#0E2B2B]">
+            <p className="mt-4 text-sm lg:text-base leading-tight text-[#0E2B2B]">
               <strong>At NAVO,</strong> we help students move from a collection of achievements to a story that holds together
               and stands out.
             </p>

@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import HeroImage from "@/public/ivy-images/hero.png";
+// import HeroImage from "@/public/ivy-images/hero.png";
+import underline from "@/public/underline.png";
+
 
 const HeroSection = () => {
   return (
@@ -10,12 +12,23 @@ const HeroSection = () => {
           <div className="container mx-auto px-2 sm:px-6 lg:px-8 xl:px-12">
             <div className="text-[#0E2B2B] sm:space-y-4 md:space-y-6 lg:space-y-8 xl:space-y-10">
               <div className="mt-12 md:mt-0">
-              <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-center pt-2">Why Hire</h3>
-                <h1 className="text-4xl lg:text-5xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 text-center tracking-tighter">
-                  Why You Should Hire a College Counselor
+                <h3 className="text-lg lg:text-lg xl:text-xl font-bold text-center pt-2">Why Hire</h3>
+                <h1 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 text-center tracking-tighter uppercase text-[#03336d]">
+                  Why You Should Hire a College{" "}
+                  <span className="relative inline-block pb-1">
+                    Counselor
+                    <Image
+                      src={underline}
+                      alt="Underline"
+                      width={250}
+                      height={40}
+                      className="absolute left-0 right-0 mx-auto -bottom-2 w-full h-auto"
+                    />
+                  </span>
                 </h1>
+
               </div>
-              <div className="text-base lg:text-base leading-tight max-w-xl space-y-4 pb-8 pt-8 lg:pt-0">
+              <div className="text-base lg:text-sm leading-tight max-w-lg space-y-4 pb-8 pt-8 lg:pt-0">
                 <p className="leading-tight">
                   Parents hire coaches to train their children in music or athletics, not just to practice, but to improve with purpose and direction.
                 </p>
