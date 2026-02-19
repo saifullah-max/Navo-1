@@ -207,7 +207,7 @@ export default function Swiper({ hideHeadings = false }: { hideHeadings?: boolea
   const bulletPoints = detailLines.slice(1);
 
   return (
-    <div className="sm:py-8 mt-10 mb-6">
+    <div className="sm:py-8 mt-10">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         {!hideHeadings && (
           <>

@@ -29,7 +29,7 @@ export default function Header() {
       <header
         className={`top-0 left-0 w-full z-50 transition-all duration-300
         ${mobileOpen ? "fixed bg-white shadow-md" : "absolute bg-transparent"}
-        max-[1023px]:fixed max-[1023px]:bg-white max-[1023px]:shadow-md
+        max-[1023px]:fixed max-[1023px]:bg-white max-[1023px]:shadow-md px-4
       `}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-center mt-6 text-xl">

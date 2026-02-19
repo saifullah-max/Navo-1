@@ -10,7 +10,7 @@ const NavoApproachSection = () => {
         {/* <h2 className="text-2xl lg:text-3xl xl:text-4xl font-extrabold uppercase text-[#03336d] tracking-tighter text-center lg:text-left">
           The Approach of NAVO
         </h2> */}
-        <h1 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 tracking-tighter uppercase text-[#03336d]">
+        <h1 className="text-2xl lg:text-3xl xl:text-4xl mt-5 sm:mt-0 font-extrabold overflow-visible pt-4 tracking-tighter uppercase text-[#03336d] text-center">
           The{" "}
           <span className="relative inline-block pb-1">
             Approach

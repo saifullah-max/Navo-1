@@ -123,23 +123,20 @@ const WhyHireContent = () => {
         return () => observer.disconnect();
     }, [sections]);
 
+
     useEffect(() => {
         const sentinel = document.getElementById("ivy-coach-approach");
         if (!sentinel) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                // When top of Navo section reaches 40% of viewport → stop sticky
-                setIsStopped(entry.boundingClientRect.top <= window.innerHeight * 0.4);
-            },
-            {
-                root: null,
-                threshold: 0,
-            }
-        );
+        const handleScroll = () => {
+            const rect = sentinel.getBoundingClientRect();
+            // Only stop sticky if the bottom of the Approach section is above the sticky threshold
+            setIsStopped(rect.bottom <= 120); // 120px is the sticky top offset
+        };
 
-        observer.observe(sentinel);
-        return () => observer.disconnect();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
 
