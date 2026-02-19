@@ -17,22 +17,8 @@ const WhatDoesConsultantDoSection = () => {
               <span>High stakes. Big emotions. Conflicting opinions. </span><br></br>
               <span>We bring structure to chaos.</span>
             </p>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-tighter text-center flex flex-col">
-              <span>AND WE HANDLE</span>
-
-              <span>
-                THE{" "}
-                <span className="relative inline-block">
-                  HEAT
-                  <Image
-                    src={underline}
-                    alt="Underline"
-                    width={250}
-                    height={40}
-                    className="absolute left-0 -bottom-2 w-full h-auto"
-                  />
-                </span>
-              </span>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase text-white tracking-tighter pt-14 text-center">
+              AND WE HANDLE THE HEAT
             </h3>
           </div>
         </div>
