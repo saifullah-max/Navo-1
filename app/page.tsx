@@ -237,7 +237,7 @@ export default function Component() {
             When Strategy Meets Talent, Admissions Say Yes
           </p>
 
-          <p className="font-['Poppins'] text-xl text-gray-800 leading-snug mb-6 mt-4">
+          <p className="font-['Poppins'] text-base text-gray-800 leading-snug mb-6 mt-4">
             With hundreds of students coached, 80% early acceptance success,
             100% students got admission and millions in scholarships awarded, we
             don't just guide — we deliver. These results aren't exceptions —
