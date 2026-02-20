@@ -9,40 +9,42 @@ export async function GET(req: NextRequest) {
     const fileSize = stats.size;
     const range = req.headers.get("range");
     
-    // Optimize chunk size for faster initial load (1MB chunks)
-    const CHUNK_SIZE = 1 * 1024 * 1024; // 1MB
+    // Smaller chunks (512KB) for faster initial playback
+    const CHUNK_SIZE = 512 * 1024; // 512KB
     
     let start = 0;
     let end = fileSize - 1;
-    let status = 200;
+    let status = 206;
     let headers: Headers;
     let file;
 
     if (range) {
       const parts = range.replace(/bytes=/, "").split("-");
       start = parseInt(parts[0], 10);
-      // Limit chunk size for faster streaming
-      end = parts[1] ? parseInt(parts[1], 10) : Math.min(start + CHUNK_SIZE - 1, fileSize - 1);
-      status = 206;
+      // For the first request, send a larger initial chunk
+      if (start === 0) {
+        end = Math.min(start + (2 * CHUNK_SIZE) - 1, fileSize - 1);
+      } else {
+        end = parts[1] ? parseInt(parts[1], 10) : Math.min(start + CHUNK_SIZE - 1, fileSize - 1);
+      }
     } else {
-      // For non-range requests, send first chunk
-      end = Math.min(CHUNK_SIZE - 1, fileSize - 1);
-      status = 206;
+      // For initial request without range, send first 2MB for quick start
+      end = Math.min(2 * CHUNK_SIZE - 1, fileSize - 1);
     }
 
     const chunkSize = end - start + 1;
-    file = fs.createReadStream(videoPath, { start, end, highWaterMark: 64 * 1024 });
+    // Larger highWaterMark for better streaming performance
+    file = fs.createReadStream(videoPath, { start, end, highWaterMark: 256 * 1024 });
 
     headers = new Headers({
       "Content-Range": `bytes ${start}-${end}/${fileSize}`,
       "Accept-Ranges": "bytes",
       "Content-Length": chunkSize.toString(),
       "Content-Type": "video/mp4",
-      // Optimized cache for background loading
+      // Aggressive caching
       "Cache-Control": "public, max-age=31536000, immutable",
       "Cross-Origin-Resource-Policy": "cross-origin",
-      "Timing-Allow-Origin": "*",
-      "X-Content-Type-Options": "nosniff"
+      "Connection": "keep-alive"
     });
 
     return new Response(file as any, { status, headers });

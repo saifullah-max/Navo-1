@@ -166,12 +166,15 @@ export default function Component() {
           loop
           muted={isMuted}
           playsInline
-          preload="auto"
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover z-10"
           style={{ backgroundColor: 'transparent' }}
-          onLoadedData={e => {
-            e.currentTarget.style.opacity = '1';
+          onCanPlay={() => {
             setVideoLoaded(true);
+          }}
+          onWaiting={() => {
+            // Handle buffering
+            console.log('Buffering...');
           }}
         >
           <source src="/api/video" type="video/mp4" />
