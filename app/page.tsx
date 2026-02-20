@@ -158,10 +158,7 @@ export default function Component() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem] bg-black">
-        {/* Solid black background */}
-        <div className="absolute inset-0 w-full h-full bg-black z-0" />
-        
+      <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem]">
         {/* Main Video */}
         <video
           ref={videoRef}
@@ -170,8 +167,8 @@ export default function Component() {
           muted={isMuted}
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover bg-black z-10"
-          style={{ backgroundColor: '#000' }}
+          className="absolute inset-0 w-full h-full object-cover z-10"
+          style={{ backgroundColor: 'transparent' }}
           onLoadedData={e => {
             e.currentTarget.style.opacity = '1';
             setVideoLoaded(true);
