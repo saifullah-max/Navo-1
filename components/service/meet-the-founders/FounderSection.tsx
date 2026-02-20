@@ -43,7 +43,7 @@ const FounderSection: React.FC<FounderSectionProps> = ({
                     <div className="text-lg md:text-xl xl:text-2xl font-bold mb-1">{title}</div>
                     <div className="text-lg md:text-xl xl:text-2xl font-bold mb-6">{subtitle}</div>
                     {paragraphs.map((p, i) => (
-                        <p key={i} className="text-[#003828] text-lg md:text-lg mb-1 leading-tight">{p}</p>
+                        <p key={i} className="text-[#003828] text-base lg:text-lg mb-1 leading-tight">{p}</p>
                     ))}
                 </div>
             </div>

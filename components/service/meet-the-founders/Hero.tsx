@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import underline from "@/public/underline.png";
 
 // No image assets needed for this hero

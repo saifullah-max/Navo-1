@@ -159,17 +159,10 @@ export default function Component() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem] bg-black">
-        {/* Blurred background image as instant fallback */}
-        <img
-          src="/navo-video-poster-blur.jpg"
-          alt="Video background blur"
-          className="absolute inset-0 w-full h-full object-cover blur-xl scale-105 z-0"
-          style={{ backgroundColor: '#000' }}
-          aria-hidden="true"
-          draggable="false"
-          fetchPriority="high"
-        />
-        {/* Video loads instantly with a lightweight, visually-matching poster and fetchpriority */}
+        {/* Solid black background */}
+        <div className="absolute inset-0 w-full h-full bg-black z-0" />
+        
+        {/* Main Video */}
         <video
           ref={videoRef}
           autoPlay
@@ -177,7 +170,6 @@ export default function Component() {
           muted={isMuted}
           playsInline
           preload="auto"
-          poster="/navo-video-poster-blur.jpg"
           className="absolute inset-0 w-full h-full object-cover bg-black z-10"
           style={{ backgroundColor: '#000' }}
           onLoadedData={e => {
