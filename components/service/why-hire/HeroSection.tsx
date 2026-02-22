@@ -23,6 +23,7 @@ const HeroSection = () => {
                       alt="Underline"
                       width={250}
                       height={40}
+                      priority
                       className="absolute left-0 right-0 mx-auto -bottom-2 w-full h-auto"
                     />
                   </span>

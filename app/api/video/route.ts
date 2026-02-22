@@ -9,42 +9,49 @@ export async function GET(req: NextRequest) {
     const fileSize = stats.size;
     const range = req.headers.get("range");
     
-    // Smaller chunks (512KB) for faster initial playback
-    const CHUNK_SIZE = 512 * 1024; // 512KB
+    // Optimized chunk sizes for instant playback
+    const INITIAL_CHUNK = 3 * 1024 * 1024; // 3MB initial for moov atom + first frames
+    const CHUNK_SIZE = 1 * 1024 * 1024; // 1MB subsequent chunks
     
     let start = 0;
     let end = fileSize - 1;
     let status = 206;
-    let headers: Headers;
-    let file;
 
     if (range) {
       const parts = range.replace(/bytes=/, "").split("-");
       start = parseInt(parts[0], 10);
-      // For the first request, send a larger initial chunk
+      
+      // First request gets large chunk to include video metadata
       if (start === 0) {
-        end = Math.min(start + (2 * CHUNK_SIZE) - 1, fileSize - 1);
+        end = Math.min(INITIAL_CHUNK - 1, fileSize - 1);
       } else {
-        end = parts[1] ? parseInt(parts[1], 10) : Math.min(start + CHUNK_SIZE - 1, fileSize - 1);
+        end = parts[1] 
+          ? parseInt(parts[1], 10) 
+          : Math.min(start + CHUNK_SIZE - 1, fileSize - 1);
       }
     } else {
-      // For initial request without range, send first 2MB for quick start
-      end = Math.min(2 * CHUNK_SIZE - 1, fileSize - 1);
+      // Non-range request: send large initial chunk
+      end = Math.min(INITIAL_CHUNK - 1, fileSize - 1);
     }
 
     const chunkSize = end - start + 1;
-    // Larger highWaterMark for better streaming performance
-    file = fs.createReadStream(videoPath, { start, end, highWaterMark: 256 * 1024 });
+    
+    // Stream with larger buffer for smoother playback
+    const file = fs.createReadStream(videoPath, { 
+      start, 
+      end, 
+      highWaterMark: 512 * 1024 // 512KB buffer
+    });
 
-    headers = new Headers({
+    const headers = new Headers({
       "Content-Range": `bytes ${start}-${end}/${fileSize}`,
       "Accept-Ranges": "bytes",
       "Content-Length": chunkSize.toString(),
       "Content-Type": "video/mp4",
-      // Aggressive caching
       "Cache-Control": "public, max-age=31536000, immutable",
       "Cross-Origin-Resource-Policy": "cross-origin",
-      "Connection": "keep-alive"
+      "Connection": "keep-alive",
+      "X-Content-Type-Options": "nosniff"
     });
 
     return new Response(file as any, { status, headers });
