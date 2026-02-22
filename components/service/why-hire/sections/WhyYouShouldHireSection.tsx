@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import underline from "@/public/underline.png";
+import PuzzleImage from "@/public//weave-thread.png";
 
 const WhyYouShouldHireSection = () => {
   const [count, setCount] = useState(0);
@@ -331,11 +332,11 @@ const WhyYouShouldHireSection = () => {
             </p>
           </div>
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            {/* <Image
+            <Image
               src={PuzzleImage}
               alt="Puzzle illustration"
-              className="w-full max-w-md h-auto rotate-3"
-            /> */}
+              className="w-full max-w-xl h-auto rotate-3"
+            />
           </div>
         </div>
       </section>

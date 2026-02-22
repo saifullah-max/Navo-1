@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import clocKImage from "@/public/ivy-images/clock.png";
+import clocKImage from "@/public/time-hire.png";
 
 
 const IndependentVsSchoolSection = () => {
@@ -13,8 +13,8 @@ const IndependentVsSchoolSection = () => {
                             Independent College Counselors vs. High School Counselors
                         </h2>
                     </div>
-                    <div className="lg:col-span-3 flex justify-center lg:justify-end">
-                        {/* <Image src={clocKImage} alt="Clock-Image" width={1000} height={1000} /> */}
+                    <div className="lg:col-span-3 flex  lg:justify-start">
+                        <Image src={clocKImage} alt="Clock-Image" width={1000} height={1000} />
                     </div>
                 </div>
 

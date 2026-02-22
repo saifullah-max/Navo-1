@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 // import HeroImage from "@/public/ivy-images/hero.png";
 import underline from "@/public/underline.png";
+import HeroImage from "@/public/why-hire-hero.png";
 
 
 const HeroSection = () => {
@@ -64,15 +65,15 @@ const HeroSection = () => {
         <div className="w-full lg:w-1/2 bg-[#07306A] min-h-[400px] md:min-h-[600px] flex items-center">
           <div className="container mx-auto px-2 sm:px-6 lg:px-8 xl:px-12">
             <div className="flex justify-center lg:justify-end w-full">
-              <div className="relative w-full h-[400px] p-8 sm:h-[380px] md:h-[440px] lg:w-[520px] lg:h-[380px] lg:p-0 xl:w-[600px] xl:h-[440px] 2xl:w-[680px] 2xl:h-[500px]">
-                {/* <Image
+              <div className="relative w-full h-[400px] p-8 sm:h-[380px] md:h-[440px] lg:w-[520px] lg:h-[380px] lg:p-0 xl:w-[900px] xl:h-[640px] 2xl:w-[680px] 2xl:h-[500px]">
+                <Image
                   src={HeroImage}
                   alt="Why hire a college counselor"
                   fill
                   sizes="(max-width: 640px) 260px, (max-width: 768px) 360px, (max-width: 1024px) 460px, (max-width: 1280px) 600px, (max-width: 1536px) 680px, 500px"
                   className="object-cover"
                   priority
-                /> */}
+                />
               </div>
             </div>
           </div>

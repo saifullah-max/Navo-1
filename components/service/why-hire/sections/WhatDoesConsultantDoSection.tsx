@@ -1,5 +1,6 @@
 import Image from "next/image";
 import underline from "@/public/underline.png";
+import HeatImage from "@/public/college-admissions-hire.png";
 
 
 const WhatDoesConsultantDoSection = () => {
@@ -27,7 +28,7 @@ const WhatDoesConsultantDoSection = () => {
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-10">
         <div className="hidden lg:block lg:col-span-2" />
         <div className="order-1 lg:order-2 space-y-6 lg:col-span-3">
-          {/* <Image src={spaghettiImage} height={1000} width={1000} alt="Spaghetti-Image" /> */}
+          <Image src={HeatImage} height={1000} width={1000} alt="Spaghetti-Image" />
           <p className="text-sm lg:text-base leading-snug text-white">
             Good independent college counselors bring structure, strategy, and clarity to a process that often feels overwhelming.
             From the moment a student begins working with us, we help map out a thoughtful plan, choosing rigorous coursework,
