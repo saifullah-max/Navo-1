@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { TestimonialSlider } from "@/components/testimonial-slider";
-import { Mail, Phone, MapPin, Hash, Volume2, VolumeOff } from "lucide-react";
+import { Mail, Phone, MapPin, Hash } from "lucide-react";
 import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import NavoStellerSection from "@/components/NavoStellerSection";
 import React, { Suspense } from "react";
 const Swiper = React.lazy(() => import("@/components/swiper-section"));
+import { VideoHero } from "@/components/video-hero";
 import NavogateUniverse from "@/components/navogateUniverse";
 import WhatWeDo from "@/components/whatWeDo";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
@@ -30,12 +31,10 @@ const data = [
 
 export default function Component() {
   const [isAboveFooter, setIsAboveFooter] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
   const ctaRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
   const [ctaHeight, setCtaHeight] = useState(0);
 
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -158,48 +157,7 @@ export default function Component() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem]">
-        {/* Main Video */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted={isMuted}
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover z-10"
-          style={{ backgroundColor: 'transparent' }}
-          onCanPlayThrough={() => {
-            setVideoLoaded(true);
-          }}
-          onWaiting={() => {
-            // Handle buffering
-            console.log('Buffering...');
-          }}
-        >
-          <source src="/NavoVideo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Sound Toggle Button */}
-        <div className="absolute bottom-4 right-4 z-20">
-          <button
-            onClick={() => {
-              setIsMuted(!isMuted);
-              if (videoRef.current) {
-                videoRef.current.muted = !isMuted;
-              }
-            }}
-            className={`relative inline-flex h-[40px] w-[85px] items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isMuted ? "bg-[#03336d]" : "bg-transparent"}`}
-          >
-            <Volume2 className="absolute left-1 w-[20px] text-white ml-1" />
-            <VolumeOff className="absolute right-1 w-[20px] text-white mr-1" />
-            <span
-              className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform duration-200 ${isMuted ? "translate-x-12" : "translate-x-1"}`}
-            ></span>
-          </button>
-        </div>
-      </div>
+      <VideoHero onVideoLoaded={() => setVideoLoaded(true)} />
 
       {/* How We Work Section (Lazy Loaded, only after video loaded) */}
       {videoLoaded && (
