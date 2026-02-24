@@ -177,7 +177,7 @@ export default function Component() {
             console.log('Buffering...');
           }}
         >
-          <source src="/api/video" type="video/mp4" />
+          <source src="/NavoVideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
