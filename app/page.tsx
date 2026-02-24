@@ -169,7 +169,7 @@ export default function Component() {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover z-10"
           style={{ backgroundColor: 'transparent' }}
-          onCanPlay={() => {
+          onCanPlayThrough={() => {
             setVideoLoaded(true);
           }}
           onWaiting={() => {
@@ -204,7 +204,7 @@ export default function Component() {
       {/* How We Work Section (Lazy Loaded, only after video loaded) */}
       {videoLoaded && (
         <Suspense fallback={<div className="w-full text-center py-12 text-gray-400">Loading...</div>}>
-          <Swiper />
+          <Swiper deferImageLoading={!videoLoaded} />
         </Suspense>
       )}
 

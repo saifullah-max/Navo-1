@@ -83,7 +83,13 @@ Optimize waitlist chances with strategic positioning`,
   },
 ];
 
-export default function Swiper({ hideHeadings = false }: { hideHeadings?: boolean }) {
+export default function Swiper({
+  hideHeadings = false,
+  deferImageLoading = false,
+}: {
+  hideHeadings?: boolean;
+  deferImageLoading?: boolean;
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
@@ -200,13 +206,16 @@ export default function Swiper({ hideHeadings = false }: { hideHeadings?: boolea
     };
   }, [isDragging, startX, dragOffset, currentIndex]);
 
+  const canLoadImages = !deferImageLoading;
+
   // Preload next image for smoother transitions
   useEffect(() => {
+    if (!canLoadImages) return;
     if (currentIndex < swipeData.length - 1) {
       const nextImage = new window.Image();
       nextImage.src = swipeData[currentIndex + 1].image;
     }
-  }, [currentIndex]);
+  }, [canLoadImages, currentIndex]);
 
   const detailLines = swipeData[currentIndex].details
     .split("\n")
@@ -384,17 +393,21 @@ export default function Swiper({ hideHeadings = false }: { hideHeadings?: boolea
                     >
                       <div className="w-[300px] h-[400px] sm:w-[420px] sm:h-[500px] bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-white">
                         <div className="relative w-full h-full bg-gray-100">
-                          <Image
-                            src={item.image || "/placeholder.svg"}
-                            alt={item.title}
-                            fill
-                            className="object-cover"
-                            draggable={false}
-                            priority={index === 0}
-                            loading={index === 0 ? "eager" : "lazy"}
-                            quality={75}
-                            sizes="(max-width: 640px) 300px, 420px"
-                          />
+                          {canLoadImages ? (
+                            <Image
+                              src={item.image || "/placeholder.svg"}
+                              alt={item.title}
+                              fill
+                              className="object-cover"
+                              draggable={false}
+                              priority={index === 0}
+                              loading={index === 0 ? "eager" : "lazy"}
+                              quality={75}
+                              sizes="(max-width: 640px) 300px, 420px"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 bg-gray-200" />
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         </div>
                       </div>
