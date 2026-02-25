@@ -63,7 +63,7 @@ export default function WeWorkSection() {
             {/* Video Player (Always Visible) */}
             <div className="relative aspect-video m-0">
               <video
-                src="/how-we-work.mp4"
+                src="/hero/how-we-work.mp4"
                 controls
                 className="w-full h-full object-cover"
               ></video>
