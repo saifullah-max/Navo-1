@@ -17,22 +17,56 @@ export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
-      video.play().catch(() => {});
+    let hasShown = false;
+
+    const showVideoAndNotify = () => {
+      if (hasShown) return;
+      hasShown = true;
       setShowVideo(true);
       onVideoLoaded?.();
     };
 
+    const handleCanPlay = () => {
+      video.play().catch(() => {});
+      showVideoAndNotify();
+    };
+
+    const handlePlaying = () => {
+      showVideoAndNotify();
+    };
+
+    // Multiple event listeners for reliability on production
     video.addEventListener("canplay", handleCanPlay, { once: true });
-    return () => video.removeEventListener("canplay", handleCanPlay);
+    video.addEventListener("playing", handlePlaying, { once: true });
+    video.addEventListener("loadeddata", handleCanPlay, { once: true });
+
+    // Fallback: force show video after 5 seconds even if events don't fire
+    const fallbackTimer = setTimeout(() => {
+      if (!hasShown) {
+        console.log("Fallback: forcing video display");
+        video.play().catch(() => {});
+        showVideoAndNotify();
+      }
+    }, 5000);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("loadeddata", handleCanPlay);
+      clearTimeout(fallbackTimer);
+    };
   }, [onVideoLoaded]);
 
   return (
     <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem]">
       {/* First Frame Image - Shows immediately */}
       <div 
-        className="absolute inset-0 z-10"
-        style={{ opacity: showVideo ? 0 : 1, transition: "opacity 0.3s ease" }}
+        className="absolute inset-0 z-[5]"
+        style={{ 
+          opacity: showVideo ? 0 : 1, 
+          transition: "opacity 0.5s ease",
+          pointerEvents: showVideo ? "none" : "auto"
+        }}
       >
         <Image
           src="/NavoVideo-frame1.jpg"
@@ -52,8 +86,7 @@ export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
         muted={isMuted}
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-10"
-        style={{ opacity: showVideo ? 1 : 0, transition: "opacity 0.3s ease" }}
+        className="absolute inset-0 w-full h-full object-cover z-[10]"
       >
         <source 
           src="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com/NavoVideo.mp4" 
@@ -63,7 +96,7 @@ export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
       </video>
 
       {/* Sound Toggle Button */}
-      <div className="absolute bottom-4 right-4 z-20">
+      <div className="absolute bottom-4 right-4 z-[30]">
         <button
           onClick={() => {
             setIsMuted(!isMuted);
