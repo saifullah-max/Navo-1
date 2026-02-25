@@ -9,3 +9,6 @@ public/*.mp4
 .vercel
 *.log
 config.bat
+
+.env
+/scripts/upload-to-blob.mjs

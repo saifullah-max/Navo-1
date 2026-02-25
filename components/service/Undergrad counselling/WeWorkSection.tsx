@@ -55,14 +55,13 @@ export default function WeWorkSection() {
               </div>
             ) : (
               // Video Player
-              <div className="relative aspect-video">
-                <iframe
-                  src={`${videoUrl}?autoplay=1`}
-                  title="How We Work Video"
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+              <div className="relative aspect-video m-0">
+                <video
+                  src="/how-we-work.mp4"
+                  controls
+                  autoPlay
+                  className="w-full h-full object-cover"
+                ></video>
 
                 {/* Close Button */}
                 <button

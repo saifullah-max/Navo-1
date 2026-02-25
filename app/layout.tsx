@@ -56,6 +56,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com" />
+        <link rel="dns-prefetch" href="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com" />
+      </head>
       <body className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
         <Header />
         <Toaster richColors position="top-center" />

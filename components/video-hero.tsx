@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeOff } from "lucide-react";
+import Image from "next/image";
 
 interface VideoHeroProps {
   onVideoLoaded?: () => void;
@@ -10,22 +11,40 @@ interface VideoHeroProps {
 export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    // Trigger preload immediately
-    if (videoRef.current) {
-      videoRef.current.load();
-    }
-  }, []);
+    const video = videoRef.current;
+    if (!video) return;
 
-  const handleVideoReady = () => {
-    console.log("Video can play through");
-    onVideoLoaded?.();
-  };
+    const handleCanPlay = () => {
+      video.play().catch(() => {});
+      setShowVideo(true);
+      onVideoLoaded?.();
+    };
+
+    video.addEventListener("canplay", handleCanPlay, { once: true });
+    return () => video.removeEventListener("canplay", handleCanPlay);
+  }, [onVideoLoaded]);
 
   return (
     <div className="relative h-[30rem] sm:h-[30rem] md:h-[30rem] lg:h-[40rem]">
-      {/* Main Video */}
+      {/* First Frame Image - Shows immediately */}
+      <div 
+        className="absolute inset-0 z-10"
+        style={{ opacity: showVideo ? 0 : 1, transition: "opacity 0.3s ease" }}
+      >
+        <Image
+          src="/NavoVideo-frame1.jpg"
+          alt="Hero"
+          fill
+          priority
+          className="object-cover"
+          quality={90}
+        />
+      </div>
+
+      {/* Main Video - Fades in when ready */}
       <video
         ref={videoRef}
         autoPlay
@@ -33,15 +52,13 @@ export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
         muted={isMuted}
         playsInline
         preload="auto"
-        poster="/hero-poster.svg"
         className="absolute inset-0 w-full h-full object-cover z-10"
-        style={{ backgroundColor: "transparent" }}
-        onCanPlayThrough={handleVideoReady}
-        onLoadedMetadata={() => {
-          console.log("Video metadata loaded");
-        }}
+        style={{ opacity: showVideo ? 1 : 0, transition: "opacity 0.3s ease" }}
       >
-        <source src="/NavoVideo.mp4" type="video/mp4" />
+        <source 
+          src="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com/NavoVideo.mp4" 
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
 
