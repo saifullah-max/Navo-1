@@ -2,8 +2,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FaPlay, FaTimes } from "react-icons/fa";
+
 export default function WeWorkSection() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ";
 
   return (
@@ -25,6 +26,7 @@ export default function WeWorkSection() {
               />
             </span>
           </h1>
+
           <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mt-4">
             Your Roadmap to a Winning Application: The NAVO 6-Step Process
           </p>
@@ -33,8 +35,10 @@ export default function WeWorkSection() {
         {/* Video Container */}
         <div className="relative max-w-4xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-blue-900">
+
+            {/*
+            // Thumbnail with Play Button (Commented Out)
             {!isVideoPlaying ? (
-              // Thumbnail with Play Button
               <div className="relative aspect-video bg-gray-300">
                 <Image
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop"
@@ -54,24 +58,27 @@ export default function WeWorkSection() {
                 </div>
               </div>
             ) : (
-              // Video Player
-              <div className="relative aspect-video m-0">
-                <video
-                  src="/how-we-work.mp4"
-                  controls
-                  autoPlay
-                  className="w-full h-full object-cover"
-                ></video>
+            */}
 
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsVideoPlaying(false)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-10"
-                >
-                  <FaTimes className="text-white text-xl" />
-                </button>
-              </div>
-            )}
+            {/* Video Player (Always Visible) */}
+            <div className="relative aspect-video m-0">
+              <video
+                src="/how-we-work.mp4"
+                controls
+                className="w-full h-full object-cover"
+              ></video>
+
+              {/* Close Button (Optional) */}
+              <button
+                onClick={() => setIsVideoPlaying(false)}
+                className="absolute top-4 right-4 w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-10"
+              >
+                <FaTimes className="text-white text-xl" />
+              </button>
+            </div>
+
+            {/* )} */}
+
           </div>
         </div>
       </div>
