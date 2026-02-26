@@ -32,7 +32,7 @@ const FounderSection: React.FC<FounderSectionProps> = ({
                             alt={imageAlt}
                             fill
                             style={{ objectFit: "cover" }}
-                            className="object-cover"
+                            className="object-contain"
                             sizes="260px"
                             priority
                         />
