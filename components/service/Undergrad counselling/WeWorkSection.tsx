@@ -61,20 +61,15 @@ export default function WeWorkSection() {
             */}
 
             {/* Video Player (Always Visible) */}
+
             <div className="relative aspect-video m-0">
               <video
                 src="/hero/how-we-work.mp4"
                 controls
+                poster="/how-we-work-video-frame1.jpg"
                 className="w-full h-full object-cover"
+                style={{ background: "black" }}
               ></video>
-
-              {/* Close Button (Optional) */}
-              <button
-                onClick={() => setIsVideoPlaying(false)}
-                className="absolute top-4 right-4 w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-10"
-              >
-                <FaTimes className="text-white text-xl" />
-              </button>
             </div>
 
             {/* )} */}
