@@ -156,11 +156,13 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
+    // 4- ghulam junaid case
     {
-        slug: "Lorem3",
-        title: "Lorem's Case",
+        slug: "ghulam-junaid",
+        title: "Ghulam Junaid",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "ghulam-junaid.jpeg",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non erat ac ligula suscipit fermentum.",
 
@@ -198,12 +200,13 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
-    // 4 — ARIA
+    // 5- Shaharyar case
     {
-        slug: "Lorem4",
-        title: "Lorem’s Case",
+        slug: "shaharyar-khan",
+        title: "Shaharyar Khan",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "shaharyar-khan.jpeg",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed justo eu erat fermentum dictum.",
 
@@ -241,12 +244,13 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
-    // 5 — DYLAN
+    // 6 — ahad
     {
-        slug: "Lorem5",
-        title: "Lorem's Case",
+        slug: "ahad-yaqoob",
+        title: "Ahad Yaqoob",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "ahad-yaqoob.jpeg",
         intro:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac felis at enim tincidunt malesuada.",
 
@@ -284,12 +288,13 @@ export const caseStudies: CaseStudy[] = [
         ],
     },
 
-    // 6 — JORDAN
+    // 7 — Rayan Polani
     {
-        slug: "Lorem6",
-        title: "Lorem’s Case",
+        slug: "rayan-polani",
+        title: "Rayan Polani",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "rayan-polani.jpeg",
         intro:
             "Jordan excelled in athletics but needed to demonstrate academic depth and intellectual direction.",
 
@@ -326,12 +331,14 @@ export const caseStudies: CaseStudy[] = [
             },
         ],
     },
-    // 6 — JORDAN
+
+    // 8 — Rayan Rizwan
     {
-        slug: "Lorem7",
-        title: "Lorem’s Case",
+        slug: "rayan-rizwan",
+        title: "Rayan Rizwan",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "rayan-rizwan.jpeg",
         intro:
             "Jordan excelled in athletics but needed to demonstrate academic depth and intellectual direction.",
 
@@ -368,12 +375,14 @@ export const caseStudies: CaseStudy[] = [
             },
         ],
     },
-    // 6 — JORDAN
+
+    // 9 — Mustafa Khan
     {
-        slug: "Lorem8",
-        title: "Lorem’s Case",
+        slug: "mustafa-khan",
+        title: "Mustafa Khan",
         subtitle: "READ FULL CASE STUDY",
         image: "/dummy.png",
+        student_image: "mustafa-Khan.jpeg",
         intro:
             "Jordan excelled in athletics but needed to demonstrate academic depth and intellectual direction.",
 
