@@ -9,7 +9,7 @@ const page = () => {
         <>
             <Hero />
             <FounderSection
-                name="RIZWAN AHMED"
+                name="RIZWAN Javed"
                 title="Co-Founder"
                 subtitle="Former Stanford Admissions Officer"
                 imageSrc="/rizwan-founder.png"
@@ -24,7 +24,7 @@ const page = () => {
             <FounderSection
                 name="SADAF REHMAN"
                 title="Co-Founder"
-                subtitle="Former Yale Admissions Officer"
+                // subtitle="Former Yale Admissions Officer"
                 imageSrc="/sadaf-founder.png"
                 imageAlt="LOREM IPSUM"
                 paragraphs={[

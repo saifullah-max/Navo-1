@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 import './globals.css'
 import { Poppins, Public_Sans, Roboto, Dancing_Script, Caveat } from "next/font/google";
@@ -5,6 +6,7 @@ import Header from '@/components/header';
 import AboveFooter from '@/components/AboveFooter';
 import Footer from '@/components/footer';
 import { Toaster } from 'sonner';
+import Script from 'next/script';
 
 // Poppins setup
 const poppins = Poppins({
@@ -59,6 +61,19 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com" />
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18073229118"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18073229118');
+          `}
+        </Script>
       </head>
       <body className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
         <Header />

@@ -4,7 +4,7 @@ import Image from "next/image";
 interface FounderSectionProps {
     name: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     paragraphs: string[];
     imageSrc: string;
     imageAlt: string;
@@ -55,9 +55,12 @@ const FounderSection: React.FC<FounderSectionProps> = ({
                         {title}
                     </div>
 
-                    <div className="text-base sm:text-lg md:text-xl xl:text-2xl font-bold mb-5 sm:mb-6">
-                        {subtitle}
-                    </div>
+                    {subtitle && (
+
+                        <div className="text-base sm:text-lg md:text-xl xl:text-2xl font-bold mb-5 sm:mb-6">
+                            {subtitle}
+                        </div>
+                    )}
 
                     {paragraphs.map((p, i) => (
                         <p
