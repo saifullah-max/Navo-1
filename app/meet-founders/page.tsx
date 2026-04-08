@@ -9,7 +9,7 @@ const page = () => {
         <>
             <Hero />
             <FounderSection
-                name="RIZWAN Javed"
+                name="RIZWAN JAVED"
                 title="Co-Founder"
                 subtitle="Former Stanford Admissions Officer"
                 imageSrc="/rizwan-founder.png"
