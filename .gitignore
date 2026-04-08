@@ -11,3 +11,4 @@ public/*.mp4
 config.bat
 
 /scripts/upload-to-blob.mjs
+.env

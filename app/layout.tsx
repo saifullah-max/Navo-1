@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next'
-import './globals.css'
+import '../styles/globals.css'
 import { Poppins, Public_Sans, Roboto, Dancing_Script, Caveat } from "next/font/google";
 import Header from '@/components/header';
 import AboveFooter from '@/components/AboveFooter';
