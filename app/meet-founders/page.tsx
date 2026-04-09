@@ -11,7 +11,7 @@ const page = () => {
             <FounderSection
                 name="RIZWAN JAVED"
                 title="Co-Founder"
-                subtitle="Former Stanford Admissions Officer"
+                // subtitle="Former Stanford Admissions Officer"
                 imageSrc="/rizwan-founder.png"
                 imageAlt="LOREM IPSUM"
                 paragraphs={[
