@@ -62,7 +62,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                         width={830}
                         height={500}
                         className="
-    rounded-lg object-cover mx-auto
+    rounded-lg object-contain mx-auto
     w-full h-auto
     sm:max-w-[720px]
     md:max-w-[780px]
