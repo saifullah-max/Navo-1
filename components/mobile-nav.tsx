@@ -60,7 +60,7 @@ export function MobileNav({
               {aboutOpen && (
                 <div className="mt-2 bg-white shadow-lg rounded-lg py-2 z-50">
                   <Link
-                    href="/meet-the-founders"
+                    href="/meet-founders"
                     className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 uppercase"
                     onClick={() => setOpen(false)}
                   >
