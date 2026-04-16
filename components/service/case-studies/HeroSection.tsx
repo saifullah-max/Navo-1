@@ -14,9 +14,7 @@ const HeroSection = () => {
                     We will get you there!
                 </p>
 
-                {/* Responsive images for different breakpoints */}
                 <div className="w-full flex-1 flex items-center justify-center">
-                    {/* Mobile */}
                     <div className="block sm:hidden w-full">
                         <Image
                             src="/case-study-mobile.png"
@@ -26,14 +24,10 @@ const HeroSection = () => {
                             className="w-full h-auto object-contain"
                             priority
                             sizes="100vw"
-                            quality={10}
-                            placeholder="blur"
-                            blurDataURL="/case-study-mobile.png"
-                            loading="eager"
-                            decoding="async"
+                            quality={60}
+                            placeholder="empty"
                         />
                     </div>
-
                 </div>
             </div>
 
@@ -53,14 +47,10 @@ const HeroSection = () => {
                         alt="Case Study Hero"
                         width={1400}
                         height={800}
-                        priority
                         className="w-full h-auto object-contain"
                         sizes="(max-width: 1024px) 100vw, 1400px"
-                        quality={10}
-                        placeholder="blur"
-                        blurDataURL="/case-study-laptop.png"
-                        loading="eager"
-                        decoding="async"
+                        quality={60}
+                        placeholder="empty"
                     />
                 </div>
             </div>
@@ -81,14 +71,10 @@ const HeroSection = () => {
                         alt="Case Study Hero"
                         width={1800}
                         height={1000}
-                        priority
                         className="w-full h-auto object-contain"
                         sizes="(max-width: 1536px) 100vw, 1800px"
-                        quality={10}
-                        placeholder="blur"
-                        blurDataURL="/case-study-large.png"
-                        loading="eager"
-                        decoding="async"
+                        quality={60}
+                        placeholder="empty"
                     />
                 </div>
             </div>
@@ -109,14 +95,10 @@ const HeroSection = () => {
                         alt="Case Study Hero 2XL"
                         width={2200}
                         height={1200}
-                        priority
                         className="w-full h-auto object-contain"
                         sizes="(min-width: 1536px) 100vw, 2200px"
-                        quality={10}
-                        placeholder="blur"
-                        blurDataURL="/case-study-laptop.png"
-                        loading="eager"
-                        decoding="async"
+                        quality={60}
+                        placeholder="empty"
                     />
                 </div>
             </div>
