@@ -531,7 +531,7 @@ Navo helped Rayan connect his skills with purpose, aligning his projects, mentor
         title: "Mustafa Khan",
         subtitle: "READ FULL CASE STUDY",
         image: "/georgia-university.PNG",
-        student_image: "mustafa-Khan.jpeg",
+        student_image: "mustafa-khaan.jpeg",
         intro:
             "meaningful application.",
         sections: [
