@@ -115,9 +115,9 @@ The service also includes rapid feedback rounds on essays and personal statement
             </span>
             {" "} FOR TOP GLOBAL PROGRAMS
           </h1>
-          <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-4 mb-6 text-center max-w-xl mx-auto">
+          {/* <p className="font-['Poppins'] text-md text-gray-800 leading-snug mt-4 mb-6 text-center max-w-xl mx-auto">
             For families who first connect with us when their children are in grade 7 or 8, the path forward is as follows:
-          </p>
+          </p> */}
         </div>
 
         {/* Steps */}
