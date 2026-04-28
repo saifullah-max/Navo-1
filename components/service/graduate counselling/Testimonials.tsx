@@ -14,22 +14,22 @@ const testimonials: TestimonialVideo[] = [
     {
         id: 1,
         title: "Graduate testimonial 1",
-        video: "/grad-testimonial-1.mp4",
+        video: "https://ne8t2xetsvpqvg1n.public.blob.vercel-storage.com/grad-testimonial-1.mp4",
     },
     {
         id: 2,
         title: "Graduate testimonial 2",
-        video: "/grad-testimonial-2.mp4",
+        video: "https://ne8t2xetsvpqvg1n.public.blob.vercel-storage.com/grad-testimonial-2.mp4",
     },
     {
         id: 3,
         title: "Graduate testimonial 3",
-        video: "/grad-testimonial-3.mp4",
+        video: "https://ne8t2xetsvpqvg1n.public.blob.vercel-storage.com/grad-testimonial-3.mp4",
     },
     {
         id: 4,
         title: "Graduate testimonial 4",
-        video: "/grad-testimonial-4.mp4",
+        video: "https://ne8t2xetsvpqvg1n.public.blob.vercel-storage.com/grad-testimonial-4.mp4",
     },
 ];
 
