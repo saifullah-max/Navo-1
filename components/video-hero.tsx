@@ -89,7 +89,7 @@ export function VideoHero({ onVideoLoaded }: VideoHeroProps) {
         className="absolute inset-0 w-full h-full object-cover z-[10]"
       >
         <source 
-          src="https://aou84dm7dwdg2r06.public.blob.vercel-storage.com/NavoVideo.mp4" 
+          src="https://ne8t2xetsvpqvg1n.public.blob.vercel-storage.com/NavoVideo.mp4" 
           type="video/mp4"
         />
         Your browser does not support the video tag.

@@ -5,6 +5,7 @@ import { Poppins, Public_Sans, Roboto, Dancing_Script, Caveat } from "next/font/
 import Header from '@/components/header';
 import AboveFooter from '@/components/AboveFooter';
 import Footer from '@/components/footer';
+import DevCacheCleanup from '@/components/dev-cache-cleanup';
 import { Toaster } from 'sonner';
 import Script from 'next/script';
 
@@ -76,6 +77,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${poppins.variable} ${publicSans.variable} ${roboto.variable} ${dancingScript.variable} ${caveat.variable}`}>
+        <DevCacheCleanup />
         <Header />
         <Toaster richColors position="top-center" />
         {children}

@@ -1,41 +1,130 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import underline from "@/public/underline.png";
+
+type TestimonialVideo = {
+    id: number;
+    title: string;
+    video: string;
+};
+
+const testimonials: TestimonialVideo[] = [
+    {
+        id: 1,
+        title: "Graduate testimonial 1",
+        video: "/grad-testimonial-1.mp4",
+    },
+    {
+        id: 2,
+        title: "Graduate testimonial 2",
+        video: "/grad-testimonial-2.mp4",
+    },
+    {
+        id: 3,
+        title: "Graduate testimonial 3",
+        video: "/grad-testimonial-3.mp4",
+    },
+    {
+        id: 4,
+        title: "Graduate testimonial 4",
+        video: "/grad-testimonial-4.mp4",
+    },
+];
+
+function seekToFirstFrame(videoElement: HTMLVideoElement) {
+    try {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+    } catch {
+        // Ignore browsers that have not finished loading metadata yet.
+    }
+}
+
+function PreviewCard({
+    item,
+    compact = false,
+    onPlay,
+}: {
+    item: TestimonialVideo;
+    compact?: boolean;
+    onPlay: (item: TestimonialVideo) => void;
+}) {
+    return (
+        <div
+            className={
+                compact
+                    ? "relative bg-gray-200 rounded-lg overflow-hidden h-36 sm:h-44"
+                    : "relative bg-gray-200 rounded-xl overflow-hidden h-80 sm:h-[260px] md:h-[290px] lg:h-[350px]"
+            }
+        >
+            <video
+                src={item.video}
+                className="w-full h-full object-cover"
+                preload="auto"
+                muted
+                playsInline
+                onLoadedMetadata={(event) => seekToFirstFrame(event.currentTarget)}
+                onLoadedData={(event) => seekToFirstFrame(event.currentTarget)}
+                onCanPlay={(event) => seekToFirstFrame(event.currentTarget)}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/0 to-black/10" />
+            <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                    type="button"
+                    onClick={() => onPlay(item)}
+                    className={
+                        compact
+                            ? "bg-white rounded-full w-10 h-10 flex items-center justify-center shadow hover:scale-110 transition-transform"
+                            : "bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                    }
+                    aria-label={`Play ${item.title}`}
+                >
+                    <svg
+                        className={compact ? "w-4 h-4 text-blue-600 ml-0.5" : "w-5 h-5 sm:w-6 sm:h-6 text-blue-600 ml-1"}
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    );
+}
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [activeVideo, setActiveVideo] = useState<TestimonialVideo | null>(null);
 
-    const testimonials = [
-        {
-            id: 1,
-            name: "John Doe",
-            image:
-                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-            video: true,
-            rating: 5,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
-        },
-        {
-            id: 2,
-            name: "Jane Smith",
-            image:
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-            video: true,
-            rating: 5,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
-        },
-        {
-            id: 3,
-            name: "Mike Johnson",
-            image:
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-            video: true,
-            rating: 5,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
-        },
-    ];
+    useEffect(() => {
+        if (!activeVideo) {
+            return;
+        }
+
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, [activeVideo]);
+
+    useEffect(() => {
+        if (!activeVideo) {
+            return;
+        }
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setActiveVideo(null);
+            }
+        };
+
+        window.addEventListener("keydown", handleEscape);
+        return () => window.removeEventListener("keydown", handleEscape);
+    }, [activeVideo]);
 
     const nextTestimonial = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -50,7 +139,6 @@ const Testimonials = () => {
 
     return (
         <section className="w-full pt-8 pb-12 flex flex-col items-center bg-white">
-            {/* Heading */}
             <div className="text-center mb-6">
                 <div className="relative inline-block">
                     <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-1 tracking-tight uppercase">
@@ -68,19 +156,12 @@ const Testimonials = () => {
                                 />
                             </span>
                         </span>
-                        <span>{" "} Stories</span>
+                        <span>{" "}Stories</span>
                     </h1>
                 </div>
-                {/* <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center">
-                    If you're interested in Navo's college counseling, fill
-                    out our complimentary consultation form and we'll be in touch.
-                </p> */}
             </div>
 
-
-            {/* Testimonials Section */}
             <div className="w-full h-[700px] relative overflow-hidden">
-                {/* Background */}
                 <div
                     className="absolute inset-0"
                     style={{
@@ -99,7 +180,6 @@ const Testimonials = () => {
                             </clipPath>
                         </defs>
                         {(() => {
-                            const width = 600;
                             const height = 600;
                             const lines = [];
 
@@ -108,9 +188,9 @@ const Testimonials = () => {
                             const startX = 30;
 
                             for (let i = 0; i < lineCount; i++) {
-                                let topX, topY;
+                                let topX: number;
+                                let topY: number;
 
-                                // ✅ Lines 1–3 unchanged
                                 if (i === 0) {
                                     topX = 0;
                                     topY = 80;
@@ -120,11 +200,9 @@ const Testimonials = () => {
                                 } else if (i === 2) {
                                     topX = 5;
                                     topY = 0;
-                                }
-                                // ✅ 4–10: smoother + closer to 3rd
-                                else {
-                                    const compression = 0.55; // tighter than before (closer lines)
-                                    const reductionFactor = 0.3; // keeps slight decrease across width
+                                } else {
+                                    const compression = 0.55;
+                                    const reductionFactor = 0.3;
                                     const dynamicSpacing =
                                         baseSpacing * compression * (1 - reductionFactor * (i / lineCount));
                                     topX = startX + (i - 3.3) * dynamicSpacing;
@@ -151,100 +229,27 @@ const Testimonials = () => {
 
                             return lines;
                         })()}
-
-
                     </svg>
-
                 </div>
 
-                {/* Cards */}
                 <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16">
                     <div className="relative max-w-4xl w-full flex justify-center">
-                        {/* Main Card */}
-                        <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300
-                h-auto sm:h-[400px] md:h-[330px] lg:h-[456px]">
-                            <div className="relative bg-gray-200 rounded-xl overflow-hidden mb-4 sm:mb-6 h-72 sm:h-[200px] md:h-[220px] lg:h-[270px]">
-                                <Image
-                                    src={current.image}
-                                    alt={current.name}
-                                    fill
-                                    className="w-full h-full object-cover"
-                                    sizes="(max-width: 768px) 100vw, 400px"
-                                    priority
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <button className="bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                                        <svg
-                                            className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 ml-1"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
+                        <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300 h-auto sm:h-[340px] md:h-[330px] lg:h-[456px]">
+                            <PreviewCard item={current} onPlay={setActiveVideo} />
 
-                            <div className="flex gap-1 mb-3 sm:mb-4">
-                                {[...Array(current.rating)].map((_, i) => (
-                                    <svg
-                                        key={i}
-                                        className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                    </svg>
-                                ))}
-                            </div>
-
-                            <p className="text-gray-700 text-sm sm:text-lg leading-relaxed">
-                                "{current.text}"
-                            </p>
+                            {/* <div className="mt-4 sm:mt-6 flex items-center justify-between gap-3">
+                                <p className="text-blue-900 font-semibold text-sm sm:text-base">{current.title}</p>
+                                <span className="text-gray-500 text-xs uppercase tracking-[0.18em]">Video testimonial</span>
+                            </div> */}
                         </div>
 
-
-                        {/* Small Preview Card (hide on sm) */}
-                        <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 
-                bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-300">
-                            <div className="relative bg-gray-200 rounded-lg overflow-hidden mb-3 h-36 sm:h-44">
-                                <Image
-                                    src={next.image}
-                                    alt={next.name}
-                                    fill
-                                    className="w-full h-full object-cover"
-                                    sizes="(max-width: 768px) 100vw, 320px"
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow">
-                                        <svg
-                                            className="w-4 h-4 text-blue-600 ml-0.5"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex gap-0.5 mb-2">
-                                {[...Array(2)].map((_, i) => (
-                                    <svg
-                                        key={i}
-                                        className="w-4 h-4 text-yellow-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                    </svg>
-                                ))}
-                            </div>
-                            <p className="text-gray-600 text-xs line-clamp-2">{next.text}</p>
+                        <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-300">
+                            <PreviewCard item={next} compact onPlay={setActiveVideo} />
+                            <p className="text-blue-900 text-sm font-medium mt-3">{next.title}</p>
                         </div>
                     </div>
                 </div>
 
-                {/* Navigation */}
                 <div className="absolute bottom-0 md:bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20">
                     <button
                         onClick={prevTestimonial}
@@ -259,6 +264,35 @@ const Testimonials = () => {
                         <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
                     </button>
                 </div>
+
+                {activeVideo && (
+                    <div
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
+                        onClick={() => setActiveVideo(null)}
+                    >
+                        <div
+                            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
+                            onClick={(event) => event.stopPropagation()}
+                        >
+                            <button
+                                type="button"
+                                onClick={() => setActiveVideo(null)}
+                                className="absolute right-3 top-3 z-10 rounded-full bg-black/60 px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-black/80"
+                                aria-label="Close video"
+                            >
+                                Close
+                            </button>
+                            <video
+                                key={activeVideo.video}
+                                src={activeVideo.video}
+                                controls
+                                autoPlay
+                                playsInline
+                                className="h-auto w-full max-h-[80vh] bg-black"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
         </section>
     );
