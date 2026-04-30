@@ -111,20 +111,26 @@ const Testimonials = () => {
         };
     }, [activeVideo]);
 
-    useEffect(() => {
-        if (!activeVideo) {
-            return;
+useEffect(() => {
+    if (!activeVideo) return;
+
+    const handleKey = (event: KeyboardEvent) => {
+        const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
+
+        if (event.key === "Escape") {
+            setActiveVideo(null);
+        } else if (event.key === "ArrowRight") {
+            const nextIdx = (currentIdx + 1) % testimonials.length;
+            setActiveVideo(testimonials[nextIdx]);
+        } else if (event.key === "ArrowLeft") {
+            const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+            setActiveVideo(testimonials[prevIdx]);
         }
+    };
 
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                setActiveVideo(null);
-            }
-        };
-
-        window.addEventListener("keydown", handleEscape);
-        return () => window.removeEventListener("keydown", handleEscape);
-    }, [activeVideo]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+}, [activeVideo]);
 
     const nextTestimonial = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -265,34 +271,61 @@ const Testimonials = () => {
                     </button>
                 </div>
 
-                {activeVideo && (
-                    <div
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
-                        onClick={() => setActiveVideo(null)}
-                    >
-                        <div
-                            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
-                            onClick={(event) => event.stopPropagation()}
-                        >
-                            <button
-                                type="button"
-                                onClick={() => setActiveVideo(null)}
-                                className="absolute right-3 top-3 z-10 rounded-full bg-black/60 px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-black/80"
-                                aria-label="Close video"
-                            >
-                                Close
-                            </button>
-                            <video
-                                key={activeVideo.video}
-                                src={activeVideo.video}
-                                controls
-                                autoPlay
-                                playsInline
-                                className="h-auto w-full max-h-[80vh] bg-black"
-                            />
-                        </div>
-                    </div>
-                )}
+{activeVideo && (
+    <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
+        onClick={() => setActiveVideo(null)}
+    >
+        <div
+            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+        >
+            {/* Close Button */}
+            <button
+                type="button"
+                onClick={() => setActiveVideo(null)}
+                className="absolute right-3 top-3 z-20 rounded-full bg-black/60 px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-black/80"
+                aria-label="Close video"
+            >
+                Close
+            </button>
+
+            {/* LEFT ARROW */}
+            <button
+                onClick={() => {
+                    const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
+                    const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+                    setActiveVideo(testimonials[prevIdx]);
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full"
+            >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* RIGHT ARROW */}
+            <button
+                onClick={() => {
+                    const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
+                    const nextIdx = (currentIdx + 1) % testimonials.length;
+                    setActiveVideo(testimonials[nextIdx]);
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full"
+            >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* VIDEO */}
+            <video
+                key={activeVideo.video}
+                src={activeVideo.video}
+                controls
+                autoPlay
+                playsInline
+                className="h-auto w-full max-h-[80vh] bg-black"
+            />
+        </div>
+    </div>
+)}
             </div>
         </section>
     );
