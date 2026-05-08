@@ -1,7 +1,7 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import underline from "@/public/underline.png";
 
 type TestimonialVideo = {
@@ -97,6 +97,9 @@ function PreviewCard({
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeVideo, setActiveVideo] = useState<TestimonialVideo | null>(null);
+    const pointerStartX = useRef(0);
+    const pointerStartY = useRef(0);
+    const activePointerId = useRef<number | null>(null);
 
     useEffect(() => {
         if (!activeVideo) {
@@ -111,26 +114,28 @@ const Testimonials = () => {
         };
     }, [activeVideo]);
 
-useEffect(() => {
-    if (!activeVideo) return;
-
-    const handleKey = (event: KeyboardEvent) => {
-        const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
-
-        if (event.key === "Escape") {
-            setActiveVideo(null);
-        } else if (event.key === "ArrowRight") {
-            const nextIdx = (currentIdx + 1) % testimonials.length;
-            setActiveVideo(testimonials[nextIdx]);
-        } else if (event.key === "ArrowLeft") {
-            const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
-            setActiveVideo(testimonials[prevIdx]);
+    useEffect(() => {
+        if (!activeVideo) {
+            return;
         }
-    };
 
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-}, [activeVideo]);
+        const handleKey = (event: KeyboardEvent) => {
+            const currentIdx = testimonials.findIndex((item) => item.id === activeVideo.id);
+
+            if (event.key === "Escape") {
+                setActiveVideo(null);
+            } else if (event.key === "ArrowRight") {
+                const nextIdx = (currentIdx + 1) % testimonials.length;
+                setActiveVideo(testimonials[nextIdx]);
+            } else if (event.key === "ArrowLeft") {
+                const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+                setActiveVideo(testimonials[prevIdx]);
+            }
+        };
+
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    }, [activeVideo]);
 
     const nextTestimonial = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -138,6 +143,63 @@ useEffect(() => {
 
     const prevTestimonial = () => {
         setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    };
+
+    const goToNextVideo = () => {
+        if (!activeVideo) {
+            return;
+        }
+
+        const currentIdx = testimonials.findIndex((item) => item.id === activeVideo.id);
+        const nextIdx = (currentIdx + 1) % testimonials.length;
+        setActiveVideo(testimonials[nextIdx]);
+    };
+
+    const goToPrevVideo = () => {
+        if (!activeVideo) {
+            return;
+        }
+
+        const currentIdx = testimonials.findIndex((item) => item.id === activeVideo.id);
+        const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+        setActiveVideo(testimonials[prevIdx]);
+    };
+
+    const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+        if (event.pointerType === "mouse" && event.button !== 0) {
+            return;
+        }
+
+        activePointerId.current = event.pointerId;
+        pointerStartX.current = event.clientX;
+        pointerStartY.current = event.clientY;
+        event.currentTarget.setPointerCapture(event.pointerId);
+    };
+
+    const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+        if (activePointerId.current !== event.pointerId) {
+            return;
+        }
+
+        activePointerId.current = null;
+        const deltaX = event.clientX - pointerStartX.current;
+        const deltaY = event.clientY - pointerStartY.current;
+
+        if (Math.abs(deltaX) < 60 || Math.abs(deltaX) < Math.abs(deltaY)) {
+            return;
+        }
+
+        if (deltaX < 0) {
+            goToNextVideo();
+        } else {
+            goToPrevVideo();
+        }
+    };
+
+    const handlePointerCancel = (event: React.PointerEvent<HTMLDivElement>) => {
+        if (activePointerId.current === event.pointerId) {
+            activePointerId.current = null;
+        }
     };
 
     const current = testimonials[currentIndex];
@@ -279,6 +341,10 @@ useEffect(() => {
         <div
             className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
             onClick={(event) => event.stopPropagation()}
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerCancel}
+            style={{ touchAction: "pan-y" }}
         >
             {/* Close Button */}
             <button
@@ -288,30 +354,6 @@ useEffect(() => {
                 aria-label="Close video"
             >
                 Close
-            </button>
-
-            {/* LEFT ARROW */}
-            <button
-                onClick={() => {
-                    const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
-                    const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
-                    setActiveVideo(testimonials[prevIdx]);
-                }}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full"
-            >
-                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-
-            {/* RIGHT ARROW */}
-            <button
-                onClick={() => {
-                    const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
-                    const nextIdx = (currentIdx + 1) % testimonials.length;
-                    setActiveVideo(testimonials[nextIdx]);
-                }}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full"
-            >
-                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             {/* VIDEO */}
