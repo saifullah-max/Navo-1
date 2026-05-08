@@ -114,24 +114,22 @@ const Testimonials = () => {
         };
     }, [activeVideo]);
 
-    useEffect(() => {
-        if (!activeVideo) {
-            return;
+useEffect(() => {
+    if (!activeVideo) return;
+
+    const handleKey = (event: KeyboardEvent) => {
+        const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
+
+        if (event.key === "Escape") {
+            setActiveVideo(null);
+        } else if (event.key === "ArrowRight") {
+            const nextIdx = (currentIdx + 1) % testimonials.length;
+            setActiveVideo(testimonials[nextIdx]);
+        } else if (event.key === "ArrowLeft") {
+            const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+            setActiveVideo(testimonials[prevIdx]);
         }
-
-        const handleKey = (event: KeyboardEvent) => {
-            const currentIdx = testimonials.findIndex((item) => item.id === activeVideo.id);
-
-            if (event.key === "Escape") {
-                setActiveVideo(null);
-            } else if (event.key === "ArrowRight") {
-                const nextIdx = (currentIdx + 1) % testimonials.length;
-                setActiveVideo(testimonials[nextIdx]);
-            } else if (event.key === "ArrowLeft") {
-                const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
-                setActiveVideo(testimonials[prevIdx]);
-            }
-        };
+    };
 
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
