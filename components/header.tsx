@@ -113,7 +113,7 @@ export default function Header() {
             </div>
 
             <Link
-              href="#"
+              href="/explore"
               className={
                 isHomePage
                   ? "text-white hover:text-gray-400 transition-colors uppercase"

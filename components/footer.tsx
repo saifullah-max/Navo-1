@@ -3,8 +3,8 @@
 
 import { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { SiMeta } from "react-icons/si";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Footer() {
 
@@ -33,6 +33,7 @@ export default function Footer() {
       })
       .catch(() => setStatus("❌ Failed to subscribe. Try again."));
   };
+  const currentYear = new Date().getFullYear();
   return (
     <footer
       id="footer"
@@ -49,12 +50,12 @@ export default function Footer() {
 
             <div className="space-y-3">
               <p className="text-white text-base leading-relaxed">
-                Stay up to date on the latest features and releases by joining
-                our newsletter.
+                Get practical admissions tips, scholarship updates, and strategy
+                notes from our counseling team.
               </p>
               <p className="text-white/80 text-sm leading-relaxed">
-                By subscribing, you agree to our Privacy Policy and consent to
-                receive updates from our company.
+                Subscribe to receive useful guidance for undergraduate and
+                graduate applicants, not generic product updates.
               </p>
             </div>
 
@@ -74,26 +75,26 @@ export default function Footer() {
                   Quick Links
                 </h3>
                 <nav className="space-y-3">
-                  <a
-                    href="#"
+                  <Link
+                    href="/meet-founders"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     ABOUT US
-                  </a>
+                  </Link>
                   <a
-                    href="#"
+                    href="/#what-we-do"
                     className="block border-b w-fit  text-white/80 hover:text-white transition-colors text-sm"
                   >
                     SERVICES
                   </a>
-                  <a
-                    href="#"
+                  <Link
+                    href="/explore"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     EXPLORE
-                  </a>
+                  </Link>
                   <a
-                    href="#"
+                    href="/connect"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     MYNAVOPORTAL
@@ -107,25 +108,25 @@ export default function Footer() {
                 </h3>
                 <nav className="space-y-3">
                   <a
-                    href="#"
+                    href="/case-studies"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     PARTNERS
                   </a>
                   <a
-                    href="#"
+                    href="/#testimonials"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     TESTIMONIALS
                   </a>
                   <a
-                    href="#"
+                    href="/terms-and-conditions"
                     className="block border-b w-fit text-white/80 hover:text-white transition-colors text-sm"
                   >
                     TERMS & CONDITIONS
                   </a>
                   <a
-                    href="#"
+                    href="/privacy-policy"
                     className="block border-b w-fit  text-white/80 hover:text-white transition-colors text-sm"
                   >
                     PRIVACY POLICY
@@ -139,7 +140,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 lg:gap-16">
           <p className="text-white/80 text-sm flex items-center gap-2">
-            ©2024 All rights reserved
+            ©{currentYear} All rights reserved
           </p>
 
           {/* Social Icons */}
@@ -161,12 +162,12 @@ export default function Footer() {
               <FaInstagram size={20} />
             </a>
             <a
-              href="https://twitter.com/"
+              href="https://x.com/navo.ed"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/80 hover:text-sky-400 transition-colors"
             >
-              <SiMeta size={20} />
+              <FaTwitter size={20} />
             </a>
             <a
               href="https://www.tiktok.com/@navo1482?_t=ZS-8zxyInM47Hj&_r=1"

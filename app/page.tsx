@@ -66,40 +66,47 @@ export default function Component() {
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const startAnimation = () => {
+      if (hasAnimated) {
+        return;
+      }
+
+      setHasAnimated(true);
+
+      data.forEach((item, index) => {
+        const increment = Math.ceil(item.percentage / 100);
+        const interval = setInterval(() => {
+          setCounts((previous) => {
+            const nextCounts = [...previous];
+            if (nextCounts[index] < item.percentage) {
+              nextCounts[index] = Math.min(nextCounts[index] + increment, item.percentage);
+            }
+            return nextCounts;
+          });
+        }, 30);
+
+        window.setTimeout(() => clearInterval(interval), 5000);
+      });
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-
-          data.forEach((item, index) => {
-            const increment = Math.ceil(item.percentage / 100); // slower
-            const interval = setInterval(() => {
-              setCounts((prev) => {
-                const newCounts = [...prev];
-                if (newCounts[index] < item.percentage) {
-                  newCounts[index] = Math.min(
-                    newCounts[index] + increment,
-                    item.percentage
-                  );
-                }
-                return newCounts;
-              });
-            }, 30);
-
-            // Clear interval after more time to match slower animation
-            setTimeout(() => clearInterval(interval), 5000);
-          });
+        if (entry.isIntersecting) {
+          startAnimation();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
+    const fallbackTimer = window.setTimeout(startAnimation, 500);
+
     return () => {
+      window.clearTimeout(fallbackTimer);
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, [hasAnimated]);
@@ -221,7 +228,9 @@ export default function Component() {
       </section>
 
       {/* What We Do */}
-      <WhatWeDo />
+      <div id="what-we-do">
+        <WhatWeDo />
+      </div>
 
       {/* Service Section */}
       {/* <CounselorsHelpStudents /> */}
@@ -235,7 +244,7 @@ export default function Component() {
       <NavogateUniverse />
 
       {/* Testimonial Section */}
-      <div className="bg-white py-12 sm:py-16 md:py-14">
+      <div id="testimonials" className="bg-white py-12 sm:py-16 md:py-14">
         <TestimonialSlider />
       </div>
 
@@ -278,14 +287,16 @@ export default function Component() {
 
           {/* Email */}
           <div className="text-center bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-            <div className="flex justify-center mb-5">
-              <Mail className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[#03336d] transition-transform duration-300 hover:scale-110" />
-            </div>
             <a
-              href="mailto:hello@navoconsulting.com"
-              className="block text-gray-800 font-medium text-base md:text-lg lg:text-xl hover:text-[#03336d] transition duration-300"
+              href="mailto:connect@navo.work"
+              className="block text-center transition duration-300 hover:-translate-y-1"
             >
-              connect@navo.work
+              <div className="flex justify-center mb-5">
+                <Mail className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[#03336d] transition-transform duration-300 hover:scale-110" />
+              </div>
+              <span className="block text-gray-800 font-medium text-base md:text-lg lg:text-xl hover:text-[#03336d] transition duration-300">
+                connect@navo.work
+              </span>
             </a>
           </div>
 
@@ -328,7 +339,7 @@ export default function Component() {
                 </a>
 
                 <a
-                  href="https://twitter.com/"
+                  href="https://x.com/navo.ed"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-[#03336d] text-3xl md:text-4xl transition-transform transform hover:scale-125 duration-300"

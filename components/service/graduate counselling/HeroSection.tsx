@@ -52,11 +52,10 @@ const HeroSection = () => {
               <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
                 Graduate Counseling
                 <br />
-                Success Starts
+                Success Starts With Navo
               </h1>
-              <div className="flex items-center text-3xl lg:text-4xl -mt-1.5 lg:-mt-0">
-                <span className="font-bold">With</span>
-                <Image src={Logo} width={140} height={80} alt="logoLoading" />
+              <div className="mt-4 flex items-center">
+                <Image src={Logo} width={140} height={80} alt="Navo" />
               </div>
             </div>
             <Link href="/connect">

@@ -97,9 +97,15 @@ function PreviewCard({
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeVideo, setActiveVideo] = useState<TestimonialVideo | null>(null);
+    const [slideDirection, setSlideDirection] = useState<"left" | "right" | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [transitionIndex, setTransitionIndex] = useState<number | null>(null);
+    const [dragOffset, setDragOffset] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
     const pointerStartX = useRef(0);
     const pointerStartY = useRef(0);
     const activePointerId = useRef<number | null>(null);
+    const animationTimerRef = useRef<number | null>(null);
 
     useEffect(() => {
         if (!activeVideo) {
@@ -114,33 +120,63 @@ const Testimonials = () => {
         };
     }, [activeVideo]);
 
-useEffect(() => {
-    if (!activeVideo) return;
+    useEffect(() => {
+        if (!activeVideo) return;
 
-    const handleKey = (event: KeyboardEvent) => {
-        const currentIdx = testimonials.findIndex(t => t.id === activeVideo.id);
+        const handleKey = (event: KeyboardEvent) => {
+            const currentIdx = testimonials.findIndex((t) => t.id === activeVideo.id);
 
-        if (event.key === "Escape") {
-            setActiveVideo(null);
-        } else if (event.key === "ArrowRight") {
-            const nextIdx = (currentIdx + 1) % testimonials.length;
-            setActiveVideo(testimonials[nextIdx]);
-        } else if (event.key === "ArrowLeft") {
-            const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
-            setActiveVideo(testimonials[prevIdx]);
-        }
-    };
+            if (event.key === "Escape") {
+                setActiveVideo(null);
+            } else if (event.key === "ArrowRight") {
+                const nextIdx = (currentIdx + 1) % testimonials.length;
+                setActiveVideo(testimonials[nextIdx]);
+            } else if (event.key === "ArrowLeft") {
+                const prevIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+                setActiveVideo(testimonials[prevIdx]);
+            }
+        };
 
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
     }, [activeVideo]);
 
+    useEffect(() => {
+        return () => {
+            if (animationTimerRef.current !== null) {
+                window.clearTimeout(animationTimerRef.current);
+            }
+        };
+    }, []);
+
+    const goToTestimonial = (nextIndex: number, direction: "left" | "right") => {
+        if (isAnimating || nextIndex === currentIndex) {
+            return;
+        }
+
+        setSlideDirection(direction);
+        setTransitionIndex(nextIndex);
+        setIsAnimating(true);
+        setCurrentIndex(nextIndex);
+        setDragOffset(0);
+
+        if (animationTimerRef.current !== null) {
+            window.clearTimeout(animationTimerRef.current);
+        }
+
+        animationTimerRef.current = window.setTimeout(() => {
+            setIsAnimating(false);
+            setTransitionIndex(null);
+            setSlideDirection(null);
+        }, 1400);
+    };
+
     const nextTestimonial = () => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+        goToTestimonial((currentIndex + 1) % testimonials.length, "left");
     };
 
     const prevTestimonial = () => {
-        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+        goToTestimonial((currentIndex - 1 + testimonials.length) % testimonials.length, "right");
     };
 
     const goToNextVideo = () => {
@@ -174,6 +210,22 @@ useEffect(() => {
         event.currentTarget.setPointerCapture(event.pointerId);
     };
 
+    const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+        if (activePointerId.current !== event.pointerId) {
+            return;
+        }
+
+        const deltaX = event.clientX - pointerStartX.current;
+        const deltaY = event.clientY - pointerStartY.current;
+
+        if (Math.abs(deltaX) < Math.abs(deltaY)) {
+            return;
+        }
+
+        setIsDragging(true);
+        setDragOffset(deltaX);
+    };
+
     const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
         if (activePointerId.current !== event.pointerId) {
             return;
@@ -182,26 +234,36 @@ useEffect(() => {
         activePointerId.current = null;
         const deltaX = event.clientX - pointerStartX.current;
         const deltaY = event.clientY - pointerStartY.current;
+        const threshold = 60;
 
-        if (Math.abs(deltaX) < 60 || Math.abs(deltaX) < Math.abs(deltaY)) {
-            return;
+        if (Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX < 0) {
+                nextTestimonial();
+            } else {
+                prevTestimonial();
+            }
         }
 
-        if (deltaX < 0) {
-            goToNextVideo();
-        } else {
-            goToPrevVideo();
-        }
+        setIsDragging(false);
+        setDragOffset(0);
     };
 
     const handlePointerCancel = (event: React.PointerEvent<HTMLDivElement>) => {
         if (activePointerId.current === event.pointerId) {
             activePointerId.current = null;
+            setIsDragging(false);
+            setDragOffset(0);
         }
     };
 
     const current = testimonials[currentIndex];
     const next = testimonials[(currentIndex + 1) % testimonials.length];
+    const transitionCard = transitionIndex !== null ? testimonials[transitionIndex] : null;
+
+    const cardOffset = isDragging ? dragOffset : 0;
+    const cardRotation = isDragging ? dragOffset * 0.03 : 0;
+    const cardDirection = slideDirection === "left" ? 1 : slideDirection === "right" ? -1 : 0;
+    const cardEnterTransform = isAnimating && slideDirection ? `translateX(${cardDirection * 42}px) scale(0.98)` : "translateX(0) scale(1)";
 
     return (
         <section className="w-full pt-8 pb-12 flex flex-col items-center bg-white">
@@ -299,20 +361,61 @@ useEffect(() => {
                 </div>
 
                 <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16">
-                    <div className="relative max-w-4xl w-full flex justify-center">
-                        <div className="z-50 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full transform hover:scale-105 transition-transform duration-300 h-auto sm:h-[340px] md:h-[330px] lg:h-[456px]">
-                            <PreviewCard item={current} onPlay={setActiveVideo} />
+                    <div className="relative max-w-4xl w-full flex justify-center" style={{
+                        perspective: "1400px",
+                    }}
+                    >
+                        {isAnimating && transitionCard ? (
+                            <>
+                                <div
+                                    className={`absolute z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[820ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slideDirection === "left"
+                                        ? "animate-[navoCardExitLeft_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+                                        : "animate-[navoCardExitRight_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+                                        }`}
+                                    style={{
+                                        cursor: "grabbing",
+                                        touchAction: "pan-y",
+                                    }}
+                                >
+                                    <PreviewCard item={current} onPlay={setActiveVideo} />
+                                </div>
 
-                            {/* <div className="mt-4 sm:mt-6 flex items-center justify-between gap-3">
-                                <p className="text-blue-900 font-semibold text-sm sm:text-base">{current.title}</p>
-                                <span className="text-gray-500 text-xs uppercase tracking-[0.18em]">Video testimonial</span>
-                            </div> */}
-                        </div>
+                                <div
+                                    className={`absolute z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slideDirection === "left"
+                                        ? "animate-[navoCardEnterLeft_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+                                        : "animate-[navoCardEnterRight_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+                                        }`}
+                                    style={{
+                                        cursor: "grabbing",
+                                        touchAction: "pan-y",
+                                    }}
+                                >
+                                    <PreviewCard item={transitionCard} onPlay={setActiveVideo} />
+                                </div>
+                            </>
+                        ) : (
+                            <div
+                                className="z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                onPointerDown={handlePointerDown}
+                                onPointerMove={handlePointerMove}
+                                onPointerUp={handlePointerUp}
+                                onPointerCancel={handlePointerCancel}
+                                style={{
+                                    transform: `${cardEnterTransform} translateX(${cardOffset}px) rotateZ(${cardRotation}deg)`,
+                                    cursor: activePointerId.current !== null ? "grabbing" : "grab",
+                                    touchAction: "pan-y",
+                                }}
+                            >
+                                <PreviewCard item={current} onPlay={setActiveVideo} />
+                            </div>
+                        )}
 
-                        <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-300">
-                            <PreviewCard item={next} compact onPlay={setActiveVideo} />
-                            <p className="text-blue-900 text-sm font-medium mt-3">{next.title}</p>
-                        </div>
+                        {!isAnimating && (
+                            <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-[820ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
+                                <PreviewCard item={next} compact onPlay={setActiveVideo} />
+                                <p className="text-blue-900 text-sm font-medium mt-3">{next.title}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -331,42 +434,117 @@ useEffect(() => {
                     </button>
                 </div>
 
-{activeVideo && (
-    <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
-        onClick={() => setActiveVideo(null)}
-    >
-        <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-            onPointerDown={handlePointerDown}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerCancel}
-            style={{ touchAction: "pan-y" }}
-        >
-            {/* Close Button */}
-            <button
-                type="button"
-                onClick={() => setActiveVideo(null)}
-                className="absolute right-3 top-3 z-20 rounded-full bg-black/60 px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-black/80"
-                aria-label="Close video"
-            >
-                Close
-            </button>
+                {activeVideo && (
+                    <div
+                        className="fixed inset-0 z-40 flex items-center justify-center bg-black/75 p-4"
+                        onClick={() => setActiveVideo(null)}
+                    >
+                        <div
+                            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
+                            onClick={(event) => event.stopPropagation()}
+                            onPointerDown={handlePointerDown}
+                            onPointerUp={handlePointerUp}
+                            onPointerCancel={handlePointerCancel}
+                            style={{ touchAction: "pan-y" }}
+                        >
+                            <button
+                                type="button"
+                                onClick={() => setActiveVideo(null)}
+                                className="absolute right-3 top-3 z-20 rounded-full bg-black/60 px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-black/80"
+                                aria-label="Close video"
+                            >
+                                Close
+                            </button>
 
-            {/* VIDEO */}
-            <video
-                key={activeVideo.video}
-                src={activeVideo.video}
-                controls
-                autoPlay
-                playsInline
-                className="h-auto w-full max-h-[80vh] bg-black"
-            />
-        </div>
-    </div>
-)}
+                            <video
+                                key={activeVideo.video}
+                                src={activeVideo.video}
+                                controls
+                                autoPlay
+                                playsInline
+                                className="h-auto w-full max-h-[80vh] bg-black"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
+            <style jsx>{`
+@keyframes navoCardEnterLeft {
+    0% {
+        transform: translateX(10px) scale(0.82) translateY(28px);
+        opacity: 0.2;
+        filter: blur(1px);
+    }
+
+    50% {
+        transform: translateX(6px) scale(0.94) translateY(10px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(0) scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+@keyframes navoCardExitLeft {
+    0% {
+        transform: translateX(0) scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+
+    40% {
+        transform: translateX(-20px) scale(0.98) translateY(8px);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(-10px) scale(0.82) translateY(28px);
+        opacity: 0.25;
+        filter: blur(1px);
+    }
+}
+
+@keyframes navoCardExitRight {
+    0% {
+        transform: translateX(0) scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+
+    40% {
+        transform: translateX(20px) scale(0.98) translateY(8px);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(10px) scale(0.82) translateY(28px);
+        opacity: 0.25;
+        filter: blur(1px);
+    }
+}
+
+@keyframes navoCardEnterRight {
+    0% {
+        transform: translateX(-10px) scale(0.82) translateY(28px);
+        opacity: 0.2;
+        filter: blur(1px);
+    }
+
+    50% {
+        transform: translateX(-6px) scale(0.94) translateY(10px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(0) scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+            `}</style>
         </section>
     );
 };

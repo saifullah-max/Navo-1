@@ -1,6 +1,12 @@
 node_modules
 .next
 .next/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
 # Large video files
 public/*.mp4
 !public/NavoVideo.mp4

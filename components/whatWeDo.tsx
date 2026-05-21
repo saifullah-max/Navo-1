@@ -20,7 +20,7 @@ const serviceCards = [
 export default function WhatWeDo() {
   return (
     <>
-      <div className="flex items-center justify-center gap-2.5 py-8 sm:py-2 md:py-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full sm:mb-0 lg:mb-0">
+      <div id="what-we-do" className="flex items-center justify-center gap-2.5 py-8 sm:py-2 md:py-8 md:pb-0 px-4 md:px-8 lg:px-[118px] relative self-stretch w-full sm:mb-0 lg:mb-0">
         <div className="flex flex-col w-full max-w-[1139px] min-h-[493px] md:h-[493px] items-center gap-6 md:gap-[38px] relative">
           <h2 className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight tracking-tight text-center">
             WHAT{" "}

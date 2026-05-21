@@ -47,9 +47,29 @@ const caveat = Caveat({
 
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  metadataBase: new URL('https://navo.work'),
+  title: {
+    default: 'Navo | College Admissions Counseling',
+    template: '%s | Navo',
+  },
+  description:
+    'Navo helps students build standout academic profiles and navigate undergraduate and graduate admissions with strategic counseling.',
+  applicationName: 'Navo',
+  generator: 'Next.js',
+  openGraph: {
+    title: 'Navo | College Admissions Counseling',
+    description:
+      'Strategic college admissions counseling for undergraduate, graduate, and transfer applicants.',
+    url: 'https://navo.work',
+    siteName: 'Navo',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Navo | College Admissions Counseling',
+    description:
+      'Strategic college admissions counseling for undergraduate, graduate, and transfer applicants.',
+  },
 }
 
 export default function RootLayout({

@@ -572,15 +572,18 @@ export default function Page() {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-yellowCust  rounded-lg px-10 py-3"
+                className="bg-yellowCust rounded-lg px-10 py-3"
               >
                 SUBMIT
               </button>
 
               {success && (
-                <p className="text-green-600 mt-4 font-medium">``
-                  Form sent successfully!
-                </p>
+                <div
+                  role="status"
+                  className="mx-auto mt-4 inline-flex items-center rounded-full bg-green-100 px-5 py-3 text-sm font-semibold text-green-700"
+                >
+                  Form sent successfully. We&apos;ll be in touch soon.
+                </div>
               )}
               {error && (
                 <p className="text-red-600 mt-4 font-medium">
