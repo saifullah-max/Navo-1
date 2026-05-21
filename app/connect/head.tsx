@@ -1,12 +1,12 @@
 export default function Head() {
   return (
     <>
-      <title>Connect With Navo | College Admissions Counseling</title>
+      <title>Connect With Navo College Counseling</title>
       <meta
         name="description"
         content="Contact Navo to book a consultation for undergraduate or graduate admissions counseling."
       />
-      <meta property="og:title" content="Connect With Navo | College Admissions Counseling" />
+      <meta property="og:title" content="Connect With Navo College Counseling" />
       <meta
         property="og:description"
         content="Contact Navo to book a consultation for undergraduate or graduate admissions counseling."

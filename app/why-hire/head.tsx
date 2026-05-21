@@ -1,15 +1,15 @@
 export default function Head() {
   return (
     <>
-      <title>Why Hire Navo | College Admissions Counseling</title>
+      <title>Why Hire Navo College Counseling</title>
       <meta
         name="description"
-        content="See why families choose Navo for strategic private college admissions counseling."
+        content="See why families choose Navo College Counseling for strategic private college counseling."
       />
-      <meta property="og:title" content="Why Hire Navo | College Admissions Counseling" />
+      <meta property="og:title" content="Why Hire Navo College Counseling" />
       <meta
         property="og:description"
-        content="See why families choose Navo for strategic private college admissions counseling."
+        content="See why families choose Navo College Counseling for strategic private college counseling."
       />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://navo.work/why-hire" />
