@@ -286,7 +286,7 @@ const ActivityPortfolioSection = () => {
                       onClick={() => setSelectedCategory(cat.id)}
                       className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                         isActive
-                          ? "bg-[#102d6f] text-white"
+                          ? "bg-[#768cbe] text-white"
                           : "bg-[#1a3a8a] text-white/85 hover:bg-[#15357d]"
                       }`}
                     >
