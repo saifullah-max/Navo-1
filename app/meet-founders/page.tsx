@@ -14,6 +14,7 @@ const page = () => {
                 // subtitle="Former Stanford Admissions Officer"
                 imageSrc="/rizwan-founder.png"
                 imageAlt="LOREM IPSUM"
+                priority
                 boldIntroName="Rizwan Javed"
                 introTextAfterName=" is the Co-Founder of Navo, bringing over 15 years of experience in college counseling and education management. He has guided hundreds of students through highly competitive undergraduate and graduate admissions processes, helping them secure placements at some of the world's leading universities. His approach combines strategic planning, deep institutional knowledge, and a strong focus on building authentic, high-impact student profiles."
                 paragraphs={[]}

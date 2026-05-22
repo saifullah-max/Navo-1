@@ -18,6 +18,8 @@ export const FoundersBanner = () => {
           objectFit: "cover",
         }}
         priority
+        sizes="100vw"
+        quality={75}
       />
     </div>
   );

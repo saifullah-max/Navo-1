@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 const HeroSection = () => {
     return (
@@ -16,17 +15,19 @@ const HeroSection = () => {
 
                 <div className="w-full flex-1 flex items-center justify-center">
                     <div className="block sm:hidden w-full">
-                        <Image
-                            src="/case-study-mobile.png"
-                            alt="Case Study Hero Mobile"
-                            width={1000}
-                            height={600}
-                            className="w-full h-auto object-contain"
-                            priority
-                            sizes="100vw"
-                            quality={60}
-                            placeholder="empty"
-                        />
+                        <picture>
+                            <source media="(max-width: 639px)" srcSet="/case-study-mobile.png" />
+                            <source media="(max-width: 1023px)" srcSet="/case-study-laptop.png" />
+                            <source media="(max-width: 1535px)" srcSet="/case-study-large.png" />
+                            <img
+                                src="/case-study-mobile.png"
+                                alt="Case Study Hero Mobile"
+                                className="w-full h-auto object-contain"
+                                loading="eager"
+                                fetchPriority="high"
+                                decoding="async"
+                            />
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -42,16 +43,19 @@ const HeroSection = () => {
                 </p>
 
                 <div className="w-full mt-6">
-                    <Image
-                        src="/case-study-laptop.png"
-                        alt="Case Study Hero"
-                        width={1400}
-                        height={800}
-                        className="w-full h-auto object-contain"
-                        sizes="(max-width: 1024px) 100vw, 1400px"
-                        quality={60}
-                        placeholder="empty"
-                    />
+                    <picture>
+                        <source media="(max-width: 639px)" srcSet="/case-study-mobile.png" />
+                        <source media="(max-width: 1023px)" srcSet="/case-study-laptop.png" />
+                        <source media="(max-width: 1535px)" srcSet="/case-study-large.png" />
+                        <img
+                            src="/case-study-laptop.png"
+                            alt="Case Study Hero"
+                            className="w-full h-auto object-contain"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                        />
+                    </picture>
                 </div>
             </div>
 
@@ -66,16 +70,19 @@ const HeroSection = () => {
                 </p>
 
                 <div className="w-full mt-2">
-                    <Image
-                        src="/case-study-large.png"
-                        alt="Case Study Hero"
-                        width={1800}
-                        height={1000}
-                        className="w-full h-auto object-contain"
-                        sizes="(max-width: 1536px) 100vw, 1800px"
-                        quality={60}
-                        placeholder="empty"
-                    />
+                    <picture>
+                        <source media="(max-width: 639px)" srcSet="/case-study-mobile.png" />
+                        <source media="(max-width: 1023px)" srcSet="/case-study-laptop.png" />
+                        <source media="(max-width: 1535px)" srcSet="/case-study-large.png" />
+                        <img
+                            src="/case-study-large.png"
+                            alt="Case Study Hero 2XL"
+                            className="w-full h-auto object-contain"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                        />
+                    </picture>
                 </div>
             </div>
 
@@ -90,16 +97,21 @@ const HeroSection = () => {
                 </p>
 
                 <div className="w-full">
-                    <Image
-                        src="/case-study-laptop.png"
-                        alt="Case Study Hero 2XL"
-                        width={2200}
-                        height={1200}
-                        className="w-full h-auto object-contain"
-                        sizes="(min-width: 1536px) 100vw, 2200px"
-                        quality={60}
-                        placeholder="empty"
-                    />
+                    <picture>
+                        <source media="(max-width: 639px)" srcSet="/case-study-mobile.png" />
+                        <source media="(max-width: 1023px)" srcSet="/case-study-laptop.png" />
+                        <source media="(max-width: 1535px)" srcSet="/case-study-large.png" />
+                        <img
+                            src="/case-study-laptop.png"
+                            alt="Case Study Hero 2XL"
+                            width={2200}
+                            height={1200}
+                            className="w-full h-auto object-contain"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                        />
+                    </picture>
                 </div>
             </div>
         </div>

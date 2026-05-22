@@ -2,7 +2,7 @@
 
 import ActivityPortfolioSection from "@/components/service/explore/ActivityPortfolioSection"
 import EssayFeedbackSection from "@/components/service/explore/EssayFeedbackSection"
-import CollegeExplorerSection from "@/components/service/explore/CollegeExplorerSectionClean"
+import CollegeExplorerSection from "../../components/service/explore/CollegeExplorerSectionClean"
 
 
 const page = () => {

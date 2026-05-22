@@ -20,6 +20,7 @@ interface FounderSectionProps {
     imageSrc: string;
     imageAlt: string;
     reverse?: boolean;
+    priority?: boolean;
 }
 
 const FounderSection: React.FC<FounderSectionProps> = ({
@@ -34,6 +35,7 @@ const FounderSection: React.FC<FounderSectionProps> = ({
     imageSrc,
     imageAlt,
     reverse = false,
+    priority = false,
 }) => {
     const [isKnowMoreOpen, setIsKnowMoreOpen] = useState(false);
     const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(null);
@@ -71,7 +73,10 @@ const FounderSection: React.FC<FounderSectionProps> = ({
                             fill
                             className="object-cover"
                             sizes="(max-width: 640px) 220px, (max-width: 768px) 240px, 260px"
-                            priority
+                            priority={priority}
+                            loading={priority ? "eager" : "lazy"}
+                            fetchPriority={priority ? "high" : "auto"}
+                            quality={75}
                         />
                     </div>
                 </div>

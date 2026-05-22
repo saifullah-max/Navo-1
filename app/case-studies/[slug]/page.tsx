@@ -70,6 +70,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     xl:max-w-[830px] xl:h-[460px]
     2xl:max-w-[950px] 2xl:h-[520px]
   "
+                                                priority
+                                                loading="eager"
+                                                fetchPriority="high"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 780px, 830px"
+                                                quality={75}
                     />
 
                 </div>

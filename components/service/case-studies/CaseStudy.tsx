@@ -26,7 +26,7 @@ export default function CaseStudies() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {caseStudies.map((item) => (
+                {caseStudies.map((item, index) => (
                     <Link key={item.slug} href={`/case-studies/${item.slug}`}>
                         <div className="relative group cursor-pointer overflow-hidden">
                             <div className="w-full h-[499px] overflow-hidden">
@@ -36,6 +36,11 @@ export default function CaseStudies() {
                                     width={393}
                                     height={499}
                                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 393px"
+                                    priority={index < 3}
+                                    loading={index < 3 ? "eager" : "lazy"}
+                                    fetchPriority={index < 3 ? "high" : "auto"}
+                                    quality={72}
                                 />
                             </div>
 

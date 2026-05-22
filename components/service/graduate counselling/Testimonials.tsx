@@ -44,10 +44,12 @@ function seekToFirstFrame(videoElement: HTMLVideoElement) {
 
 function PreviewCard({
     item,
+    videoSrc,
     compact = false,
     onPlay,
 }: {
     item: TestimonialVideo;
+    videoSrc?: string;
     compact?: boolean;
     onPlay: (item: TestimonialVideo) => void;
 }) {
@@ -60,7 +62,7 @@ function PreviewCard({
             }
         >
             <video
-                src={item.video}
+                src={videoSrc ?? item.video}
                 className="w-full h-full object-cover"
                 preload="auto"
                 muted
@@ -102,6 +104,7 @@ const Testimonials = () => {
     const [transitionIndex, setTransitionIndex] = useState<number | null>(null);
     const [dragOffset, setDragOffset] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+    const [videoSources, setVideoSources] = useState<Record<number, string>>({});
     const pointerStartX = useRef(0);
     const pointerStartY = useRef(0);
     const activePointerId = useRef<number | null>(null);
@@ -146,6 +149,44 @@ const Testimonials = () => {
             if (animationTimerRef.current !== null) {
                 window.clearTimeout(animationTimerRef.current);
             }
+            Object.values(videoSources).forEach((source) => {
+                URL.revokeObjectURL(source);
+            });
+        };
+    }, [videoSources]);
+
+    useEffect(() => {
+        let isCancelled = false;
+        const objectUrls: string[] = [];
+
+        const fetchVideos = async () => {
+            const entries = await Promise.all(
+                testimonials.map(async (item) => {
+                    try {
+                        const response = await fetch(item.video, { cache: "force-cache" });
+                        const blob = await response.blob();
+                        const objectUrl = URL.createObjectURL(blob);
+                        objectUrls.push(objectUrl);
+                        return [item.id, objectUrl] as const;
+                    } catch {
+                        return [item.id, item.video] as const;
+                    }
+                })
+            );
+
+            if (isCancelled) {
+                objectUrls.forEach((source) => URL.revokeObjectURL(source));
+                return;
+            }
+
+            setVideoSources(Object.fromEntries(entries));
+        };
+
+        fetchVideos();
+
+        return () => {
+            isCancelled = true;
+            objectUrls.forEach((source) => URL.revokeObjectURL(source));
         };
     }, []);
 
@@ -168,7 +209,7 @@ const Testimonials = () => {
             setIsAnimating(false);
             setTransitionIndex(null);
             setSlideDirection(null);
-        }, 1400);
+        }, 320);
     };
 
     const nextTestimonial = () => {
@@ -264,6 +305,10 @@ const Testimonials = () => {
     const cardRotation = isDragging ? dragOffset * 0.03 : 0;
     const cardDirection = slideDirection === "left" ? 1 : slideDirection === "right" ? -1 : 0;
     const cardEnterTransform = isAnimating && slideDirection ? `translateX(${cardDirection * 42}px) scale(0.98)` : "translateX(0) scale(1)";
+
+    const currentVideoSrc = videoSources[current.id] ?? current.video;
+    const nextVideoSrc = videoSources[next.id] ?? next.video;
+    const activeVideoSrc = activeVideo ? videoSources[activeVideo.id] ?? activeVideo.video : null;
 
     return (
         <section className="w-full pt-8 pb-12 flex flex-col items-center bg-white">
@@ -365,54 +410,24 @@ const Testimonials = () => {
                         perspective: "1400px",
                     }}
                     >
-                        {isAnimating && transitionCard ? (
-                            <>
-                                <div
-                                    className={`absolute z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[820ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slideDirection === "left"
-                                        ? "animate-[navoCardExitLeft_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
-                                        : "animate-[navoCardExitRight_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
-                                        }`}
-                                    style={{
-                                        cursor: "grabbing",
-                                        touchAction: "pan-y",
-                                    }}
-                                >
-                                    <PreviewCard item={current} onPlay={setActiveVideo} />
-                                </div>
-
-                                <div
-                                    className={`absolute z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slideDirection === "left"
-                                        ? "animate-[navoCardEnterLeft_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
-                                        : "animate-[navoCardEnterRight_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
-                                        }`}
-                                    style={{
-                                        cursor: "grabbing",
-                                        touchAction: "pan-y",
-                                    }}
-                                >
-                                    <PreviewCard item={transitionCard} onPlay={setActiveVideo} />
-                                </div>
-                            </>
-                        ) : (
-                            <div
-                                className="z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-                                onPointerDown={handlePointerDown}
-                                onPointerMove={handlePointerMove}
-                                onPointerUp={handlePointerUp}
-                                onPointerCancel={handlePointerCancel}
-                                style={{
-                                    transform: `${cardEnterTransform} translateX(${cardOffset}px) rotateZ(${cardRotation}deg)`,
-                                    cursor: activePointerId.current !== null ? "grabbing" : "grab",
-                                    touchAction: "pan-y",
-                                }}
-                            >
-                                <PreviewCard item={current} onPlay={setActiveVideo} />
-                            </div>
-                        )}
+                        <div
+                            className="z-40 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-xl w-full h-auto sm:h-[340px] md:h-[330px] lg:h-[456px] transition-all duration-300 ease-out"
+                            onPointerDown={handlePointerDown}
+                            onPointerMove={handlePointerMove}
+                            onPointerUp={handlePointerUp}
+                            onPointerCancel={handlePointerCancel}
+                            style={{
+                                transform: `${cardEnterTransform} translateX(${cardOffset}px) rotateZ(${cardRotation}deg)`,
+                                cursor: activePointerId.current !== null ? "grabbing" : "grab",
+                                touchAction: "pan-y",
+                            }}
+                        >
+                            <PreviewCard item={current} videoSrc={currentVideoSrc} onPlay={setActiveVideo} />
+                        </div>
 
                         {!isAnimating && (
                             <div className="hidden lg:block absolute right-[-10px] top-1/2 -translate-y-1/2 scale-75 opacity-70 bg-white rounded-xl shadow-xl p-4 w-64 sm:w-80 transition-all duration-[820ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
-                                <PreviewCard item={next} compact onPlay={setActiveVideo} />
+                                <PreviewCard item={next} videoSrc={nextVideoSrc} compact onPlay={setActiveVideo} />
                                 <p className="text-blue-900 text-sm font-medium mt-3">{next.title}</p>
                             </div>
                         )}
@@ -457,8 +472,8 @@ const Testimonials = () => {
                             </button>
 
                             <video
-                                key={activeVideo.video}
-                                src={activeVideo.video}
+                                key={activeVideo.id}
+                                src={activeVideoSrc ?? activeVideo.video}
                                 controls
                                 autoPlay
                                 playsInline
@@ -468,83 +483,7 @@ const Testimonials = () => {
                     </div>
                 )}
             </div>
-            <style jsx>{`
-@keyframes navoCardEnterLeft {
-    0% {
-        transform: translateX(10px) scale(0.82) translateY(28px);
-        opacity: 0.2;
-        filter: blur(1px);
-    }
-
-    50% {
-        transform: translateX(6px) scale(0.94) translateY(10px);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: translateX(0) scale(1) translateY(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
-
-@keyframes navoCardExitLeft {
-    0% {
-        transform: translateX(0) scale(1) translateY(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-
-    40% {
-        transform: translateX(-20px) scale(0.98) translateY(8px);
-        opacity: 0.9;
-    }
-
-    100% {
-        transform: translateX(-10px) scale(0.82) translateY(28px);
-        opacity: 0.25;
-        filter: blur(1px);
-    }
-}
-
-@keyframes navoCardExitRight {
-    0% {
-        transform: translateX(0) scale(1) translateY(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-
-    40% {
-        transform: translateX(20px) scale(0.98) translateY(8px);
-        opacity: 0.9;
-    }
-
-    100% {
-        transform: translateX(10px) scale(0.82) translateY(28px);
-        opacity: 0.25;
-        filter: blur(1px);
-    }
-}
-
-@keyframes navoCardEnterRight {
-    0% {
-        transform: translateX(-10px) scale(0.82) translateY(28px);
-        opacity: 0.2;
-        filter: blur(1px);
-    }
-
-    50% {
-        transform: translateX(-6px) scale(0.94) translateY(10px);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: translateX(0) scale(1) translateY(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
-            `}</style>
+            {/* Simple transitions used (no keyframes) to match home "How We Work" animation style */}
         </section>
     );
 };
