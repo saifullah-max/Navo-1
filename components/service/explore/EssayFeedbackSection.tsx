@@ -72,7 +72,7 @@ const EssayFeedbackSection = () => {
           className="text-center mx-auto mb-16"
         >
           <h3 className="text-sm md:text-base lg:text-lg xl:text-xl uppercase tracking-normal font-bold text-black mb-4">Essay Review</h3>
-          <p className="text-left font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
+          <p className="text-center font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
             Sharpen Your Personal Essay
           </p>
           <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
