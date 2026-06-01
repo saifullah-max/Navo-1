@@ -260,23 +260,23 @@ const ActivityPortfolioSection = () => {
   return (
     <section className="py-24">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-4">Activity Portfolio</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mx-auto mb-16">
+          <p className="text-sm md:text-base lg:text-lg xl:text-xl uppercase tracking-normal font-bold text-black mb-4">Activity Portfolio</p>
+          <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
             Strengthen Your Activities
-          </h2>
-          <p className="text-lg">
+          </p>
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
             Add your existing activities and get personalized advice on improvements, next steps, and how to position them for top university applications.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="bg-white backdrop-blur-sm rounded-xl p-8 border border-slate-200 shadow-sm">
             <div className="mb-6">
-              <label className="text-xs font-semibold uppercase tracking-wider mb-3 block">
+              <label className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-left font-medium">
                 Category
               </label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 pt-4">
                 {categories.map((cat) => {
                   const Icon = cat.icon;
                   const isActive = selectedCategory === cat.id;
@@ -284,11 +284,10 @@ const ActivityPortfolioSection = () => {
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        isActive
-                          ? "bg-[#768cbe] text-white"
-                          : "bg-[#1a3a8a] text-white/85 hover:bg-[#15357d]"
-                      }`}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm lg:text-base font-medium transition-all ${isActive
+                        ? "bg-[#768cbe] text-white"
+                        : "bg-[#1a3a8a] text-white/85 hover:bg-[#15357d]"
+                        }`}
                     >
                       <Icon className="h-3 w-3" />
                       {cat.label}
@@ -304,7 +303,7 @@ const ActivityPortfolioSection = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder={`Activity name (e.g. "${selectedCat.label === "Internships" ? "Summer Research Intern at MIT Lab" : selectedCat.label === "Athletics & Sports" ? "Varsity Tennis Team" : "Student Council President"}")`}
-                  className="w-full bg-white rounded-lg border border-[#1a3a8a] p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#102d6f] transition-colors"
+                className="w-full bg-white rounded-lg border border-slate-400 p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#15357d] transition-colors"
                 maxLength={150}
                 disabled={showLock}
               />
@@ -314,7 +313,7 @@ const ActivityPortfolioSection = () => {
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                   placeholder="Your role (e.g. Founder, Captain, Member)"
-                  className="w-full bg-white rounded-lg border border-[#1a3a8a] p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#102d6f] transition-colors"
+                  className="w-full bg-white rounded-lg border border-slate-400 p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#15357d] transition-colors"
                   maxLength={80}
                   disabled={showLock}
                 />
@@ -323,7 +322,7 @@ const ActivityPortfolioSection = () => {
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                   placeholder="Duration (e.g. 2 years, 6 months)"
-                  className="w-full bg-white rounded-lg border border-[#1a3a8a] p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#102d6f] transition-colors"
+                  className="w-full bg-white rounded-lg border border-slate-400 p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#15357d] transition-colors"
                   maxLength={50}
                   disabled={showLock}
                 />
@@ -333,14 +332,17 @@ const ActivityPortfolioSection = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe your involvement, achievements, and impact. Be specific — include numbers, awards, outcomes."
                 rows={3}
-                className="w-full bg-white rounded-lg border border-[#1a3a8a] p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#102d6f] transition-colors resize-none"
+                className="w-full bg-white rounded-lg border border-slate-400 p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#15357d] transition-colors resize-none"
                 maxLength={500}
                 disabled={showLock}
               />
               <Button
                 onClick={addActivity}
                 disabled={!title.trim() || showLock || isAssessing}
-                className="bg-gold hover:bg-gold-light text-primary font-semibold w-full"
+                className={`font-semibold w-full disabled:pointer-events-auto disabled:cursor-not-allowed ${isAssessing
+                  ? "bg-[#768cbe] text-white"
+                  : "bg-[#03336d] hover:bg-[#022955] text-white"
+                  }`}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 {isAssessing ? "Analyzing Activity..." : "Analyze Activity"}

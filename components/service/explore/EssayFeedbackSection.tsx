@@ -23,6 +23,8 @@ const EssayFeedbackSection = () => {
   const [error, setError] = useState("");
   const [hasUsedFree, setHasUsedFree] = useState(false);
 
+  const isAnalyzeDisabled = !essay.trim() || loading || essay.trim().length < 50;
+
   const wordCount = essay.trim().split(/\s+/).filter(Boolean).length;
   const charCount = essay.length;
 
@@ -67,13 +69,13 @@ const EssayFeedbackSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center mx-auto mb-16"
         >
-          <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-4">Essay Review</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
+          <h3 className="text-sm md:text-base lg:text-lg xl:text-xl uppercase tracking-normal font-bold text-black mb-4">Essay Review</h3>
+          <p className="text-left font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
             Sharpen Your Personal Essay
-          </h2>
-          <p className="text-muted-foreground text-lg">
+          </p>
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
             Get brutally honest, precision feedback on your Common App essay or UCAS personal statement. No generic advice — only specific, actionable insights that admissions officers actually care about.
           </p>
         </motion.div>
@@ -86,10 +88,10 @@ const EssayFeedbackSection = () => {
         >
           <div className="bg-card rounded-xl p-8 border border-border shadow-sm">
             <div className="mb-6">
-              <label className="text-muted-foreground text-xs font-semibold uppercase tracking-wider mb-3 block">
+              <label className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-left font-medium">
                 Essay Type
               </label>
-              <div className="flex gap-3">
+              <div className="flex gap-3 pt-4">
                 {[
                   { id: "common-app" as EssayType, label: "Common App Essay", desc: "US universities" },
                   { id: "ucas" as EssayType, label: "UCAS Personal Statement", desc: "UK universities" },
@@ -97,16 +99,26 @@ const EssayFeedbackSection = () => {
                   <button
                     key={type.id}
                     onClick={() => setEssayType(type.id)}
-                    className={`flex-1 p-4 rounded-lg border-2 transition-all text-left ${
-                      essayType === type.id
-                        ? "border-gold bg-gold/5"
-                        : "border-border hover:border-gold/30"
-                    }`}
+                    className={`flex-1 p-4 rounded-lg border-2 transition-all text-left ${essayType === type.id
+                      ? "bg-[#1a3a8a] border-[#1a3a8a] text-white"
+                      : "border-border hover:border-[#1a3a8a]/30"
+                      }`}
                   >
-                    <span className={`block font-semibold text-sm ${essayType === type.id ? "text-gold" : "text-foreground"}`}>
+                    <span
+                      className={`block font-semibold text-sm ${essayType === type.id ? "text-white" : "text-foreground"
+                        }`}
+                    >
                       {type.label}
                     </span>
-                    <span className="text-xs text-muted-foreground">{type.desc}</span>
+
+                    <span
+                      className={`text-xs ${essayType === type.id
+                        ? "text-white/80"
+                        : "text-muted-foreground"
+                        }`}
+                    >
+                      {type.desc}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -114,7 +126,7 @@ const EssayFeedbackSection = () => {
 
             <div className="mb-4">
               <div className="flex justify-between items-center mb-2">
-                <label className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">
+                <label className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-left font-medium">
                   Your Essay
                 </label>
                 <span className={`text-xs font-medium ${isOverLimit ? "text-destructive" : "text-muted-foreground"}`}>
@@ -130,7 +142,7 @@ const EssayFeedbackSection = () => {
                     : "Paste your UCAS personal statement here (max 4,000 characters)..."
                 }
                 rows={12}
-                className="w-full bg-background rounded-lg border border-border p-4 text-foreground placeholder:text-muted-foreground text-sm outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20 transition-all resize-none leading-relaxed"
+                className={`w-full rounded-xl border border-slate-200 bg-white px-6 py-4 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-blue-400 shadow-sm transition-all resize-none leading-relaxed ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                 disabled={loading}
               />
             </div>
@@ -141,11 +153,13 @@ const EssayFeedbackSection = () => {
                 {error}
               </div>
             )}
-
             <Button
               onClick={analyzeEssay}
-              disabled={!essay.trim() || loading || essay.trim().length < 50}
-              className="bg-gold hover:bg-gold-light text-primary font-semibold w-full h-12"
+              disabled={isAnalyzeDisabled}
+              className={`font-semibold w-full disabled:pointer-events-auto disabled:cursor-not-allowed ${loading || isAnalyzeDisabled
+                ? "bg-[#768cbe] text-white"
+                : "bg-[#03336d] hover:bg-[#022955] text-white"
+                }`}
             >
               {loading ? (
                 <>
@@ -159,7 +173,6 @@ const EssayFeedbackSection = () => {
                 </>
               )}
             </Button>
-
             {hasUsedFree && !loading && !feedback && (
               <p className="text-xs text-muted-foreground text-center mt-3">
                 You've used your free analysis. Submit again to see the 5 key points, or get in touch for the full deep-dive review.

@@ -136,11 +136,11 @@ export default function CollegeExplorerSectionClean() {
             <div className="mx-auto max-w-7xl relative z-10">
                 <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
                     <div className="relative z-20">
-                        <h3 className="text-sm md:text-base lg:text-lg xl:text-xl uppercase tracking-normal font-bold text-blue-900 mb-4">College Explorer</h3>
-                        <h1 className="text-4xl lg:text-6xl mt-5 sm:mt-0 font-bold">
+                        <h3 className="text-sm md:text-base lg:text-lg xl:text-xl uppercase tracking-normal font-bold text-black mb-4">College Explorer</h3>
+                        <p className="text-left font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
                             Find Colleges That Fit Your Budget & Goals
-                        </h1>
-                        <p className="mt-8 font-poppins font-normal leading-snug text-base md:text-xl lg:text-2xl">
+                        </p>
+                        <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-left mb-10">
                             Build your academic profile and we&apos;ll recommend 5 best-fit universities instantly.
                         </p>
 
@@ -164,7 +164,7 @@ export default function CollegeExplorerSectionClean() {
                                         window.setTimeout(() => setSuggestionsOpen(false), 150);
                                     }}
                                     placeholder="Search by university name..."
-                                    className="h-16 w-full rounded-xl border border-slate-200 bg-white px-14 text-base text-[#163b55] shadow-sm outline-none placeholder:text-slate-400 focus:border-orange-400"
+                                    className="h-16 w-full rounded-xl border border-slate-200 bg-white px-14 text-base text-[#163b55] shadow-sm outline-none placeholder:text-slate-400 focus:border-blue-400"
                                 />
 
                                 {suggestionsOpen && filtered.length > 0 && (
@@ -176,7 +176,7 @@ export default function CollegeExplorerSectionClean() {
                                                 className="flex cursor-pointer items-center justify-between gap-4 px-4 py-3 transition hover:bg-slate-50"
                                             >
                                                 <div>
-                                                    <div className="font-medium text-[#163b55]">{college.name}</div>
+                                                    <div className="font-semibold text-[#03336d]">{college.name}</div>
                                                     <div className="text-sm text-slate-500">{college.location}</div>
                                                 </div>
                                                 <Plus className="h-5 w-5 shrink-0 text-blue-900" />
@@ -189,7 +189,7 @@ export default function CollegeExplorerSectionClean() {
                             <button
                                 type="button"
                                 onClick={() => setProfileModalOpen(true)}
-                                className="bg-yellowCust rounded-lg px-10 py-3"
+                                className="bg-yellowCust rounded-lg px-8 py-3 uppercase"
                             >
                                 Build My Profile
                             </button>
@@ -199,23 +199,25 @@ export default function CollegeExplorerSectionClean() {
                     <aside className="space-y-4">
                         {!hasAppliedProfile && selected.length === 0 ? (
                             <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                                <h4 className="mt-4 text-center text-2xl font-semibold text-[#163b55] font-serif">Build Your Profile First</h4>
-                                <p className="mt-3 text-center text-slate-500">Click &quot;Build My Profile&quot; on the left to enter your grades and test scores.</p>
+                                <p className="text-center font-['Poppins'] font-bold text-xl sm:text-xl md:text-3xl lg:text-4xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
+                                    Build Your Profile First
+                                </p>
+                                <p className="mt-3 text-center text-base sm:text-xl ">Click &quot;Build My Profile&quot; on the left to enter your grades and test scores.</p>
                             </div>
                         ) : (
                             <div className="space-y-4">
                                 {selected.map((college) => (
                                     <div key={college.name} className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                                         <div>
-                                            <div className="text-lg font-semibold text-[#163b55] font-serif">{college.name}</div>
+                                            <div className="font-semibold text-[#03336d] text-base md:text-lg xl:text-xl">{college.name}</div>
                                             <div className="mt-1 flex items-center text-sm text-slate-500">
-                                                <span className="inline-flex items-center gap-1">
-                                                    <MapPin className="h-4 w-4" />
+                                                <span className="inline-flex items-center gap-1 text-sm xl:text-base">
+                                                    <MapPin className="h-5 w-5" />
                                                     {college.location}
                                                 </span>
 
-                                                <span className="ml-4 inline-flex items-center gap-1 font-medium text-slate-700">
-                                                    <DollarSign className="h-4 w-4" />
+                                                <span className="ml-4 inline-flex items-center gap-1 font-medium text-slate-700 text-sm xl:text-base">
+                                                    <DollarSign className="h-5 w-5" />
                                                     {college.tuition}
                                                 </span>
                                             </div>
