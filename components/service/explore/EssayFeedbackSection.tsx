@@ -63,7 +63,7 @@ const EssayFeedbackSection = () => {
   };
 
   return (
-    <section id="essay-feedback" className="py-24 bg-cream">
+    <section id="essay-feedback" className="pb-12 bg-cream">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
