@@ -105,14 +105,14 @@ const EssayFeedbackSection = () => {
                       }`}
                   >
                     <span
-                      className={`block font-semibold text-sm ${essayType === type.id ? "text-white" : "text-foreground"
+                      className={`block font-semibold text-base lg:text-lg ${essayType === type.id ? "text-white" : "text-foreground"
                         }`}
                     >
                       {type.label}
                     </span>
 
                     <span
-                      className={`text-xs ${essayType === type.id
+                      className={`text-sm lg:text-base ${essayType === type.id
                         ? "text-white/80"
                         : "text-muted-foreground"
                         }`}
