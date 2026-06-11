@@ -265,8 +265,9 @@ const ActivityPortfolioSection = () => {
           <p className="font-['Poppins'] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#03336d] leading-tight mb-6 tracking-tight uppercase">
             Strengthen Your Activities
           </p>
-          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10">
-            Add your existing activities and get personalized advice on improvements, next steps, and how to position them for top university applications.
+          <p className="font-['Poppins'] text-3xl text-gray-800 !leading-[2.25rem] md:leading-relaxed text-center mb-10 flex flex-col">
+            <span>Add your existing activities and get personalized advice on improvements,</span>
+            <span>next steps, and how to position them for top university applications.</span>
           </p>
         </div>
 
