@@ -6,7 +6,7 @@ into Navo-1 and redeploys on Vercel.
 
 You need access to:
 - This repo (Navo-1) on GitHub, as `saifullah-max`
-- The client's Lovable repo, `Navoed/fresh-start`, on GitHub
+- The client's Lovable repo, `Nav-o/love-spark-v2`, on GitHub
 
 How the pieces fit together:
 - `.github/workflows/sync-college-explorer.yml` — runs in Navo-1, detects the
@@ -24,7 +24,7 @@ How the pieces fit together:
 
 ## Step 1. Confirm the Lovable page exists
 
-Log into the client's Lovable project (`Navoed/fresh-start`) and confirm
+Log into the client's Lovable project (`Nav-o/love-spark-v2`) and confirm
 `/college-explorer` exists. Unlike a straight file copy, the adapter doesn't
 require Lovable to use any particular framework — it's built for Lovable's
 Vite + React output (TanStack Router) and rewrites it for Next.js. It looks
@@ -39,7 +39,7 @@ This token lets Navo-1 read the Lovable repo. Full steps in
 `docs/github-secrets-setup.md`. Short version:
 
 1. <https://github.com/settings/personal-access-tokens/new>, fine-grained,
-   scoped to `Navoed/fresh-start` only, **Contents: Read-only**.
+   scoped to `Nav-o/love-spark-v2` only, **Contents: Read-only**.
 2. Add it to Navo-1: <https://github.com/saifullah-max/Navo-1/settings/secrets/actions>
    as `LOVABLE_REPO_TOKEN`.
 
@@ -51,7 +51,7 @@ This token lets the Lovable repo poke Navo-1 to trigger a sync. Full steps in
 
 1. <https://github.com/settings/personal-access-tokens/new>, fine-grained,
    scoped to `Navo-1` only, **Contents: Read/write** + **Actions: Read/write**.
-2. Add it to the Lovable repo: `https://github.com/Navoed/fresh-start/settings/secrets/actions`
+2. Add it to the Lovable repo: `https://github.com/Nav-o/love-spark-v2/settings/secrets/actions`
    as `MAIN_REPO_TOKEN`.
 
 
@@ -59,7 +59,7 @@ This token lets the Lovable repo poke Navo-1 to trigger a sync. Full steps in
 
 Follow `docs/lovable-sync-setup.md` — it has the exact
 `.github/workflows/notify-main-site.yml` contents to commit to
-`Navoed/fresh-start`.
+`Nav-o/love-spark-v2`.
 
 
 ## Step 5. Commit and push the Navo-1 side
@@ -104,7 +104,7 @@ you can `git diff` before deciding to commit.
 1. Open the client's Lovable college-explorer project.
 2. Make a trivial change (e.g., edit a heading).
 3. Push to GitHub from Lovable.
-4. Watch `Navoed/fresh-start`'s Actions tab — `notify-main-site` should run
+4. Watch `Nav-o/love-spark-v2`'s Actions tab — `notify-main-site` should run
    green within seconds.
 5. Watch Navo-1's Actions tab — `sync-college-explorer` should fire, run the
    adapter, and finish green shortly after.

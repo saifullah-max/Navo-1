@@ -6,12 +6,12 @@ Two repos, two secrets, each read by a different side of the sync.
 
 | Secret | Purpose | Permissions needed |
 |---|---|---|
-| `LOVABLE_REPO_TOKEN` | Lets Navo-1's `sync-college-explorer.yml` check out `Navoed/fresh-start` | Fine-grained PAT, **Contents: Read-only**, scoped to the Lovable repo only |
+| `LOVABLE_REPO_TOKEN` | Lets Navo-1's `sync-college-explorer.yml` check out `Nav-o/love-spark-v2` | Fine-grained PAT, **Contents: Read-only**, scoped to the Lovable repo only |
 
-Generate this from whichever GitHub account owns/can read `Navoed/fresh-start`
+Generate this from whichever GitHub account owns/can read `Nav-o/love-spark-v2`
 (usually the client's account, or ours if we have collaborator access).
 
-## In the Lovable repo (Navoed/fresh-start) → Settings → Secrets and variables → Actions
+## In the Lovable repo (Nav-o/love-spark-v2) → Settings → Secrets and variables → Actions
 
 | Secret | Purpose | Permissions needed |
 |---|---|---|

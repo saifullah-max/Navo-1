@@ -2,14 +2,14 @@
 
 This repo (Navo-1) already has a workflow (`.github/workflows/sync-college-explorer.yml`)
 that pulls the `/college-explorer` page out of the client's Lovable project
-(`https://github.com/Navoed/fresh-start`, Vite + React) on every push, adapts
+(`https://github.com/Nav-o/love-spark-v2`, Vite + React) on every push, adapts
 it for Next.js, and commits it here.
 
 For that to fire automatically, the **Lovable repo** needs one workflow added
 to it: a small "notify" workflow that pokes Navo-1 whenever college-explorer
 changes.
 
-## What to add to the Lovable repo (Navoed/fresh-start)
+## What to add to the Lovable repo (Nav-o/love-spark-v2)
 
 Create this exact file in that repo, at this exact path:
 
@@ -52,7 +52,7 @@ Commit it directly to `main` in the Lovable repo.
 ## What this does, end to end
 
 1. The client edits `/college-explorer` in Lovable and pushes to `main` on
-   `Navoed/fresh-start`.
+   `Nav-o/love-spark-v2`.
 2. GitHub Actions runs `notify-main-site.yml` in that repo. It fires a
    `repository_dispatch` event of type `lovable-sync` at Navo-1, authenticated
    with `MAIN_REPO_TOKEN`.

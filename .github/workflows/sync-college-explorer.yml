@@ -3,7 +3,7 @@
 #
 # Flow:
 #   client edits Lovable
-#     -> Lovable pushes to Navoed/fresh-start
+#     -> Lovable pushes to Nav-o/love-spark-v2
 #     -> notify-main-site.yml in that repo POSTs repository_dispatch here
 #     -> this workflow detects the source paths, runs the adapter script to
 #        rewrite Vite/TanStack code into Next.js code, and commits the result
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout Lovable source
         uses: actions/checkout@v4
         with:
-          repository: Navoed/fresh-start
+          repository: Nav-o/love-spark-v2
           token: ${{ secrets.LOVABLE_REPO_TOKEN }}
           path: lovable-source
           fetch-depth: 1

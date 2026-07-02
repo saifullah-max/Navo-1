@@ -9,7 +9,7 @@
 #
 # Usage:
 #   ./scripts/sync-college-explorer.sh [lovable-repo-url]
-#   ./scripts/sync-college-explorer.sh https://github.com/Navoed/fresh-start.git
+#   ./scripts/sync-college-explorer.sh https://github.com/Nav-o/love-spark-v2.git
 #   ./scripts/sync-college-explorer.sh                # reads LOVABLE_REPO_URL from .env.sync
 #   ./scripts/sync-college-explorer.sh --lovable-token <pat>   # for a private repo
 
