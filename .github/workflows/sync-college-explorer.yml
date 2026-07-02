@@ -1,0 +1,176 @@
+# Sync the /college-explorer page from the client's Lovable repo (Vite + React,
+# TanStack Router) into Navo-1's Next.js App Router.
+#
+# Flow:
+#   client edits Lovable
+#     -> Lovable pushes to Navoed/fresh-start
+#     -> notify-main-site.yml in that repo POSTs repository_dispatch here
+#     -> this workflow detects the source paths, runs the adapter script to
+#        rewrite Vite/TanStack code into Next.js code, and commits the result
+#        to main with [skip ci] (so Vercel redeploys, but no CI loop)
+#
+# Only app/college-explorer/ and components/CollegeExplorer/ are touched.
+# Everything else in Navo-1 is left alone. See scripts/adapt-lovable-to-nextjs.js
+# for the actual code transformations and docs/lovable-sync-setup.md /
+# docs/github-secrets-setup.md for the one-time setup this depends on.
+
+name: sync-college-explorer
+
+on:
+  # Fired by the Lovable repo's notify-main-site.yml via curl.
+  repository_dispatch:
+    types: [lovable-sync]
+  # Manual trigger from the Actions UI for testing without waiting on Lovable.
+  workflow_dispatch:
+
+# Default GITHUB_TOKEN needs write access to push the sync commit back to main.
+permissions:
+  contents: write
+
+# Serialize back-to-back Lovable pushes so two runs can't race on the same checkout.
+concurrency:
+  group: lovable-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # 1a. Check out Navo-1 (this repo) at its root.
+      - name: Checkout Navo-1
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      # 1b. Check out the Lovable repo into ./lovable-source. LOVABLE_REPO_TOKEN
+      #     is a fine-grained PAT with Contents:Read on the Lovable repo only.
+      - name: Checkout Lovable source
+        uses: actions/checkout@v4
+        with:
+          repository: Navoed/fresh-start
+          token: ${{ secrets.LOVABLE_REPO_TOKEN }}
+          path: lovable-source
+          fetch-depth: 1
+
+      # 2. Detect where the college-explorer page and its components live in
+      #    the Lovable repo. Lovable/Vite output isn't guaranteed to use one
+      #    fixed layout, so check the known conventions in order, then fall
+      #    back to a repo-wide search for a file whose path names the page.
+      - name: Detect source paths in Lovable repo
+        id: detect
+        working-directory: lovable-source
+        run: |
+          set -e
+
+          PAGE_PATH=""
+          if [ -d "src/routes/college-explorer" ]; then
+            PAGE_PATH="src/routes/college-explorer"
+          elif [ -d "src/pages/college-explorer" ]; then
+            PAGE_PATH="src/pages/college-explorer"
+          elif [ -d "src/views/CollegeExplorer" ]; then
+            PAGE_PATH="src/views/CollegeExplorer"
+          else
+            MATCH="$(find src -type f -name '*.tsx' \( -ipath '*college-explorer*' -o -ipath '*CollegeExplorer*' \) 2>/dev/null | sort | head -n 1 || true)"
+            if [ -n "$MATCH" ]; then
+              PAGE_PATH="$(dirname "$MATCH")"
+            fi
+          fi
+
+          if [ -z "$PAGE_PATH" ]; then
+            echo "::error::Could not find a college-explorer page in the Lovable repo (checked src/routes/college-explorer, src/pages/college-explorer, src/views/CollegeExplorer, and a repo-wide *.tsx search)."
+            exit 1
+          fi
+          echo "Detected Lovable page path: $PAGE_PATH"
+          echo "LOVABLE_PAGE_PATH=lovable-source/$PAGE_PATH" >> "$GITHUB_ENV"
+
+          COMPONENT_PATH=""
+          if [ -d "src/components/CollegeExplorer" ]; then
+            COMPONENT_PATH="src/components/CollegeExplorer"
+          elif [ -d "src/components/college-explorer" ]; then
+            COMPONENT_PATH="src/components/college-explorer"
+          fi
+
+          if [ -n "$COMPONENT_PATH" ]; then
+            echo "Detected Lovable component path: $COMPONENT_PATH"
+            echo "LOVABLE_COMPONENT_PATH=lovable-source/$COMPONENT_PATH" >> "$GITHUB_ENV"
+          else
+            echo "No dedicated component folder found (src/components/CollegeExplorer or src/components/college-explorer) - assuming components are inline in the page file."
+          fi
+
+      # 3. Run the adapter: reads the Vite/TanStack source, applies the
+      #    Next.js rewrites (router imports, 'use client', import.meta.env,
+      #    etc.), and writes the result into app/college-explorer/ and
+      #    components/CollegeExplorer/ in this checkout.
+      - name: Run Lovable -> Next.js adapter
+        env:
+          LOVABLE_PAGE_PATH: ${{ env.LOVABLE_PAGE_PATH }}
+          LOVABLE_COMPONENT_PATH: ${{ env.LOVABLE_COMPONENT_PATH }}
+          DEST_PAGE_PATH: app/college-explorer
+          DEST_COMPONENT_PATH: components/CollegeExplorer
+        run: node scripts/adapt-lovable-to-nextjs.js
+
+      # 4. Compare dependencies. Vite-only tooling (vite itself, TanStack
+      #    router/start, react-router-dom) is expected to be missing here and
+      #    is skipped. Anything else missing just gets a warning - we never
+      #    auto-install packages.
+      - name: Warn about Lovable-only dependencies
+        run: |
+          node -e "
+            const fs = require('fs');
+            const skip = new Set(['vite', '@vitejs', '@tanstack/react-router', 'react-router-dom', '@tanstack/start']);
+            function isSkipped(name) {
+              for (const s of skip) {
+                if (name === s || name.startsWith(s + '/')) return true;
+              }
+              return false;
+            }
+            const lovable = JSON.parse(fs.readFileSync('lovable-source/package.json', 'utf8'));
+            const ours = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const lovableDeps = { ...(lovable.dependencies || {}), ...(lovable.devDependencies || {}) };
+            const ourDeps = { ...(ours.dependencies || {}), ...(ours.devDependencies || {}) };
+            const missing = Object.keys(lovableDeps).filter((name) => !isSkipped(name) && !ourDeps[name]);
+            if (missing.length === 0) {
+              console.log('Dependency check: no Lovable-only dependencies found that are missing here.');
+            } else {
+              console.log('::warning::The Lovable project uses dependencies not installed in this repo. Install manually if the synced page needs them:');
+              for (const name of missing) {
+                console.log('  - ' + name + '@' + lovableDeps[name]);
+              }
+            }
+          "
+
+      # 5a. Stage and check the diff. If nothing changed, skip the commit -
+      #     this is what makes reruns idempotent.
+      - name: Check for changes
+        id: diff
+        run: |
+          git add -A app/college-explorer components/CollegeExplorer 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "## No changes detected, skipping commit." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 5b. Write the file change summary to the Actions UI log.
+      - name: Write summary
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          {
+            echo "## college-explorer sync summary"
+            echo ""
+            echo '```'
+            git diff --staged --stat
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # 5c. Commit and push. [skip ci] in the message stops any other
+      #     workflow in this repo from re-triggering on the bot's own commit.
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync college-explorer from Lovable [skip ci]"
+          git push origin main

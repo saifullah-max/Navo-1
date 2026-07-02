@@ -20,3 +20,10 @@ config.bat
 /scripts/upload-to-blob.mjs
 temp_auto_push.bat
 temp_interactive_push.bat
+
+# Lovable sync - temp folders used by sync workflow and local script
+/lovable-source/
+/tmp/lovable-sync-temp/
+
+# Lovable sync - local secrets/config for scripts/sync-college-explorer.sh
+.env.sync
