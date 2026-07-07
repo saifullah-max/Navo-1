@@ -12,6 +12,8 @@ type AcademicProfileModalProps = {
   onClear?: () => void;
 };
 
+export type Citizenship = "us" | "canadian" | "international";
+
 export interface StudentProfile {
   curriculum: "a-levels" | "ib" | "american";
   grades: string;
@@ -21,7 +23,14 @@ export interface StudentProfile {
   testScore: string;
   isInternational: boolean;
   needsFinancialAid: boolean;
+  citizenship: Citizenship;
 }
+
+const citizenshipOptions: { value: Citizenship; label: string }[] = [
+  { value: "us", label: "US Citizen" },
+  { value: "canadian", label: "Canadian" },
+  { value: "international", label: "International" },
+];
 
 const curriculumOptions = [
   { value: "a-levels", label: "A-Levels" },
@@ -44,6 +53,7 @@ const defaultProfile: StudentProfile = {
   testScore: "",
   isInternational: true,
   needsFinancialAid: false,
+  citizenship: "international",
 };
 
 export default function AcademicProfileModal({ open, onOpenChange, profile, onSave, onClear }: AcademicProfileModalProps) {
@@ -184,33 +194,43 @@ export default function AcademicProfileModal({ open, onOpenChange, profile, onSa
             </div>
 
             <div className="space-y-5">
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-base font-semibold text-[#163b55]">International Student?</span>
-                <button
-                  type="button"
-                  aria-checked={form.isInternational}
-                  role="switch"
-                  onClick={() => setForm((current) => ({ ...current, isInternational: !current.isInternational }))}
-                  className={`relative h-9 w-16 rounded-full transition ${form.isInternational ? "bg-[#173a63]" : "bg-slate-200"}`}
-                >
-                  <span className={`absolute top-1 h-7 w-7 rounded-full bg-white shadow transition ${form.isInternational ? "left-8" : "left-1"}`} />
-                </button>
+              <div>
+                <p className="text-base lg:text-lg font-semibold text-[#163b55] mb-3">Citizenship</p>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  {citizenshipOptions.map((option) => {
+                    const active = form.citizenship === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() =>
+                          setForm((current) => ({
+                            ...current,
+                            citizenship: option.value,
+                            isInternational: option.value === "international",
+                          }))
+                        }
+                        className={`rounded-2xl border px-2 py-3 text-base font-medium transition ${active ? "bg-[#03336d] text-white" : "border-slate-200 bg-slate-50 text-black hover:border-slate-300 hover:bg-slate-100"}`}
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              {form.isInternational && (
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-base font-semibold text-[#163b55]">Need Financial Aid?</span>
-                  <button
-                    type="button"
-                    aria-checked={form.needsFinancialAid}
-                    role="switch"
-                    onClick={() => setForm((current) => ({ ...current, needsFinancialAid: !current.needsFinancialAid }))}
-                    className={`relative h-9 w-16 rounded-full transition ${form.needsFinancialAid ? "bg-[#173a63]" : "bg-slate-200"}`}
-                  >
-                    <span className={`absolute top-1 h-7 w-7 rounded-full bg-white shadow transition ${form.needsFinancialAid ? "left-8" : "left-1"}`} />
-                  </button>
-                </div>
-              )}
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-base font-semibold text-[#163b55]">Need Financial Aid?</span>
+                <button
+                  type="button"
+                  aria-checked={form.needsFinancialAid}
+                  role="switch"
+                  onClick={() => setForm((current) => ({ ...current, needsFinancialAid: !current.needsFinancialAid }))}
+                  className={`relative h-9 w-16 rounded-full transition ${form.needsFinancialAid ? "bg-[#173a63]" : "bg-slate-200"}`}
+                >
+                  <span className={`absolute top-1 h-7 w-7 rounded-full bg-white shadow transition ${form.needsFinancialAid ? "left-8" : "left-1"}`} />
+                </button>
+              </div>
             </div>
 
             <button
