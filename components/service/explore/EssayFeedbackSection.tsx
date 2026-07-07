@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Send, Lock, CheckCircle, AlertTriangle, Lightbulb, Target, Loader2 } from "lucide-react";
+import { FileText, Send, Lock, CheckCircle, AlertTriangle, Lightbulb, Target, Loader2, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
 type EssayType = "common-app" | "ucas";
 
 interface EssayFeedback {
+  tier?: "Tier 1" | "Tier 2";
+  tierRationale?: string;
   freePoints: string[];
   topicChallenge: string;
   mistakes: string[];
@@ -188,6 +190,34 @@ const EssayFeedbackSection = () => {
                 exit={{ opacity: 0 }}
                 className="mt-8 space-y-6"
               >
+                {feedback.tier && (
+                  <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Award className="h-5 w-5 text-[#03336d]" />
+                      <h3 className="font-['Poppins'] text-xl font-bold text-[#03336d]">Benchmark Tier</h3>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span
+                        className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold border ${
+                          feedback.tier === "Tier 1"
+                            ? "bg-yellowCust/40 text-[#03336d] border-yellowCust"
+                            : "bg-green-100 text-green-700 border-green-200"
+                        }`}
+                      >
+                        {feedback.tier}
+                      </span>
+                      <span className="text-xs text-slate-500">
+                        {essayType === "common-app"
+                          ? "Assessed against the NAVO Common App essay benchmark database"
+                          : "Assessed against the NAVO UCAS personal statement benchmark database (Tier 1 / Tier 2)"}
+                      </span>
+                    </div>
+                    {feedback.tierRationale && (
+                      <p className="text-sm text-[#163b55] leading-relaxed">{feedback.tierRationale}</p>
+                    )}
+                  </div>
+                )}
+
                 <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
                   <div className="flex items-center gap-2 mb-4">
                     <CheckCircle className="h-5 w-5 text-accent" />

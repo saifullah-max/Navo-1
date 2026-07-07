@@ -13,29 +13,24 @@ import {
   Target,
   Crown,
   Briefcase,
-  Trophy,
-  Palette,
-  Globe,
-  Heart,
+  Award,
   Users,
   Star,
   Dumbbell,
+  Heart,
   Lock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { matchActivityTier, type TierResult } from "@/lib/activityTierMatcher";
 
 const categories = [
-  { id: "school-leadership", label: "School Leadership", icon: Crown },
-  { id: "other-leadership", label: "Other Leadership", icon: Users },
+  { id: "leadership", label: "Leadership", icon: Crown },
+  { id: "clubs-societies", label: "Clubs/Societies", icon: Users },
   { id: "internships", label: "Internships", icon: Briefcase },
-  { id: "athletics", label: "Athletics & Sports", icon: Dumbbell },
-  { id: "stem", label: "STEM", icon: Star },
-  { id: "academic-competitions", label: "Academic Competitions", icon: Trophy },
-  { id: "arts", label: "Arts, Music & Performance", icon: Palette },
-  { id: "cultural", label: "Cultural & History", icon: Globe },
-  { id: "community", label: "Community Projects", icon: Heart },
-  { id: "others", label: "Others", icon: Star },
+  { id: "sports", label: "Sports", icon: Dumbbell },
+  { id: "honours-awards", label: "Honours/Awards", icon: Award },
+  { id: "community-service", label: "Community Service/Projects", icon: Heart },
 ] as const;
 
 type CategoryId = (typeof categories)[number]["id"];
@@ -55,6 +50,7 @@ interface ActivityAnalysis {
   nextSteps: string[];
   positioning: string;
   overallTier: "Exceptional" | "Strong" | "Developing" | "Needs Work";
+  tierResult: TierResult;
 }
 
 interface ProfileAssessment {
@@ -87,17 +83,19 @@ function analyzeActivity(activity: Activity): ActivityAnalysis {
   if (!hasRecognition) improvements.push("Pursue competitions, awards, or external recognition to validate your work.");
 
   switch (activity.category) {
-    case "school-leadership":
+    case "leadership":
       if (!hasMeasurable) nextSteps.push("Document specific policy changes or initiatives you led and their measurable outcomes.");
       nextSteps.push("Connect your leadership to a broader narrative — how did this shape your perspective or goals?");
       positioning = hasLeadership
-        ? "Position as a change-maker who drove tangible improvements in your school community."
+        ? "Position as a change-maker who drove tangible improvements in your school or community."
         : "Frame this as your path to becoming a community leader — show growth and increasing responsibility.";
       break;
-    case "other-leadership":
-      nextSteps.push("Highlight the scope and scale — how many people did you lead or impact?");
-      nextSteps.push("Show transferable skills: delegation, conflict resolution, strategic planning.");
-      positioning = "Position as evidence of leadership beyond your school bubble — shows you can lead in diverse contexts.";
+    case "clubs-societies":
+      nextSteps.push("Take on a leadership role (founder, president, or project lead) to elevate from member to driver.");
+      nextSteps.push("Connect club work to real-world impact — competitions, publications, or community outcomes.");
+      positioning = hasInitiative
+        ? "Position as intellectual curiosity in action. Top schools want to see you pushing boundaries, not just completing assignments."
+        : "Frame as evidence of creative thinking and dedication. Show depth of involvement beyond attendance.";
       break;
     case "internships":
       nextSteps.push("Request a deliverable or project outcome you can reference in applications.");
@@ -105,43 +103,26 @@ function analyzeActivity(activity: Activity): ActivityAnalysis {
       if (!hasMeasurable) nextSteps.push("Quantify your contributions: projects completed, revenue impacted, or processes improved.");
       positioning = "Frame as professional-grade experience that sets you apart from typical high schoolers. Emphasize what you learned and contributed, not just where you worked.";
       break;
-    case "athletics":
+    case "sports":
       nextSteps.push("If not already competing at state/national level, set specific performance milestones.");
       nextSteps.push("Highlight teamwork, discipline, and time management as transferable qualities.");
       positioning = hasRecognition
         ? "Lead with your competitive achievements, then connect athletic discipline to your academic drive."
         : "Position as a demonstration of commitment, grit, and the ability to balance demanding schedules.";
       break;
-    case "stem":
-      nextSteps.push("Pursue a research project or publication to elevate from participant to contributor.");
-      nextSteps.push("Consider entering ISEF, Science Talent Search, or Siemens for national recognition.");
-      if (hasInitiative) nextSteps.push("Open-source your work or present at conferences to amplify impact.");
-      positioning = "Frame as intellectual curiosity in action. Top schools want to see you pushing boundaries, not just completing assignments.";
-      break;
-    case "academic-competitions":
+    case "honours-awards":
       nextSteps.push("Target the next tier of competition — regional → state → national → international.");
       nextSteps.push("Mentor younger students or start a study group to show leadership within your competitive community.");
       positioning = hasRecognition
         ? "This is a powerful differentiator — lead with your highest placement and show upward trajectory."
         : "Focus on improvement over time and what the competitive journey taught you about perseverance.";
       break;
-    case "arts":
-      nextSteps.push("Submit work to Scholastic Art & Writing Awards, regional exhibitions, or performance festivals.");
-      nextSteps.push("Create a portfolio or performance reel that showcases growth and range.");
-      positioning = "Position as evidence of creative thinking and dedication. Top schools value artistic passion as much as academic rigor.";
-      break;
-    case "cultural":
-      nextSteps.push("Connect cultural engagement to broader themes of identity, bridge-building, or community preservation.");
-      nextSteps.push("Consider writing about this in your personal essay if it's central to your identity.");
-      positioning = "Frame as what makes you uniquely you. Cultural activities reveal depth, perspective, and the diversity of thought you'd bring to campus.";
-      break;
-    case "community":
-      nextSteps.push("Scale your project — can you expand to other schools, neighborhoods, or cities?");
-      nextSteps.push("Document before/after impact with data, testimonials, or media coverage.");
-      if (!hasInitiative) nextSteps.push("Take ownership of a specific initiative rather than participating in an existing one.");
+    case "community-service":
+      nextSteps.push("Quantify your impact — number of people served, funds raised, or hours contributed.");
+      nextSteps.push("Take on a leadership or organisational role to show initiative beyond volunteering.");
       positioning = hasSocialImpact
-        ? "Position as a mission-driven leader who creates systemic change, not just a volunteer logging hours."
-        : "Elevate from participation to impact — show what changed because of your involvement.";
+        ? "Position as values-driven action. Admissions officers love applicants who translate concern into measurable community impact."
+        : "Frame as the beginning of a commitment narrative — show how this experience shaped your worldview and future goals.";
       break;
     default:
       nextSteps.push("Find a way to connect this activity to your intended major or career narrative.");
@@ -164,7 +145,22 @@ function analyzeActivity(activity: Activity): ActivityAnalysis {
     improvements.push("Extend your commitment — admissions officers value depth over breadth. Aim for 2+ years.");
   }
 
-  return { strengths, improvements, nextSteps, positioning, overallTier: tier };
+  const tierResult = matchActivityTier({
+    title: activity.title,
+    description: activity.description,
+    role: activity.role,
+    duration: activity.duration,
+    category: activity.category,
+  });
+
+  tierResult.strengths.forEach((s) => {
+    if (!strengths.includes(s)) strengths.push(s);
+  });
+  tierResult.weaknesses.forEach((w) => {
+    if (!improvements.includes(w)) improvements.push(w);
+  });
+
+  return { strengths, improvements, nextSteps, positioning, overallTier: tier, tierResult };
 }
 
 function getTierColor(tier: ActivityAnalysis["overallTier"]) {
@@ -189,7 +185,7 @@ const MAX_FREE_ACTIVITIES = 2;
 
 const ActivityPortfolioSection = () => {
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<CategoryId>("school-leadership");
+  const [selectedCategory, setSelectedCategory] = useState<CategoryId>("leadership");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [role, setRole] = useState("");
@@ -303,7 +299,14 @@ const ActivityPortfolioSection = () => {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder={`Activity name (e.g. "${selectedCat.label === "Internships" ? "Summer Research Intern at MIT Lab" : selectedCat.label === "Athletics & Sports" ? "Varsity Tennis Team" : "Student Council President"}")`}
+                placeholder={`Activity name (e.g. "${
+                  selectedCat.id === "internships" ? "Summer Research Intern at MIT Lab" :
+                  selectedCat.id === "sports" ? "Varsity Tennis Team" :
+                  selectedCat.id === "clubs-societies" ? "STEM Society / Drama Club" :
+                  selectedCat.id === "honours-awards" ? "John Locke Essay Competition" :
+                  selectedCat.id === "community-service" ? "Kiran Foundation Summer Program" :
+                  "Student Council President"
+                }")`}
                 className="w-full bg-white rounded-lg border border-slate-400 p-3 text-[#163b55] placeholder:text-slate-400 text-sm outline-none focus:border-[#15357d] transition-colors"
                 maxLength={150}
                 disabled={showLock}
@@ -377,6 +380,17 @@ const ActivityPortfolioSection = () => {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-semibold text-[#163b55] text-sm">{activity.title}</span>
+                            <span
+                              className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                                analysis.tierResult.tier === 1
+                                  ? "bg-yellowCust/30 text-[#03336d] border-yellowCust"
+                                  : analysis.tierResult.tier === 2
+                                    ? "bg-green-100 text-green-700 border-green-200"
+                                    : "bg-slate-100 text-slate-600 border-slate-200"
+                              }`}
+                            >
+                              TIER {analysis.tierResult.tier}
+                            </span>
                             <span className={`text-xs font-bold ${tierColor}`}>{analysis.overallTier}</span>
                           </div>
                           <p className="text-slate-500 text-xs mt-0.5">
@@ -403,6 +417,30 @@ const ActivityPortfolioSection = () => {
                     <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-[1400px] opacity-100" : "max-h-0 opacity-0"}`}>
                       <div className="px-4 pb-4 space-y-4">
                         <div className="h-px bg-slate-200" />
+
+                        <div className="bg-slate-50 rounded-lg p-3 border border-slate-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Award className="h-4 w-4 text-[#03336d]" />
+                            <span className="text-[#03336d] text-xs font-bold uppercase tracking-wider">
+                              Tier {analysis.tierResult.tier} Match
+                            </span>
+                            <span className="text-[10px] text-slate-500 uppercase">
+                              · {analysis.tierResult.confidence} confidence
+                            </span>
+                          </div>
+                          <ul className="space-y-1">
+                            {analysis.tierResult.rationale.map((line, index) => (
+                              <li key={index} className="text-slate-600 text-xs leading-relaxed">
+                                {line}
+                              </li>
+                            ))}
+                            {analysis.tierResult.bestMatch && (
+                              <li className="text-slate-500 text-[11px] italic pt-1">
+                                Benchmark example: {analysis.tierResult.bestMatch.name}
+                              </li>
+                            )}
+                          </ul>
+                        </div>
 
                         {analysis.strengths.length > 0 && (
                           <div>
