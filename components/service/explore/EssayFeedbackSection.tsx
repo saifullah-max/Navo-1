@@ -221,22 +221,19 @@ const EssayFeedbackSection = () => {
                 <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
                   <div className="flex items-center gap-2 mb-4">
                     <CheckCircle className="h-5 w-5 text-accent" />
-                    <h3 className="font-display text-xl font-bold text-foreground">Key Feedback Points</h3>
+                    <h3 className="font-display text-xl font-bold text-foreground">Key Feedback</h3>
                   </div>
-                  <div className="space-y-3">
+                  <div className="p-4 bg-background rounded-lg space-y-3">
                     {feedback.freePoints.map((point, i) => (
-                      <motion.div
+                      <motion.p
                         key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex items-start gap-3 p-3 bg-background rounded-lg"
+                        className="text-sm text-foreground leading-relaxed"
                       >
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/10 text-gold text-xs font-bold flex items-center justify-center mt-0.5">
-                          {i + 1}
-                        </span>
-                        <p className="text-sm text-foreground leading-relaxed">{point}</p>
-                      </motion.div>
+                        {point}
+                      </motion.p>
                     ))}
                   </div>
                 </div>
